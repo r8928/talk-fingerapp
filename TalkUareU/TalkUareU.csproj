@@ -48,7 +48,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="rowItemClass.cs" />
+    <Compile Include="InputBoxClass.cs" />
     <Compile Include="HelperClass.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>

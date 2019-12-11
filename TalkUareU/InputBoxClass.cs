@@ -2,7 +2,7 @@
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace WindowsApplication1
+namespace InputBoxApp
 {
 
     #region InputBox return result
@@ -66,19 +66,17 @@ namespace WindowsApplication1
             // 
             lblPrompt.Anchor = (((AnchorStyles.Top | AnchorStyles.Bottom) | AnchorStyles.Left) | AnchorStyles.Right);
             lblPrompt.BackColor = SystemColors.Control;
-            lblPrompt.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblPrompt.Location = new Point(12, 9);
+            lblPrompt.Size = new Size(180, 20);
+            lblPrompt.Location = new Point(6, 5);
             lblPrompt.Name = "lblPrompt";
-            lblPrompt.Size = new Size(302, 82);
             lblPrompt.TabIndex = 3;
             // 
             // btnOK
             // 
             btnOK.DialogResult = DialogResult.OK;
-            btnOK.FlatStyle = FlatStyle.Popup;
-            btnOK.Location = new Point(326, 8);
+            btnOK.Size = new Size(60, 20);
+            btnOK.Location = new Point(15, 55);
             btnOK.Name = "btnOK";
-            btnOK.Size = new Size(64, 24);
             btnOK.TabIndex = 1;
             btnOK.Text = "&OK";
             btnOK.Click += new EventHandler(btnOK_Click);
@@ -86,26 +84,27 @@ namespace WindowsApplication1
             // btnCancel
             // 
             btnCancel.DialogResult = DialogResult.Cancel;
-            btnCancel.FlatStyle = FlatStyle.Popup;
-            btnCancel.Location = new Point(326, 40);
+            btnCancel.Size = new Size(60, 20);
+            btnCancel.Location = new Point(110, 55);
             btnCancel.Name = "btnCancel";
-            btnCancel.Size = new Size(64, 24);
             btnCancel.TabIndex = 2;
             btnCancel.Text = "&Cancel";
             btnCancel.Click += new EventHandler(btnCancel_Click);
             // 
             // txtInput
             // 
-            txtInput.Location = new Point(8, 100);
             txtInput.Name = "txtInput";
-            txtInput.Size = new Size(379, 20);
+            txtInput.Size = new Size(180, 20);
+            txtInput.Location = new Point(8, 20);
             txtInput.TabIndex = 0;
             txtInput.Text = "";
+            txtInput.BorderStyle = BorderStyle.FixedSingle;
+            txtInput.KeyDown += new KeyEventHandler(txt_KeyDown);
             // 
             // InputBoxDialog
             // 
             frmInputDialog.AutoScaleBaseSize = new Size(5, 13);
-            frmInputDialog.ClientSize = new Size(398, 128);
+            frmInputDialog.ClientSize = new Size(200, 75);
             frmInputDialog.Controls.Add(txtInput);
             frmInputDialog.Controls.Add(btnCancel);
             frmInputDialog.Controls.Add(btnOK);
@@ -115,6 +114,7 @@ namespace WindowsApplication1
             frmInputDialog.MinimizeBox = false;
             frmInputDialog.Name = "InputBoxDialog";
             frmInputDialog.ResumeLayout(false);
+            frmInputDialog.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
         }
 
         #endregion
@@ -132,12 +132,12 @@ namespace WindowsApplication1
 
             // Retrieve the working rectangle from the Screen class
             // using the PrimaryScreen and the WorkingArea properties.
-            System.Drawing.Rectangle workingRectangle = Screen.PrimaryScreen.WorkingArea;
+            Rectangle workingRectangle = Screen.PrimaryScreen.WorkingArea;
 
             if ((_xPos >= 0 && _xPos < workingRectangle.Width - 100) && (_yPos >= 0 && _yPos < workingRectangle.Height - 100))
             {
                 frmInputDialog.StartPosition = FormStartPosition.Manual;
-                frmInputDialog.Location = new System.Drawing.Point(_xPos, _yPos);
+                frmInputDialog.Location = new Point(_xPos, _yPos);
             }
             else
             {
@@ -159,10 +159,10 @@ namespace WindowsApplication1
                 n = 1;
             }
 
-            System.Drawing.Point Txt = txtInput.Location;
+            Point Txt = txtInput.Location;
             Txt.Y = Txt.Y + (n * 4);
             txtInput.Location = Txt;
-            System.Drawing.Size form = frmInputDialog.Size;
+            Size form = frmInputDialog.Size;
             form.Height = form.Height + (n * 4);
             frmInputDialog.Size = form;
 
@@ -175,14 +175,26 @@ namespace WindowsApplication1
 
         #region Button control click event
 
-        static private void btnOK_Click(object sender, System.EventArgs e)
+        static private void txt_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnOK_Click(sender);
+            }
+            else if (e.KeyCode == Keys.Escape)
+            {
+                btnCancel_Click(sender);
+            }
+        }
+
+        static private void btnOK_Click(object sender, System.EventArgs e = null)
         {
             OutputResponse.ReturnCode = DialogResult.OK;
             OutputResponse.Text = txtInput.Text;
             frmInputDialog.Dispose();
         }
 
-        static private void btnCancel_Click(object sender, System.EventArgs e)
+        static private void btnCancel_Click(object sender, System.EventArgs e = null)
         {
             OutputResponse.ReturnCode = DialogResult.Cancel;
             OutputResponse.Text = string.Empty; //Clean output response

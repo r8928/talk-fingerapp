@@ -25,7 +25,7 @@ namespace TalkUareU
             }
             public void success(string msg, string title = null)
             {
-                MessageBox.Show(msg, title, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show(msg, title, MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             public void warn(string msg, string title = null)
             {

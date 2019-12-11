@@ -2,7 +2,6 @@
 using Newtonsoft.Json.Linq;
 using System.IO;
 using System.Net;
-using System.Windows.Forms;
 
 namespace TalkUareU
 {
@@ -21,8 +20,7 @@ namespace TalkUareU
 
         }
 
-
-        public HttpResponse post(string url, object json)
+        public HttpResponse post(string url, string json)
         {
 
             var httpWebRequest = (HttpWebRequest)WebRequest.Create(createURL(url));
@@ -31,14 +29,18 @@ namespace TalkUareU
 
             using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
             {
-                streamWriter.Write(jsonStringify(json));
-            }
+                //streamWriter.Write(jsonStringify(json));
 
+                json = json.Replace("'", "\"");
+
+                //json = jsonStringify(jsonParse(json));
+                //System.Windows.Forms.MessageBox.Show(json);
+
+                streamWriter.Write(json);
+            }
 
             return GetResponse(httpWebRequest);
         }
-
-
 
         public HttpResponse GetResponse(HttpWebRequest request)
         {
@@ -53,7 +55,6 @@ namespace TalkUareU
                 return new HttpResponse(sr.ReadToEnd(), StatusCode);
 
             }
-
             catch (WebException e)
             {
                 if (e.Response != null)
@@ -66,7 +67,7 @@ namespace TalkUareU
                     {
                         using (var reader = new StreamReader(errorResponse.GetResponseStream()))
                         {
-                             error = reader.ReadToEnd();
+                            error = reader.ReadToEnd();
                         }
                     }
 
@@ -88,8 +89,6 @@ namespace TalkUareU
 
             return API_ENDPOINT + url + token_delim + "token=" + HttpService.token;
         }
-
-
 
         public void UploadNew(string actionUrl, string path, string token, string secret, string location, string role, string file)
         {
@@ -114,9 +113,6 @@ namespace TalkUareU
 
         }
 
-
-
-
         public JObject jsonParse(string str)
         {
             return JObject.Parse(str);
@@ -134,17 +130,23 @@ namespace TalkUareU
         public HttpResponse(string httpresp, string statuscode)
         {
             //System.Int32.TryParse(statuscode, out code);
-            code = statuscode;
-            resp = httpresp;
 
             try
             {
-                if (resp.Length > 0)
+                if (httpresp.Length > 0)
                 {
 
-                    if (code == "200")
+                    if (statuscode == "200")
                     {
+                        if(resp.Contains("<title>Welcome To Talk Mobile</title>"))
+                        {
+                            httpresp = "404";
+                            statuscode = "404";
+                        }
+                        else
+                        {
                         ok = true;
+                        }
                     }
 
                     json = JObject.Parse(httpresp);
@@ -157,8 +159,8 @@ namespace TalkUareU
             catch (System.Exception) { }
         }
 
-        public string resp { get; } = null;
-        public string code { get; } = null;
+        public string resp { get; } = "";
+        public string code { get; } = "";
         public JObject json { get; } = null;
         public bool ok { get; } = false;
         public bool hasJson { get; } = false;
