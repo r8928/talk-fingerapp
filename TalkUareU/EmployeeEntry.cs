@@ -7,14 +7,33 @@ namespace TalkUareU
 
     public partial class EmployeeEntry : Panel
     {
+        private string _ClockStatus;
+        private string _EmpName;
+        private string _ClockTimeString;
+        public string UserID;
+
         public string ClockStatus
         {
             set
             {
-                pic_Icon.BackgroundImage = Properties.Resources.cross;
+                switch (value)
+                {
+                    case "in":
+                        pic_Icon.BackgroundImage = Properties.Resources.checkin;
+                        break;
+                    case "out":
+                        pic_Icon.BackgroundImage = Properties.Resources.checkout;
+                        break;
+                    case "lunch":
+                        pic_Icon.BackgroundImage = Properties.Resources.lunchout;
+                        break;
+                    default:
+                        break;
+                }
                 pic_Icon.Refresh();
-                //MessageBox.Show("asdf");
+                _ClockStatus = value;
             }
+            get => _ClockStatus;
         }
 
         public string EmpName
@@ -22,29 +41,31 @@ namespace TalkUareU
             set
             {
                 lbl_Name.Text = value;
-                //EmpName = value;
+                _EmpName = value;
             }
-            get
-            {
-                return EmpName;
-            }
+           get => _EmpName;
+            
         }
         public string ClockTimeString
         {
             set
             {
                 lbl_timeString.Text = value;
-                //ClockTimeString = value;
+                _ClockTimeString = value;
             }
-            get
-            {
-                return ClockTimeString;
-            }
+            get => _ClockTimeString;
+            
         }
 
-        public EmployeeEntry()
+        public EmployeeEntry(string UserID, string Name, string Status, string TimeString)
         {
             InitializeComponent();
+
+
+            EmpName = Name;
+            ClockTimeString = TimeString;
+            ClockStatus = Status;
+
 
             Controls.Add(pic_Icon);
             Controls.Add(lbl_Name);

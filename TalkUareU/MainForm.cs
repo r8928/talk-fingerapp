@@ -18,15 +18,15 @@ namespace TalkUareU
             InitializeComponent();
 
 
-            Form x = new Form1();
-            x.ShowDialog();
+            //Form x = new Form1();
+            //x.ShowDialog();
 
-            //getMAC();
+            getMAC();
 
-            //getNewToken();
-            //refresh_listing();
-            //enable_btn(btn_refresh);
-            //enable_btn(btn_PunchIn);
+            getNewToken();
+            refresh_listing();
+            enable_btn(btn_refresh);
+            enable_btn(btn_PunchIn);
 
         }
 
@@ -130,10 +130,25 @@ namespace TalkUareU
                         (string) item["check_out"], //9
                     };
                     InsertEmployeeRows(row);
+
+
+
+                    EmployeeEntry em = new EmployeeEntry((string)item["uid"], (string)item["display_name"], (string)item["status"], (string)item["check_in"]);
+                    em.Click += this.EmployeeEntryClick;
+
+                    flowLayoutPanel1.Controls.Add(em);
                 }
             }
-
         }
+
+
+        private void EmployeeEntryClick(object sender, System.EventArgs e)
+        {
+            EmployeeEntry em = (EmployeeEntry)sender;
+            //MessageBox.Show(em.EmpName);
+            new Form1(em).ShowDialog();
+        }
+
 
         private void InsertEmployeeRows(string[] data)
         {
@@ -370,10 +385,9 @@ namespace TalkUareU
             //clockRequest("day_clockin");
         }
 
-        private void button2_Click(object sender, System.EventArgs e)
+        private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
         {
-            Form x = new Form1();
-            x.Show();
+
         }
     }
 }

@@ -36,6 +36,7 @@
             // 
             // lbl_Name
             // 
+            this.lbl_Name.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_Name.Location = new System.Drawing.Point(50, 0);
             this.lbl_Name.Name = "lbl_Name";
             this.lbl_Name.Size = new System.Drawing.Size(440, 23);
@@ -44,7 +45,7 @@
             // 
             // lbl_timeString
             // 
-            this.lbl_timeString.AutoSize = true;
+            this.lbl_timeString.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_timeString.Location = new System.Drawing.Point(50, 25);
             this.lbl_timeString.Name = "lbl_timeString";
             this.lbl_timeString.Size = new System.Drawing.Size(440, 23);
@@ -53,11 +54,10 @@
             // 
             // pic_Icon
             // 
-            this.pic_Icon.BackgroundImage = global::TalkUareU.Properties.Resources.check;
             this.pic_Icon.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pic_Icon.Location = new System.Drawing.Point(0, 0);
+            this.pic_Icon.Location = new System.Drawing.Point(10, 10);
             this.pic_Icon.Name = "pic_Icon";
-            this.pic_Icon.Size = new System.Drawing.Size(50, 50);
+            this.pic_Icon.Size = new System.Drawing.Size(30, 30);
             this.pic_Icon.TabIndex = 0;
             this.pic_Icon.TabStop = false;
             // 
@@ -65,12 +65,11 @@
             // 
             this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Size = new System.Drawing.Size(500, 50);
+            this.Size = new System.Drawing.Size(380, 50);
             ((System.ComponentModel.ISupportInitialize)(this.pic_Icon)).EndInit();
+            this.ResumeLayout(false);
 
             
-
-            this.ResumeLayout(false);
 
         }
 
