@@ -129,19 +129,22 @@ namespace TalkUareU
     {
         public HttpResponse(string httpresp, string statuscode)
         {
+
+            resp = httpresp;
+            code = statuscode;
             //System.Int32.TryParse(statuscode, out code);
 
             try
             {
-                if (httpresp.Length > 0)
+                if (resp.Length > 0)
                 {
 
-                    if (statuscode == "200")
+                    if (code == "200")
                     {
                         if(resp.Contains("<title>Welcome To Talk Mobile</title>"))
                         {
-                            httpresp = "404";
-                            statuscode = "404";
+                            resp = "404";
+                            code = "404";
                         }
                         else
                         {
@@ -149,7 +152,7 @@ namespace TalkUareU
                         }
                     }
 
-                    json = JObject.Parse(httpresp);
+                    json = JObject.Parse(resp);
                     if (json.HasValues)
                     {
                         hasJson = true;
@@ -157,6 +160,7 @@ namespace TalkUareU
                 }
             }
             catch (System.Exception) { }
+
         }
 
         public string resp { get; } = "";

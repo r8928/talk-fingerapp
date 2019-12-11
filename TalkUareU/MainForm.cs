@@ -1,6 +1,6 @@
-﻿using System.Linq;
+﻿using InputBoxApp;
+using System.Linq;
 using System.Windows.Forms;
-using InputBoxApp;
 
 namespace TalkUareU
 {
@@ -17,12 +17,16 @@ namespace TalkUareU
         {
             InitializeComponent();
 
-            getMAC();
 
-            getNewToken();
-            refresh_listing();
-            enable_btn(btn_refresh);
-            enable_btn(btn_PunchIn);
+            Form x = new Form1();
+            x.ShowDialog();
+
+            //getMAC();
+
+            //getNewToken();
+            //refresh_listing();
+            //enable_btn(btn_refresh);
+            //enable_btn(btn_PunchIn);
 
         }
 
@@ -241,8 +245,8 @@ namespace TalkUareU
                     url_subpart = "checkin";
                     break;
                 case "lunch_clockout":
-                    selectedRowItem.check_in = hlp.curDateTime();
-                    selectedRowItem.check_out = null;
+                    selectedRowItem.check_in = null;
+                    selectedRowItem.check_out = hlp.curDateTime();
                     selectedRowItem.btnevent = clockEvent;
                     url_subpart = "checkout";
                     break;
@@ -253,8 +257,8 @@ namespace TalkUareU
                     url_subpart = "checkin";
                     break;
                 case "day_clockout":
-                    selectedRowItem.check_in = hlp.curDateTime();
-                    selectedRowItem.check_out = null;
+                    selectedRowItem.check_in = null;
+                    selectedRowItem.check_out = hlp.curDateTime();
                     selectedRowItem.btnevent = "yes";
                     url_subpart = "checkout";
                     break;
@@ -358,7 +362,7 @@ namespace TalkUareU
                 }
                 else
                 {
-                    hlp.msg.error(re.code, "INTERNET ERROR");
+                    hlp.msg.error(re.resp, "INTERNET ERROR");
                     richTextBox1.Text = re.resp;
                 }
             }
@@ -366,5 +370,10 @@ namespace TalkUareU
             //clockRequest("day_clockin");
         }
 
+        private void button2_Click(object sender, System.EventArgs e)
+        {
+            Form x = new Form1();
+            x.Show();
+        }
     }
 }

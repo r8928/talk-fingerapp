@@ -53,6 +53,7 @@
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.txt_token = new System.Windows.Forms.TextBox();
             this.btn_getToken = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -276,12 +277,23 @@
             this.btn_getToken.UseVisualStyleBackColor = true;
             this.btn_getToken.Click += new System.EventHandler(this.btnGetToken_Click);
             // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(408, 52);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 16;
+            this.button2.Text = "button2";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(800, 732);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.btn_getToken);
             this.Controls.Add(this.txt_token);
             this.Controls.Add(this.richTextBox1);
@@ -333,6 +345,7 @@
         private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.TextBox txt_token;
         private System.Windows.Forms.Button btn_getToken;
+        private System.Windows.Forms.Button button2;
     }
 }
 
