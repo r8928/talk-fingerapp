@@ -11,7 +11,7 @@ namespace TalkUareU
         {
             set
             {
-                //pic_Icon.Image = Properties.Resources.cross;
+                pic_Icon.BackgroundImage = Properties.Resources.cross;
                 pic_Icon.Refresh();
                 //MessageBox.Show("asdf");
             }
@@ -62,10 +62,10 @@ namespace TalkUareU
             OnClick(e);
         }
 
-        [Category("Custom")]
-        [Browsable(true)]
-        [Description("Asdfds")]
-        [Editor(typeof(System.Windows.Forms.Design.WindowsFormsComponentEditor), typeof(System.Drawing.Design.UITypeEditor))]
+       // [Category("Custom")]
+       // [Browsable(true)]
+       // [Description("Asdfds")]
+       // [Editor(typeof(System.Windows.Forms.Design.WindowsFormsComponentEditor), typeof(System.Drawing.Design.UITypeEditor))]
 
         protected override void OnPaint(PaintEventArgs pe)
         {

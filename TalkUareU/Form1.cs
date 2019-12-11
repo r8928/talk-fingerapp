@@ -15,17 +15,23 @@ namespace TalkUareU
         public Form1()
         {
             InitializeComponent();
+            
+            
         }
 
-        private void employeeEntry1_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
-            employeeEntry1.ClockStatus = "123456";
-            employeeEntry1.EmpName = "asdf";
+            EmployeeEntry em = new EmployeeEntry();
+            em.Click +=  this.childControl_Click;
+
+            flowLayoutPanel1.Controls.Add(em);
         }
 
-        private void employeeEntry1_Paint(object sender, PaintEventArgs e)
+        private void childControl_Click(object sender, EventArgs e)
         {
-
+            EmployeeEntry em = (EmployeeEntry)sender;
+            em.EmpName = "Rashid";           
         }
+
     }
 }
