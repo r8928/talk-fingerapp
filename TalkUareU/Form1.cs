@@ -42,14 +42,5 @@ namespace TalkUareU
             flowLayoutPanel1.Left = (FormWidth / 2) - (FlowWidth / 2) -5;
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 }

@@ -4,6 +4,9 @@ namespace TalkUareU
 {
     internal class HelperClass
     {
+
+        HttpService http = new HttpService();
+        
         public MessageClass msg = new MessageClass();
 
         public HelperClass() { }
@@ -32,6 +35,70 @@ namespace TalkUareU
                 MessageBox.Show(msg, title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
+
+
+        public void clockRequest(EmployeeEntry emp, string clockEvent)
+        {
+            if (emp == null)
+            {
+                return;
+            }
+            
+
+            string url_subpart = "";
+            switch (clockEvent)
+            {
+                case "day_clockin":
+                    emp.check_in = curDateTime();
+                    emp.check_out = null;
+                    emp.btnevent = "yes";
+                    url_subpart = "checkin";
+                    break;
+                case "lunch_clockout":
+                    emp.check_in = null;
+                    emp.check_out = curDateTime();
+                    emp.btnevent = clockEvent;
+                    url_subpart = "checkout";
+                    break;
+                case "lunch_back":
+                    emp.check_in = null;
+                    emp.check_out = curDateTime();
+                    emp.btnevent = clockEvent;
+                    url_subpart = "checkin";
+                    break;
+                case "day_clockout":
+                    emp.check_in = null;
+                    emp.check_out = curDateTime();
+                    emp.btnevent = "yes";
+                    url_subpart = "checkout";
+                    break;
+                default:
+                    msg.error("BAD SELECTION");
+                    return;
+            }
+
+            //richTextBox1.Text = http.jsonStringify(emp) + "\n" + richTextBox1.Text;
+
+            HttpResponse response = http.post("timepunch/" + url_subpart, http.jsonStringify(emp)); //, http.jsonParse(json));
+
+            if (!response.ok)
+            {
+                msg.error("Connection error: " + response.code, "INTERNET ERROR");
+                //richTextBox1.Text = response.resp + "\n" + richTextBox1.Text;
+            }
+            else
+            {
+                //msg.success("GOOD");
+                //richTextBox1.Text = response.resp + "\n" + richTextBox1.Text;
+
+                if (response.resp.Contains("\"error\""))
+                {
+                    msg.warn((string)response.json["message"]);
+                }
+            }
+            //refresh_listing();
+        }
+
 
     }
 }

@@ -10,7 +10,16 @@ namespace TalkUareU
         private string _ClockStatus;
         private string _EmpName;
         private string _ClockTimeString;
-        public string UserID;
+        public string user_id;
+        public string role_id;
+        public string location_id;
+
+
+        public string btnevent;
+        public string ip_in;
+        public string ip_out;
+        public string check_in;
+        public string check_out;
 
         public string ClockStatus
         {
@@ -57,7 +66,7 @@ namespace TalkUareU
             
         }
 
-        public EmployeeEntry(string UserID, string Name, string Status, string TimeString)
+        public EmployeeEntry(string UserID, string Name, string Status, string TimeString, string RoleID)
         {
             InitializeComponent();
 
@@ -65,6 +74,8 @@ namespace TalkUareU
             EmpName = Name;
             ClockTimeString = TimeString;
             ClockStatus = Status;
+            this.user_id = UserID;
+            this.role_id = RoleID;
 
 
             Controls.Add(pic_Icon);

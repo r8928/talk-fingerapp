@@ -37,5 +37,11 @@ namespace TalkUareU
             btnevent = BTNEVENT;
             check_out = CHECKOUT;
         }
+
+        public rowItem(EmployeeEntry emp, string Location)
+        {
+
+        }
+
     }
 }

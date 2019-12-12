@@ -10,7 +10,7 @@ namespace TalkUareU
         HttpService http = new HttpService();
         HelperClass hlp = new HelperClass();
         private rowItem selectedRowItem;
-        private string appLocationId;
+        public static string appLocationId;
         private string appMAC;
 
         public MainForm()
@@ -112,7 +112,7 @@ namespace TalkUareU
             {
                 //MessageBox.Show((string)re.json["data"][0]["sap"]);
 
-                appLocationId = (string)response.json["data"][0]["location_id"];
+                MainForm.appLocationId = (string)response.json["data"][0]["location_id"];
 
                 foreach (var item in response.json["data"])
                 {
@@ -133,7 +133,13 @@ namespace TalkUareU
 
 
 
-                    EmployeeEntry em = new EmployeeEntry((string)item["uid"], (string)item["display_name"], (string)item["status"], (string)item["check_in"]);
+                    EmployeeEntry em = new EmployeeEntry(
+                        (string)item["uid"],
+                        (string)item["display_name"],
+                        (string)item["status"],
+                        (string)item["check_in"],
+                        (string)item["role_id"]
+                        );
                     em.Click += this.EmployeeEntryClick;
 
                     flowLayoutPanel1.Controls.Add(em);
@@ -243,67 +249,6 @@ namespace TalkUareU
             btn.Cursor = Cursors.Hand;
         }
 
-        private void clockRequest(string clockEvent)
-        {
-            if (selectedRowItem == null)
-            {
-                return;
-            }
-
-            string url_subpart = "";
-            switch (clockEvent)
-            {
-                case "day_clockin":
-                    selectedRowItem.check_in = hlp.curDateTime();
-                    selectedRowItem.check_out = null;
-                    selectedRowItem.btnevent = "yes";
-                    url_subpart = "checkin";
-                    break;
-                case "lunch_clockout":
-                    selectedRowItem.check_in = null;
-                    selectedRowItem.check_out = hlp.curDateTime();
-                    selectedRowItem.btnevent = clockEvent;
-                    url_subpart = "checkout";
-                    break;
-                case "lunch_back":
-                    selectedRowItem.check_in = null;
-                    selectedRowItem.check_out = hlp.curDateTime();
-                    selectedRowItem.btnevent = clockEvent;
-                    url_subpart = "checkin";
-                    break;
-                case "day_clockout":
-                    selectedRowItem.check_in = null;
-                    selectedRowItem.check_out = hlp.curDateTime();
-                    selectedRowItem.btnevent = "yes";
-                    url_subpart = "checkout";
-                    break;
-                default:
-                    hlp.msg.error("BAD SELECTION");
-                    return;
-            }
-
-            richTextBox1.Text = http.jsonStringify(selectedRowItem) + "\n" + richTextBox1.Text;
-
-            HttpResponse response = http.post("timepunch/" + url_subpart, http.jsonStringify(selectedRowItem)); //, http.jsonParse(json));
-
-            if (!response.ok)
-            {
-                hlp.msg.error("Connection error: " + response.code, "INTERNET ERROR");
-                richTextBox1.Text = response.resp + "\n" + richTextBox1.Text;
-            }
-            else
-            {
-                //hlp.msg.success("GOOD");
-                richTextBox1.Text = response.resp + "\n" + richTextBox1.Text;
-
-                if (response.resp.Contains("\"error\""))
-                {
-                    hlp.msg.warn((string)response.json["message"]);
-                }
-            }
-            refresh_listing();
-        }
-
         private void btn_refresh_Click(object sender, System.EventArgs e)
         {
             refresh_listing();
@@ -388,6 +333,68 @@ namespace TalkUareU
         private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+
+        public void clockRequest(string clockEvent)
+        {
+            if (selectedRowItem == null)
+            {
+                return;
+            }
+
+            string url_subpart = "";
+            switch (clockEvent)
+            {
+                case "day_clockin":
+                    selectedRowItem.check_in = hlp.curDateTime();
+                    selectedRowItem.check_out = null;
+                    selectedRowItem.btnevent = "yes";
+                    url_subpart = "checkin";
+                    break;
+                case "lunch_clockout":
+                    selectedRowItem.check_in = null;
+                    selectedRowItem.check_out = hlp.curDateTime();
+                    selectedRowItem.btnevent = clockEvent;
+                    url_subpart = "checkout";
+                    break;
+                case "lunch_back":
+                    selectedRowItem.check_in = null;
+                    selectedRowItem.check_out = hlp.curDateTime();
+                    selectedRowItem.btnevent = clockEvent;
+                    url_subpart = "checkin";
+                    break;
+                case "day_clockout":
+                    selectedRowItem.check_in = null;
+                    selectedRowItem.check_out = hlp.curDateTime();
+                    selectedRowItem.btnevent = "yes";
+                    url_subpart = "checkout";
+                    break;
+                default:
+                    hlp.msg.error("BAD SELECTION");
+                    return;
+            }
+
+            richTextBox1.Text = http.jsonStringify(selectedRowItem) + "\n" + richTextBox1.Text;
+
+            HttpResponse response = http.post("timepunch/" + url_subpart, http.jsonStringify(selectedRowItem)); //, http.jsonParse(json));
+
+            if (!response.ok)
+            {
+                hlp.msg.error("Connection error: " + response.code, "INTERNET ERROR");
+                richTextBox1.Text = response.resp + "\n" + richTextBox1.Text;
+            }
+            else
+            {
+                //hlp.msg.success("GOOD");
+                richTextBox1.Text = response.resp + "\n" + richTextBox1.Text;
+
+                if (response.resp.Contains("\"error\""))
+                {
+                    hlp.msg.warn((string)response.json["message"]);
+                }
+            }
+            refresh_listing();
         }
     }
 }
