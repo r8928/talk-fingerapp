@@ -49,27 +49,27 @@ namespace TalkUareU
             switch (clockEvent)
             {
                 case "day_clockin":
-                    emp.check_in = curDateTime();
-                    emp.check_out = null;
-                    emp.btnevent = "yes";
+                    emp.data.check_in = curDateTime();
+                    emp.data.check_out = null;
+                    emp.data.btnevent = "yes";
                     url_subpart = "checkin";
                     break;
                 case "lunch_clockout":
-                    emp.check_in = null;
-                    emp.check_out = curDateTime();
-                    emp.btnevent = clockEvent;
+                    emp.data.check_in = null;
+                    emp.data.check_out = curDateTime();
+                    emp.data.btnevent = clockEvent;
                     url_subpart = "checkout";
                     break;
                 case "lunch_back":
-                    emp.check_in = null;
-                    emp.check_out = curDateTime();
-                    emp.btnevent = clockEvent;
+                    emp.data.check_in = null;
+                    emp.data.check_out = curDateTime();
+                    emp.data.btnevent = clockEvent;
                     url_subpart = "checkin";
                     break;
                 case "day_clockout":
-                    emp.check_in = null;
-                    emp.check_out = curDateTime();
-                    emp.btnevent = "yes";
+                    emp.data.check_in = null;
+                    emp.data.check_out = curDateTime();
+                    emp.data.btnevent = "yes";
                     url_subpart = "checkout";
                     break;
                 default:
@@ -79,7 +79,7 @@ namespace TalkUareU
 
             //richTextBox1.Text = http.jsonStringify(emp) + "\n" + richTextBox1.Text;
 
-            HttpResponse response = http.post("timepunch/" + url_subpart, http.jsonStringify(new JsonItem( emp))); //, http.jsonParse(json));
+            HttpResponse response = http.post("timepunch/" + url_subpart, http.jsonStringify(emp.data)); //, http.jsonParse(json));
 
             if (!response.ok)
             {

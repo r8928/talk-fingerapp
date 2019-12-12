@@ -7,7 +7,7 @@ namespace TalkUareU
 {
     internal class HttpService
     {
-        public static string token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJkaXNwbGF5X25hbWUiOiJSYXNoaWQiLCJyb2xlIjoxLCJsb2NhdGlvbiI6MSwic3ViIjoxMDIyLCJpc3MiOiJodHRwczovL2Rldi50YWxrbW9iaWxlbmV0LmNvbS9hcGkvdjEvc2lnbmluIiwiaWF0IjoxNTc2MDIwNjI1LCJleHAiOjE1NzYwODU0MjUsIm5iZiI6MTU3NjAyMDYyNSwianRpIjoiQjFmQ1N5N1BkVlpycGVXaSJ9.D1LOljKLveSx8jf7ms-rieu_tJ5vfVxrqVy_7HVz1Oc";
+        public static string token = "eyJkaXNwbGF5X25hbWUiOiJNb29qaWQiLCJyb2xlIjoxLCJsb2NhdGlvbiI6MSwic3ViIjo4NTEsImlzcyI6Imh0dHBzOi8vYm9vbS50YWxrbW9iaWxlbmV0LmNvbS9hcGkvdjEvc2lnbmluIiwiaWF0IjoxNTc2MTE3MTgzLCJleHAiOjE1NzYxODE5ODMsIm5iZiI6MTU3NjExNzE4MywianRpIjoibndpc0t6T2UzOGpmc1J3UCJ9";
         private string API_ENDPOINT = "https://dev.talkmobilenet.com/api/v1/";
 
         public HttpResponse get(string url)

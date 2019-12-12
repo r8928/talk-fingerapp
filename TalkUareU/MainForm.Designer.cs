@@ -42,9 +42,6 @@
             this.list_clockout = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.id = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.btn_PunchIn = new System.Windows.Forms.Button();
-            this.btn_PunchOut = new System.Windows.Forms.Button();
-            this.btn_LunchOut = new System.Windows.Forms.Button();
-            this.btn_LunchIn = new System.Windows.Forms.Button();
             this.txt_SAP = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
@@ -150,48 +147,12 @@
             this.btn_PunchIn.UseVisualStyleBackColor = false;
             this.btn_PunchIn.Click += new System.EventHandler(this.btn_PunchIn_Click);
             // 
-            // btn_PunchOut
-            // 
-            this.btn_PunchOut.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.btn_PunchOut.Enabled = false;
-            this.btn_PunchOut.Location = new System.Drawing.Point(212, 89);
-            this.btn_PunchOut.Name = "btn_PunchOut";
-            this.btn_PunchOut.Size = new System.Drawing.Size(94, 31);
-            this.btn_PunchOut.TabIndex = 3;
-            this.btn_PunchOut.Text = "Punch Out";
-            this.btn_PunchOut.UseVisualStyleBackColor = false;
-            
-            // 
-            // btn_LunchOut
-            // 
-            this.btn_LunchOut.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.btn_LunchOut.Enabled = false;
-            this.btn_LunchOut.Location = new System.Drawing.Point(12, 89);
-            this.btn_LunchOut.Name = "btn_LunchOut";
-            this.btn_LunchOut.Size = new System.Drawing.Size(94, 31);
-            this.btn_LunchOut.TabIndex = 1;
-            this.btn_LunchOut.Text = "Lunch Out";
-            this.btn_LunchOut.UseVisualStyleBackColor = false;
-            
-            // 
-            // btn_LunchIn
-            // 
-            this.btn_LunchIn.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.btn_LunchIn.Enabled = false;
-            this.btn_LunchIn.Location = new System.Drawing.Point(112, 89);
-            this.btn_LunchIn.Name = "btn_LunchIn";
-            this.btn_LunchIn.Size = new System.Drawing.Size(94, 31);
-            this.btn_LunchIn.TabIndex = 2;
-            this.btn_LunchIn.Text = "Lunch In";
-            this.btn_LunchIn.UseVisualStyleBackColor = false;
-            
-            // 
             // txt_SAP
             // 
             this.txt_SAP.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.txt_SAP.Location = new System.Drawing.Point(12, 603);
             this.txt_SAP.Name = "txt_SAP";
-            this.txt_SAP.Size = new System.Drawing.Size(100, 29);
+            this.txt_SAP.Size = new System.Drawing.Size(100, 39);
             this.txt_SAP.TabIndex = 11;
             this.txt_SAP.Text = "2036";
             this.txt_SAP.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_SAP_TextChanged);
@@ -200,9 +161,9 @@
             // 
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.button1.AutoSize = true;
-            this.button1.Location = new System.Drawing.Point(12, 563);
+            this.button1.Location = new System.Drawing.Point(12, 552);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(188, 31);
+            this.button1.Size = new System.Drawing.Size(278, 42);
             this.button1.TabIndex = 12;
             this.button1.Text = "GET CHECKING DETAILS";
             this.button1.UseVisualStyleBackColor = true;
@@ -225,7 +186,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txt_token.Location = new System.Drawing.Point(13, 639);
             this.txt_token.Name = "txt_token";
-            this.txt_token.Size = new System.Drawing.Size(775, 29);
+            this.txt_token.Size = new System.Drawing.Size(775, 39);
             this.txt_token.TabIndex = 14;
             this.txt_token.TextChanged += new System.EventHandler(this.txt_token_TextChanged);
             // 
@@ -233,9 +194,9 @@
             // 
             this.btn_getToken.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btn_getToken.AutoSize = true;
-            this.btn_getToken.Location = new System.Drawing.Point(12, 674);
+            this.btn_getToken.Location = new System.Drawing.Point(12, 663);
             this.btn_getToken.Name = "btn_getToken";
-            this.btn_getToken.Size = new System.Drawing.Size(84, 31);
+            this.btn_getToken.Size = new System.Drawing.Size(124, 42);
             this.btn_getToken.TabIndex = 15;
             this.btn_getToken.Text = "getToken";
             this.btn_getToken.UseVisualStyleBackColor = true;
@@ -247,7 +208,6 @@
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(776, 305);
             this.flowLayoutPanel1.TabIndex = 17;
-            
             // 
             // label1
             // 
@@ -255,7 +215,7 @@
             this.label1.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(4, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(302, 45);
+            this.label1.Size = new System.Drawing.Size(445, 65);
             this.label1.TabIndex = 8;
             this.label1.Text = "Attendance Module";
             // 
@@ -285,7 +245,7 @@
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 32F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(800, 732);
@@ -297,9 +257,6 @@
             this.Controls.Add(this.txt_SAP);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.btn_LunchIn);
-            this.Controls.Add(this.btn_LunchOut);
-            this.Controls.Add(this.btn_PunchOut);
             this.Controls.Add(this.btn_PunchIn);
             this.Controls.Add(this.btn_refresh);
             this.Controls.Add(this.listView1);
@@ -331,9 +288,6 @@
         private System.Windows.Forms.ColumnHeader list_clockout;
         private System.Windows.Forms.Button btn_refresh;
         private System.Windows.Forms.Button btn_PunchIn;
-        private System.Windows.Forms.Button btn_PunchOut;
-        private System.Windows.Forms.Button btn_LunchOut;
-        private System.Windows.Forms.Button btn_LunchIn;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txt_SAP;

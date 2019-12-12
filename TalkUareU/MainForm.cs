@@ -117,29 +117,25 @@ namespace TalkUareU
                 foreach (var item in response.json["data"])
                 {
 
-                    //string[] row = {
-                    //    (string) item["name"], //0
-                    //    (string) item["display_name"], //1
-                    //    (string) item["status"], //2
-                    //    (string) item["check_in"], //3
-                    //    (string) item["uid"], //4
-                    //    (string) item["location_id"], //5
-                    //    (string) item["role_id"], //6
-                    //    (string) item["lunch_out"], //7
-                    //    (string) item["lunch_in"], //8
-                    //    (string) item["check_out"], //9
-                    //};
-       
-
-
-
-                    EmployeeEntry em = new EmployeeEntry(
+                    JsonItem data = new JsonItem(
                         (string)item["uid"],
+                        (string)item["location_id"],
+                        (string)item["role_id"],
+                        (string)item["name"],
                         (string)item["display_name"],
-                        (string)item["status"],
                         (string)item["check_in"],
-                        (string)item["role_id"]
+                        (string)item["check_out"],
+                        (string)item["lunch_in"],
+                        (string)item["lunch_out"],
+                        (string)item["status"]
                         );
+                        
+                             
+
+
+
+                    EmployeeEntry em = new EmployeeEntry(data);
+                    
                     em.Click += this.EmployeeEntryClick;
 
                     flowLayoutPanel1.Controls.Add(em);
@@ -209,7 +205,7 @@ namespace TalkUareU
                 if (re.ok && re.hasJson)
                 {
                     richTextBox1.Text = re.resp;
-                    selectedRowItem = new JsonItem((string)re.json["user"], appLocationId, (string)re.json["role"]);
+                    //selectedRowItem = new JsonItem((string)re.json["user"], appLocationId, (string)re.json["role"]);
                     //clockRequest("day_clockin");
                 }
                 else

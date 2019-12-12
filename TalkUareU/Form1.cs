@@ -50,15 +50,18 @@ namespace TalkUareU
         private void lunchClick(Object o,System.EventArgs e)
         {
             hlp.clockRequest(Employee, "lunch_clockout");
+            this.Close();
         }
 
         private void inClick(Object o, System.EventArgs e)
         {
             hlp.clockRequest(Employee, "lunch_back");
+            this.Close();
         }
         private void outClick(Object o, System.EventArgs e)
         {
             hlp.clockRequest(Employee, "day_clockout");
+            this.Close();
         }
     }
 }

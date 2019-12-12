@@ -7,19 +7,9 @@ namespace TalkUareU
 
     public partial class EmployeeEntry : Panel
     {
-        private string _ClockStatus;
-        private string _EmpName;
         private string _ClockTimeString;
-        public string user_id;
-        public string role_id;
-        public string location_id;
-
-
-        public string btnevent;
-        public string ip_in;
-        public string ip_out;
-        public string check_in;
-        public string check_out;
+        public JsonItem data;
+        
 
         public string ClockStatus
         {
@@ -40,9 +30,9 @@ namespace TalkUareU
                         break;
                 }
                 pic_Icon.Refresh();
-                _ClockStatus = value;
+                data.Status = value;
             }
-            get => _ClockStatus;
+            get => data.Status;
         }
 
         public string EmpName
@@ -50,9 +40,9 @@ namespace TalkUareU
             set
             {
                 lbl_Name.Text = value;
-                _EmpName = value;
+                data.DName = value;
             }
-           get => _EmpName;
+           get => data.DName;
             
         }
         public string ClockTimeString
@@ -65,18 +55,14 @@ namespace TalkUareU
             get => _ClockTimeString;
             
         }
-
-        public EmployeeEntry(string UserID, string Name, string Status, string TimeString, string RoleID)
+                
+        public EmployeeEntry(JsonItem j)
         {
             InitializeComponent();
-
-
-            EmpName = Name;
-            ClockTimeString = TimeString;
-            ClockStatus = Status;
-            this.user_id = UserID;
-            this.role_id = RoleID;
-
+            data = j;
+            EmpName = data.DName;
+            ClockTimeString = data.check_in; // need to fix
+            ClockStatus = data.Status;
 
             Controls.Add(pic_Icon);
             Controls.Add(lbl_Name);

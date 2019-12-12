@@ -6,40 +6,42 @@ using System.Threading.Tasks;
 
 namespace TalkUareU
 {
-    class JsonItem
+    public class JsonItem
     {
-        public string check_in;
-        public string check_out;
+        
 
         public string user_id;
         public string location_id;
         public string role_id;
-        public string btnevent;
+       
+        public string Name;
+        public string DName;
 
-        public string ip_in;
-        public string ip_out;
+        public string check_in;
+        public string check_out;
+        public string Lunch_out;
+        public string Lunch_in;
 
-        // public string Name;
-        // public string DName;
-        // public string Lunch_out;
-        // public string Lunch_in;
         public string Status;
 
+        public string btnevent;
 
-        public JsonItem(string ID, string LOCATION, string ROLE_ID, string STATUS = null, string CHECKIN = null, string BTNEVENT = null, string CHECKOUT = null)
+        //public string ip_in;
+        //public string ip_out;
+
+        public JsonItem(string ID, string LOCATION, string ROLE_ID, string NAME, string DNAME, string CHECKIN = null, string CHECKOUT = null, string LUNCHIN = null, string LUNCHOUT = null, string STATUS = null,  string BTNEVENT = null)
         {
             user_id = ID;
             location_id = LOCATION;
-            Status = STATUS;
-            check_in = CHECKIN;
-
             role_id = ROLE_ID;
-            btnevent = BTNEVENT;
+            Name = NAME;
+            DName = DNAME;            
+            check_in = CHECKIN;
             check_out = CHECKOUT;
-        }
-
-        public JsonItem(EmployeeEntry emp) : this(emp.user_id, emp.location_id, emp.role_id, null, emp.check_in, emp.btnevent, emp.check_out) { }
-        
-
+            Lunch_in = LUNCHIN;
+            Lunch_out = LUNCHOUT;
+            btnevent = BTNEVENT;            
+            Status = STATUS;
+        }        
     }
 }
