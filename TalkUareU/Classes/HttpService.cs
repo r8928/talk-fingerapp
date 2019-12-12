@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using System;
 using System.IO;
 using System.Net;
 
@@ -16,18 +17,18 @@ namespace TalkUareU
             var request = (HttpWebRequest)WebRequest.Create(createURL(url));
             request.Method = "GET";
 
-            return GetResponse(request);
+            return GetResponse(request, url, "", request.Method);
 
         }
 
         public HttpResponse post(string url, string json)
         {
 
-            var httpWebRequest = (HttpWebRequest)WebRequest.Create(createURL(url));
-            httpWebRequest.ContentType = "application/json";
-            httpWebRequest.Method = "POST";
+            var request = (HttpWebRequest)WebRequest.Create(createURL(url));
+            request.ContentType = "application/json";
+            request.Method = "POST";
 
-            using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
+            using (var streamWriter = new StreamWriter(request.GetRequestStream()))
             {
                 //streamWriter.Write(jsonStringify(json));
 
@@ -39,10 +40,10 @@ namespace TalkUareU
                 streamWriter.Write(json);
             }
 
-            return GetResponse(httpWebRequest);
+            return GetResponse(request, url, json, request.Method);
         }
 
-        public HttpResponse GetResponse(HttpWebRequest request)
+        public HttpResponse GetResponse(HttpWebRequest request, string url, string json, string method)
         {
             try
             {
@@ -52,7 +53,10 @@ namespace TalkUareU
 
                 StreamReader sr = new StreamReader(htResp.GetResponseStream());
 
-                return new HttpResponse(sr.ReadToEnd(), StatusCode);
+                string response = sr.ReadToEnd();
+
+                logResponse(url, json, response);
+                return new HttpResponse(response, StatusCode);
 
             }
             catch (WebException e)
@@ -62,19 +66,22 @@ namespace TalkUareU
 
                     string StatusCode = JsonConvert.SerializeObject(e.Status);
 
-                    string error = "";
+                    string response = "";
                     using (var errorResponse = (HttpWebResponse)e.Response)
                     {
                         using (var reader = new StreamReader(errorResponse.GetResponseStream()))
                         {
-                            error = reader.ReadToEnd();
+                            response = reader.ReadToEnd();
                         }
                     }
+                    StatusCode = e.Status.ToString() + " " + StatusCode;
 
-                    return new HttpResponse(error, e.Status.ToString() + " " + StatusCode);
+                    logResponse(url, json, response);
+                    return new HttpResponse(response, StatusCode);
 
                 }
             }
+            logResponse(url, json, "");
             return new HttpResponse("", "");
 
         }
@@ -113,6 +120,19 @@ namespace TalkUareU
 
         }
 
+        private void logResponse(string url, string request, string response)
+        {
+            string outp =
+             Environment.NewLine +
+            "URL: " + url +
+             Environment.NewLine +
+            "Request: " + request +
+             Environment.NewLine +
+            "Response: " + response;
+
+            new HelperClass().log(outp);
+        }
+
         public JObject jsonParse(string str)
         {
             return JObject.Parse(str);
@@ -141,14 +161,14 @@ namespace TalkUareU
 
                     if (code == "200")
                     {
-                        if(resp.Contains("<title>Welcome To Talk Mobile</title>"))
+                        if (resp.Contains("<title>Welcome To Talk Mobile</title>"))
                         {
                             resp = "404";
                             code = "404";
                         }
                         else
                         {
-                        ok = true;
+                            ok = true;
                         }
                     }
 

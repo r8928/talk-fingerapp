@@ -1,4 +1,7 @@
-﻿using System.Windows.Forms;
+﻿using System;
+using System.Linq;
+
+using System.Windows.Forms;
 
 namespace TalkUareU
 {
@@ -6,14 +9,37 @@ namespace TalkUareU
     {
 
         HttpService http = new HttpService();
-        
+
         public MessageClass msg = new MessageClass();
 
         public HelperClass() { }
 
         public string curDateTime(string format = "yyyy-MM-dd h:mm")
         {
-            return System.DateTime.Now.ToString(format);
+            return DateTime.Now.ToString(format);
+        }
+
+        public void log(string newContent)
+        {
+            string currentContent = String.Empty;
+            string filePath = "./log.txt";
+
+            newContent =
+            "Time: " +
+            curDateTime() +
+            Environment.NewLine +
+            newContent +
+             Environment.NewLine + Environment.NewLine +
+             "================================================" +
+             Environment.NewLine;
+
+            if (System.IO.File.Exists(filePath))
+            {
+                //currentContent = System.IO.File.ReadAllLines(filePath).Take(100);
+                currentContent = String.Join(Environment.NewLine, System.IO.File.ReadAllLines(filePath).Take(100));
+            }
+            System.IO.File.WriteAllText(filePath, newContent + currentContent);
+
         }
 
         internal class MessageClass
@@ -43,7 +69,7 @@ namespace TalkUareU
             {
                 return;
             }
-            
+
 
             string url_subpart = "";
             switch (clockEvent)

@@ -1,7 +1,7 @@
 ﻿using InputBoxApp;
+using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
-using System.Collections.Generic;
 
 namespace TalkUareU
 {
@@ -10,17 +10,17 @@ namespace TalkUareU
 
         HttpService http = new HttpService();
         HelperClass hlp = new HelperClass();
-        private JsonItem selectedRowItem;
         public static string appLocationId;
-        private string appMAC;
+        private string appLocationName;
+        public static string appMAC;
 
         public MainForm()
         {
             InitializeComponent();
-            
+
             getMAC();
             getNewToken();
-            refresh_listing();            
+            refresh_listing();
         }
 
         private void getMAC()
@@ -74,13 +74,18 @@ namespace TalkUareU
 
         private void refresh_listing()
         {
+
+            lbl_SapName.Text = "Refreshing...";
+
             List<EmployeeEntry> l = new List<EmployeeEntry>();
-            foreach (Control c in flowLayoutPanel1.Controls) {
+            foreach (Control c in flowPanel.Controls)
+            {
                 l.Add((EmployeeEntry)c);
             }
-            foreach (EmployeeEntry em in l) {                
+            foreach (EmployeeEntry em in l)
+            {
                 em.Click -= this.EmployeeEntryClick;
-                flowLayoutPanel1.Controls.Remove(em);
+                flowPanel.Controls.Remove(em);
                 em.Dispose();
             }
 
@@ -95,24 +100,19 @@ namespace TalkUareU
 
             HttpResponse response = http.get("finger/checkedreps?sap=" + sap);
 
-            if (!response.ok)
+            if (response.hasJson && response.resp.Contains("sap_id"))
             {
-                richTextBox1.Text = response.resp + "\n" + richTextBox1.Text;
-
-                if (response.resp.Contains("No one checked in"))
-                {
-                    hlp.msg.success("No one checked in");
-                }
-                else
-                {
-                    hlp.msg.error("Connection error", "INTERNET ERROR");
-                }
+                appLocationId = (string)response.json["sap_id"];
+                appLocationName = (string)response.json["sap_name"];
+                lbl_SapName.Text = appLocationName;
+            } else
+            {
+                lbl_SapName.Text = "Error connecting to BOOM, please click refresh to try again.";
             }
-            else
-            {
-                //MessageBox.Show((string)re.json["data"][0]["sap"]);
 
-                MainForm.appLocationId = (string)response.json["data"][0]["location_id"];
+            if (response.ok && response.hasJson && response.resp.Contains("sap_id"))
+            {
+
 
                 foreach (var item in response.json["data"])
                 {
@@ -129,16 +129,26 @@ namespace TalkUareU
                         (string)item["lunch_out"],
                         (string)item["status"]
                         );
-                        
-                             
-
 
 
                     EmployeeEntry em = new EmployeeEntry(data);
-                    
+
                     em.Click += this.EmployeeEntryClick;
 
-                    flowLayoutPanel1.Controls.Add(em);
+                    flowPanel.Controls.Add(em);
+                }
+            }
+            else
+            {
+                richTextBox1.Text = response.resp + "\n" + richTextBox1.Text;
+
+                if (response.hasJson)
+                {
+                    hlp.msg.success((string) response.json["message"]);
+                }
+                else
+                {
+                    hlp.msg.error("Connection error", "INTERNET ERROR");
                 }
             }
         }
@@ -146,7 +156,7 @@ namespace TalkUareU
 
         private void EmployeeEntryClick(object sender, System.EventArgs e)
         {
-            EmployeeEntry em = (EmployeeEntry)sender;            
+            EmployeeEntry em = (EmployeeEntry)sender;
             new ClockSelectionForm(em).ShowDialog();
             refresh_listing();
         }
@@ -204,7 +214,14 @@ namespace TalkUareU
 
                 if (re.ok && re.hasJson)
                 {
-                    richTextBox1.Text = re.resp;
+
+                    EmployeeEntry emp = new EmployeeEntry(new JsonItem(
+                        (string)re.json["user"],
+                        appLocationId,
+                        (string)re.json["role"]
+                        ));
+                    hlp.clockRequest(emp, "day_clockin");
+
                     //selectedRowItem = new JsonItem((string)re.json["user"], appLocationId, (string)re.json["role"]);
                     //clockRequest("day_clockin");
                 }
@@ -214,8 +231,6 @@ namespace TalkUareU
                     richTextBox1.Text = re.resp;
                 }
             }
-
-            //clockRequest("day_clockin");
         }
 
     }

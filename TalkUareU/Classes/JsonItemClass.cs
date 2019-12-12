@@ -29,7 +29,7 @@ namespace TalkUareU
         //public string ip_in;
         //public string ip_out;
 
-        public JsonItem(string ID, string LOCATION, string ROLE_ID, string NAME, string DNAME, string CHECKIN = null, string CHECKOUT = null, string LUNCHIN = null, string LUNCHOUT = null, string STATUS = null,  string BTNEVENT = null)
+        public JsonItem(string ID, string LOCATION, string ROLE_ID, string NAME = null, string DNAME = null, string CHECKIN = null, string CHECKOUT = null, string LUNCHIN = null, string LUNCHOUT = null, string STATUS = null,  string BTNEVENT = null)
         {
             user_id = ID;
             location_id = LOCATION;

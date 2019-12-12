@@ -43,14 +43,15 @@
             this.id = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.btn_PunchIn = new System.Windows.Forms.Button();
             this.txt_SAP = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btn_ChecinDetails = new System.Windows.Forms.Button();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.txt_token = new System.Windows.Forms.TextBox();
             this.btn_getToken = new System.Windows.Forms.Button();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.label1 = new System.Windows.Forms.Label();
+            this.flowPanel = new System.Windows.Forms.FlowLayoutPanel();
+            this.lbl_ModuleName = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btn_refresh = new System.Windows.Forms.Button();
+            this.lbl_SapName = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -152,22 +153,22 @@
             this.txt_SAP.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.txt_SAP.Location = new System.Drawing.Point(12, 603);
             this.txt_SAP.Name = "txt_SAP";
-            this.txt_SAP.Size = new System.Drawing.Size(100, 39);
+            this.txt_SAP.Size = new System.Drawing.Size(100, 29);
             this.txt_SAP.TabIndex = 11;
             this.txt_SAP.Text = "2036";
             this.txt_SAP.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_SAP_TextChanged);
             // 
-            // button1
+            // btn_ChecinDetails
             // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.button1.AutoSize = true;
-            this.button1.Location = new System.Drawing.Point(12, 552);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(278, 42);
-            this.button1.TabIndex = 12;
-            this.button1.Text = "GET CHECKING DETAILS";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btn_ChecinDetails.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btn_ChecinDetails.AutoSize = true;
+            this.btn_ChecinDetails.Location = new System.Drawing.Point(12, 552);
+            this.btn_ChecinDetails.Name = "btn_ChecinDetails";
+            this.btn_ChecinDetails.Size = new System.Drawing.Size(278, 42);
+            this.btn_ChecinDetails.TabIndex = 12;
+            this.btn_ChecinDetails.Text = "GET CHECKING DETAILS";
+            this.btn_ChecinDetails.UseVisualStyleBackColor = true;
+            this.btn_ChecinDetails.Click += new System.EventHandler(this.button1_Click);
             // 
             // richTextBox1
             // 
@@ -186,7 +187,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txt_token.Location = new System.Drawing.Point(13, 639);
             this.txt_token.Name = "txt_token";
-            this.txt_token.Size = new System.Drawing.Size(775, 39);
+            this.txt_token.Size = new System.Drawing.Size(775, 29);
             this.txt_token.TabIndex = 14;
             this.txt_token.TextChanged += new System.EventHandler(this.txt_token_TextChanged);
             // 
@@ -202,22 +203,22 @@
             this.btn_getToken.UseVisualStyleBackColor = true;
             this.btn_getToken.Click += new System.EventHandler(this.btnGetToken_Click);
             // 
-            // flowLayoutPanel1
+            // flowPanel
             // 
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(12, 126);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(776, 305);
-            this.flowLayoutPanel1.TabIndex = 17;
+            this.flowPanel.Location = new System.Drawing.Point(12, 126);
+            this.flowPanel.Name = "flowPanel";
+            this.flowPanel.Size = new System.Drawing.Size(776, 305);
+            this.flowPanel.TabIndex = 17;
             // 
-            // label1
+            // lbl_ModuleName
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(4, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(445, 65);
-            this.label1.TabIndex = 8;
-            this.label1.Text = "Attendance Module";
+            this.lbl_ModuleName.AutoSize = true;
+            this.lbl_ModuleName.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_ModuleName.Location = new System.Drawing.Point(4, 9);
+            this.lbl_ModuleName.Name = "lbl_ModuleName";
+            this.lbl_ModuleName.Size = new System.Drawing.Size(302, 45);
+            this.lbl_ModuleName.TabIndex = 8;
+            this.lbl_ModuleName.Text = "Attendance Module";
             // 
             // pictureBox1
             // 
@@ -243,19 +244,29 @@
             this.btn_refresh.UseVisualStyleBackColor = false;
             this.btn_refresh.Click += new System.EventHandler(this.btn_refresh_Click);
             // 
+            // lbl_SapName
+            // 
+            this.lbl_SapName.AutoSize = true;
+            this.lbl_SapName.Location = new System.Drawing.Point(8, 54);
+            this.lbl_SapName.Name = "lbl_SapName";
+            this.lbl_SapName.Size = new System.Drawing.Size(247, 21);
+            this.lbl_SapName.TabIndex = 18;
+            this.lbl_SapName.Text = "No location signed in, click refresh";
+            // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 32F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(800, 732);
-            this.Controls.Add(this.flowLayoutPanel1);
+            this.Controls.Add(this.lbl_SapName);
+            this.Controls.Add(this.flowPanel);
             this.Controls.Add(this.btn_getToken);
             this.Controls.Add(this.txt_token);
             this.Controls.Add(this.richTextBox1);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btn_ChecinDetails);
             this.Controls.Add(this.txt_SAP);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lbl_ModuleName);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.btn_PunchIn);
             this.Controls.Add(this.btn_refresh);
@@ -289,13 +300,14 @@
         private System.Windows.Forms.Button btn_refresh;
         private System.Windows.Forms.Button btn_PunchIn;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lbl_ModuleName;
         private System.Windows.Forms.TextBox txt_SAP;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btn_ChecinDetails;
         private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.TextBox txt_token;
         private System.Windows.Forms.Button btn_getToken;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.FlowLayoutPanel flowPanel;
+        private System.Windows.Forms.Label lbl_SapName;
     }
 }
 
