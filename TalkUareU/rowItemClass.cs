@@ -42,6 +42,15 @@ namespace TalkUareU
             Lunch_out = LUNCHOUT;
             btnevent = BTNEVENT;            
             Status = STATUS;
-        }        
+        }
+        
+        public string getTimeString()
+        {
+            string res = "in: " + check_in;
+            if (Lunch_out != null) res += ", lunch: " + Lunch_out;
+            if (Lunch_in != null) res += ", return: " + Lunch_in;
+            if (check_out != null) res += ", out: " + check_out;
+            return res;
+        }
     }
 }

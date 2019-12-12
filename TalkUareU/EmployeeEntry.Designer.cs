@@ -45,7 +45,7 @@
             // 
             // lbl_timeString
             // 
-            this.lbl_timeString.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_timeString.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_timeString.Location = new System.Drawing.Point(50, 25);
             this.lbl_timeString.Name = "lbl_timeString";
             this.lbl_timeString.Size = new System.Drawing.Size(440, 23);

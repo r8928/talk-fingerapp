@@ -61,7 +61,7 @@ namespace TalkUareU
             InitializeComponent();
             data = j;
             EmpName = data.DName;
-            ClockTimeString = data.check_in; // need to fix
+            ClockTimeString = data.getTimeString(); // need to fix
             ClockStatus = data.Status;
 
             Controls.Add(pic_Icon);
