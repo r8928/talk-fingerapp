@@ -147,7 +147,7 @@ namespace TalkUareU
         private void EmployeeEntryClick(object sender, System.EventArgs e)
         {
             EmployeeEntry em = (EmployeeEntry)sender;            
-            new Form1(em).ShowDialog();
+            new ClockSelectionForm(em).ShowDialog();
             refresh_listing();
         }
 

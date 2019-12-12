@@ -10,12 +10,12 @@ using System.Windows.Forms;
 
 namespace TalkUareU
 {
-    public partial class Form1 : Form
+    public partial class ClockSelectionForm : Form
     {
         EmployeeEntry Employee;
         HelperClass hlp = new HelperClass();
 
-        public Form1(EmployeeEntry emp)
+        public ClockSelectionForm(EmployeeEntry emp)
         {
             InitializeComponent();
 

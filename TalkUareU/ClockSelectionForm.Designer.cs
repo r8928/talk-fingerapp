@@ -1,6 +1,6 @@
 ﻿namespace TalkUareU
 {
-    partial class Form1
+    partial class ClockSelectionForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ClockSelectionForm));
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.btn_LunchOut = new System.Windows.Forms.Button();
             this.btn_LunchIn = new System.Windows.Forms.Button();
