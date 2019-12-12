@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TalkUareU
 {
-    class rowItem
+    class JsonItem
     {
         public string check_in;
         public string check_out;
@@ -26,7 +26,7 @@ namespace TalkUareU
         public string Status;
 
 
-        public rowItem(string ID, string LOCATION, string ROLE_ID, string STATUS = null, string CHECKIN = null, string BTNEVENT = null, string CHECKOUT = null)
+        public JsonItem(string ID, string LOCATION, string ROLE_ID, string STATUS = null, string CHECKIN = null, string BTNEVENT = null, string CHECKOUT = null)
         {
             user_id = ID;
             location_id = LOCATION;
@@ -38,10 +38,8 @@ namespace TalkUareU
             check_out = CHECKOUT;
         }
 
-        public rowItem(EmployeeEntry emp, string Location)
-        {
-
-        }
+        public JsonItem(EmployeeEntry emp) : this(emp.user_id, emp.location_id, emp.role_id, null, emp.check_in, emp.btnevent, emp.check_out) { }
+        
 
     }
 }

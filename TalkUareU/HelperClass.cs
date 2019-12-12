@@ -79,7 +79,7 @@ namespace TalkUareU
 
             //richTextBox1.Text = http.jsonStringify(emp) + "\n" + richTextBox1.Text;
 
-            HttpResponse response = http.post("timepunch/" + url_subpart, http.jsonStringify(emp)); //, http.jsonParse(json));
+            HttpResponse response = http.post("timepunch/" + url_subpart, http.jsonStringify(new JsonItem( emp))); //, http.jsonParse(json));
 
             if (!response.ok)
             {

@@ -13,12 +13,17 @@ namespace TalkUareU
     public partial class Form1 : Form
     {
         EmployeeEntry Employee;
+        HelperClass hlp = new HelperClass();
 
         public Form1(EmployeeEntry emp)
         {
             InitializeComponent();
 
             Employee = emp;
+
+            btn_LunchOut.Click += lunchClick;
+            btn_ClockOut.Click += outClick;
+            btn_LunchIn.Click += inClick;
 
             switch (emp.ClockStatus)
             {
@@ -42,5 +47,18 @@ namespace TalkUareU
             flowLayoutPanel1.Left = (FormWidth / 2) - (FlowWidth / 2) -5;
         }
 
+        private void lunchClick(Object o,System.EventArgs e)
+        {
+            hlp.clockRequest(Employee, "lunch_clockout");
+        }
+
+        private void inClick(Object o, System.EventArgs e)
+        {
+            hlp.clockRequest(Employee, "lunch_back");
+        }
+        private void outClick(Object o, System.EventArgs e)
+        {
+            hlp.clockRequest(Employee, "day_clockout");
+        }
     }
 }
