@@ -173,9 +173,9 @@ namespace TalkUareU
                     return;
             }
 
-            HttpResponse res = http.Post("finger/" + url_subpart, http.jsonStringify(emp.data));
+            HttpResponse res = http.Post("finger/" + url_subpart + "?punch_source=App", http.jsonStringify(emp.data));
 
-            if (!res.ok)
+            if (!res.ok || res.resp.Contains("\"error\"") )
             {
                 http.StdErr(res);
             }
