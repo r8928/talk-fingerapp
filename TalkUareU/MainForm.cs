@@ -1,6 +1,5 @@
 ﻿using InputBoxApp;
 using System;
-using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace TalkUareU
@@ -13,6 +12,8 @@ namespace TalkUareU
         private string appLocationName;
         private string appLocationSap;
         private Label err_lbl = new Label();
+
+        EmployeeEntry curEmployee;
 
         public MainForm()
         {
@@ -92,20 +93,36 @@ namespace TalkUareU
 
         private void refresh_listing()
         {
+
+            // VALIDATE APP
             if (String.IsNullOrEmpty(appLocationId))
             {
                 validateApp();
             }
 
+
+
+
+            // VALIDATE SAP
+            if (String.IsNullOrEmpty(appLocationSap) && appLocationSap.Length < 4)
+            {
+                hlp.msg.error("Invalid SAP selected");
+                return;
+            }
+
+
+
+
+            // REMOVE PREVIOUS ITEMS
             try
             {
                 flowPanel.Controls.Remove(err_lbl);
                 flowPanel.BackColor = System.Drawing.Color.White;
             }
             catch (Exception)
-            {}
+            { }
 
-            while (flowPanel.Controls.Count>0)
+            while (flowPanel.Controls.Count > 0)
             {
                 var em = flowPanel.Controls[0];
                 em.Click -= this.EmployeeEntryClick;
@@ -116,34 +133,14 @@ namespace TalkUareU
 
 
 
-            //List<EmployeeEntry> l = new List<EmployeeEntry>();
-            //foreach (Control c in flowPanel.Controls)
-            //{
-            //    l.Add((EmployeeEntry)c);
-            //}
-            //foreach (EmployeeEntry em in l)
-            //{
-            //    em.Click -= this.EmployeeEntryClick;
-            //    flowPanel.Controls.Remove(em);
-            //    em.Dispose();
-            //}
 
-
-
-
-            if (String.IsNullOrEmpty(appLocationSap) && appLocationSap.Length != 4)
-            {
-                hlp.msg.error("Invalid SAP selected");
-                return;
-            }
-
+            // GET CHECKED IN REPS LISTING
             HttpResponse response = http.Get("finger/checkedreps?sap=" + appLocationSap);
 
             if (response.ok && response.hasJson && response.resp.Contains("sap_id"))
             {
                 foreach (var item in response.json["data"])
                 {
-
                     JsonItem data = new JsonItem(
                         (string)item["uid"],
                         (string)item["location_id"],
@@ -166,31 +163,27 @@ namespace TalkUareU
             }
             else
             {
-                richTextBox1.Text = response.resp + "\n" + richTextBox1.Text;
-
                 if (response.hasJson)
                 {
-                    //hlp.msg.success((string)response.json["message"]);
-                    
-                    err_lbl.Text = (string)response.json["message"];
                     err_lbl.Width = 700;
                     err_lbl.Height = 700;
                     err_lbl.Padding = new System.Windows.Forms.Padding(10);
                     flowPanel.Controls.Add(err_lbl);
-                    err_lbl.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+                    err_lbl.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
 
+                    err_lbl.Text = (string)response.json["message"];
                 }
                 else
                 {
-                    hlp.msg.error("Connection error", "INTERNET ERROR");
+                    err_lbl.Text = "Unknown error occured";
                 }
             }
         }
 
         private void EmployeeEntryClick(object sender, System.EventArgs e)
         {
-            EmployeeEntry em = (EmployeeEntry)sender;
-            new ClockSelectionForm(em).ShowDialog();
+            curEmployee = (EmployeeEntry)sender;
+            new ClockSelectionForm(curEmployee).ShowDialog();
             refresh_listing();
         }
 
@@ -199,21 +192,7 @@ namespace TalkUareU
             refresh_listing();
         }
 
-        private void txt_token_TextChanged(object sender, System.EventArgs e)
-        {
-            http.token = txt_token.Text;
-        }
-
-        private void txt_SAP_TextChanged(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                appLocationSap = txt_SAP.Text;
-                refresh_listing();
-            }
-        }
-
-        private void button1_Click(object sender, System.EventArgs e)
+        private void GetCheckinDetails(object sender, System.EventArgs e)
         {
             HttpResponse re = http.Get("timepunch/checkinoutstatus/11111/103"); //, http.jsonParse(json));
 
