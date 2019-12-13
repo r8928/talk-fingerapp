@@ -27,6 +27,9 @@ namespace TalkUareU
                 case "lunch":
                     flowLayoutPanel1.Controls.Add(btn_LunchIn);
                     break;
+                case "lunch-back":
+                    flowLayoutPanel1.Controls.Add(btn_ClockOut);
+                    break;
                 case "out":
                     flowLayoutPanel1.Controls.Add(lbl_Message);
                     lbl_Message.Text = "You are already clocked out for the day.";

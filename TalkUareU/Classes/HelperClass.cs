@@ -164,18 +164,11 @@ namespace TalkUareU
                     return;
             }
 
-            HttpResponse response = http.Post("finger/" + url_subpart, http.jsonStringify(emp.data));
+            HttpResponse res = http.Post("finger/" + url_subpart, http.jsonStringify(emp.data));
 
-            if (!response.ok)
+            if (!res.ok)
             {
-                msg.error("Connection error: " + response.code, "INTERNET ERROR");
-            }
-            else
-            {
-                if (response.resp.Contains("\"error\""))
-                {
-                    msg.warn((string)response.json["message"]);
-                }
+                http.StdErr(res);
             }
         }
     }

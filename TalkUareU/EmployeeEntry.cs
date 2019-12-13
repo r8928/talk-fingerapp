@@ -24,6 +24,9 @@ namespace TalkUareU
                     case "lunch":
                         pic_Icon.BackgroundImage = Properties.Resources.lunchout;
                         break;
+                    case "lunch-back":
+                        pic_Icon.BackgroundImage = Properties.Resources.checkin;
+                        break;
                     default:
                         break;
                 }

@@ -11,8 +11,8 @@ namespace TalkUareU
         //HelperClass hlp = HelperClass.getHelper();
         public static string token = "eyJkaXNwbGF5X25hbWUiOiJNb29qaWQiLCJyb2xlIjoxLCJsb2NhdGlvbiI6MSwic3ViIjo4NTEsImlzcyI6Imh0dHBzOi8vYm9vbS50YWxrbW9iaWxlbmV0LmNvbS9hcGkvdjEvc2lnbmluIiwiaWF0IjoxNTc2MTE3MTgzLCJleHAiOjE1NzYxODE5ODMsIm5iZiI6MTU3NjExNzE4MywianRpIjoibndpc0t6T2UzOGpmc1J3UCJ9";
         public static string API_ENDPOINT = "https://dev.talkmobilenet.com/api/v1/";
-        public static bool HttpDebuging = (bool) System.Diagnostics.Debugger.IsAttached ;
-        
+        public static bool HttpDebuging = System.Diagnostics.Debugger.IsAttached;
+
 
         public static HttpResponse Get(string url)
         {
@@ -149,6 +149,21 @@ namespace TalkUareU
         public static string jsonStringify(object obj)
         {
             return JsonConvert.SerializeObject(obj);
+        }
+
+        /**
+         * Standard error handling function
+         */ 
+        public static void StdErr(HttpResponse res)
+        {
+            if (res.hasJson)
+            {
+                HelperClass.getHelper().msg.warn((string)res.json["message"]);
+            }
+            else
+            {
+                HelperClass.getHelper().msg.error("Unknown error");
+            }
         }
 
     }

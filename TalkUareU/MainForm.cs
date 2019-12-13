@@ -46,14 +46,8 @@ namespace TalkUareU
             {
                 enableApp(false);
                 lbl_SapName.Text = "Error connecting to BOOM, please click refresh to try again.";
-                if (res.hasJson)
-                {
-                    hlp.msg.success((string)res.json["message"]);
-                }
-                else
-                {
-                    hlp.msg.error("Unknown error");
-                }
+
+                http.StdErr(res);
             }
         }
 
@@ -72,21 +66,17 @@ namespace TalkUareU
 
             HttpResponse logout = http.Get("logout/11111");
 
-            HttpResponse response = http.Post("signin", json);
+            HttpResponse res = http.Post("signin", json);
 
-            if (!response.ok)
+            if (res.ok && res.hasJson)
             {
-                hlp.msg.error("Connection error: " + response.code, "INTERNET ERROR");
-                richTextBox1.Text = response.resp;
+                //hlp.msg.success("GOOD");
+                richTextBox1.Text = res.resp;
+                http.token = (string)res.json["token"];
             }
             else
             {
-                //hlp.msg.success("GOOD");
-                richTextBox1.Text = response.resp;
-                if (response.hasJson)
-                {
-                    http.token = (string)response.json["token"];
-                }
+                http.StdErr(res);
             }
         }
 
@@ -193,17 +183,13 @@ namespace TalkUareU
 
         private void GetCheckinDetails(object sender, System.EventArgs e)
         {
-            HttpResponse re = http.Get("timepunch/checkinoutstatus/11111/103"); //, http.jsonParse(json));
+            HttpResponse res = http.Get("timepunch/checkinoutstatus/11111/103"); //, http.jsonParse(json));
 
-            if (!re.ok)
+            richTextBox1.Text = res.resp;
+
+            if (!res.ok)
             {
-                hlp.msg.error("Connection error: " + re.code, "INTERNET ERROR");
-                richTextBox1.Text = re.resp;
-            }
-            else
-            {
-                //hlp.msg.success("GOOD");
-                richTextBox1.Text = re.resp;
+                http.StdErr(res);
             }
         }
 
@@ -225,30 +211,22 @@ namespace TalkUareU
 
             if (!String.IsNullOrEmpty(userName.Text))
             {
-                HttpResponse re = http.Get("finger/checkname?name=" + userName.Text); //, http.jsonParse(json));
+                HttpResponse res = http.Get("finger/checkname?name=" + userName.Text);
 
-                if (re.ok && re.hasJson)
+                if (res.ok && res.hasJson)
                 {
                     EmployeeEntry emp = new EmployeeEntry(new JsonItem(
-                        (string)re.json["user"],
+                        (string)res.json["user"],
                         appLocationId,
-                        (string)re.json["role"]
+                        (string)res.json["role"]
                     ));
-
 
                     hlp.clockRequest(emp, "day_clockin");
                     refresh_listing();
                 }
                 else
                 {
-                    if (re.hasJson)
-                    {
-                        hlp.msg.success((string)re.json["message"]);
-                    }
-                    else
-                    {
-                        hlp.msg.error("Unknown error");
-                    }
+                    http.StdErr(res);
                 }
             }
         }
@@ -275,14 +253,7 @@ namespace TalkUareU
             }
             else
             {
-                if (res.hasJson)
-                {
-                    hlp.msg.success((string)res.json["message"]);
-                }
-                else
-                {
-                    hlp.msg.error("Unknown error");
-                }
+                http.StdErr(res);
             }
         }
     }

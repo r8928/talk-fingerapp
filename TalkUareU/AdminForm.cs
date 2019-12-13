@@ -28,23 +28,17 @@ namespace TalkUareU
 
             if (res.ok && res.hasJson)
             {
+                hlp.msg.success((string)res.json["message"]);
             }
             else
             {
-                if (res.hasJson)
-                {
-                    hlp.msg.success((string)res.json["message"]);
-                }
-                else
-                {
-                    hlp.msg.error("Unknown error");
-                }
+                http.StdErr(res);
             }
         }
 
         private void chk_Debugging_CheckedChanged(object sender, EventArgs e)
         {
-            http.HttpDebuging = (bool) chk_Debugging.Checked;
+            http.HttpDebuging = chk_Debugging.Checked;
         }
     }
 }
