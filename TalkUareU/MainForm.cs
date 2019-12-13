@@ -21,14 +21,12 @@ namespace TalkUareU
             enableApp(false);
 
             validateApp();
-            //getNewToken();
             refresh_listing();
 
         }
 
         private void validateApp()
         {
-            //hlp.msg.show(http.jsonStringify(myAnonyClassObject));
 
             lbl_SapName.Text = "Refreshing...";
 
@@ -70,8 +68,6 @@ namespace TalkUareU
 
             if (res.ok && res.hasJson)
             {
-                //hlp.msg.success("GOOD");
-                richTextBox1.Text = res.resp;
                 http.token = (string)res.json["token"];
             }
             else
@@ -185,8 +181,6 @@ namespace TalkUareU
         {
             HttpResponse res = http.Get("timepunch/checkinoutstatus/11111/103"); //, http.jsonParse(json));
 
-            richTextBox1.Text = res.resp;
-
             if (!res.ok)
             {
                 http.StdErr(res);
@@ -195,7 +189,6 @@ namespace TalkUareU
 
         private void btnGetToken_Click(object sender, System.EventArgs e)
         {
-            richTextBox1.Text = "";
             getNewToken();
             refresh_listing();
         }

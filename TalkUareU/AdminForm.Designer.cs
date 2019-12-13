@@ -38,9 +38,7 @@
             this.btn_RegisterApp.Margin = new System.Windows.Forms.Padding(10);
             this.btn_RegisterApp.Name = "btn_RegisterApp";
             this.btn_RegisterApp.Size = new System.Drawing.Size(189, 29);
-            this.btn_RegisterApp.TabIndex = 20;
             this.btn_RegisterApp.Text = "Register This App";
-            this.btn_RegisterApp.UseVisualStyleBackColor = true;
             this.btn_RegisterApp.Click += new System.EventHandler(this.btn_RegisterApp_Click);
             // 
             // chk_Debugging
@@ -49,9 +47,7 @@
             this.chk_Debugging.Location = new System.Drawing.Point(19, 76);
             this.chk_Debugging.Name = "chk_Debugging";
             this.chk_Debugging.Size = new System.Drawing.Size(181, 25);
-            this.chk_Debugging.TabIndex = 21;
             this.chk_Debugging.Text = "Allow http debug logs";
-            this.chk_Debugging.UseVisualStyleBackColor = true;
             this.chk_Debugging.CheckedChanged += new System.EventHandler(this.chk_Debugging_CheckedChanged);
             // 
             // AdminForm
