@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ClockSelectionForm));
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.btn_LunchOut = new System.Windows.Forms.Button();
             this.btn_LunchIn = new System.Windows.Forms.Button();
@@ -44,6 +43,7 @@
             this.flowLayoutPanel1.Location = new System.Drawing.Point(10, 12);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(0, 0);
+            this.flowLayoutPanel1.TabIndex = 0;
             // 
             // btn_LunchOut
             // 
@@ -53,6 +53,7 @@
             this.btn_LunchOut.Margin = new System.Windows.Forms.Padding(10);
             this.btn_LunchOut.Name = "btn_LunchOut";
             this.btn_LunchOut.Size = new System.Drawing.Size(65, 65);
+            this.btn_LunchOut.TabIndex = 0;
             this.btn_LunchOut.Text = "Lunch Out";
             this.btn_LunchOut.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             // 
@@ -64,6 +65,7 @@
             this.btn_LunchIn.Margin = new System.Windows.Forms.Padding(10);
             this.btn_LunchIn.Name = "btn_LunchIn";
             this.btn_LunchIn.Size = new System.Drawing.Size(65, 65);
+            this.btn_LunchIn.TabIndex = 0;
             this.btn_LunchIn.Text = "Lunch In";
             this.btn_LunchIn.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             // 
@@ -75,6 +77,7 @@
             this.btn_ClockOut.Margin = new System.Windows.Forms.Padding(10);
             this.btn_ClockOut.Name = "btn_ClockOut";
             this.btn_ClockOut.Size = new System.Drawing.Size(65, 65);
+            this.btn_ClockOut.TabIndex = 0;
             this.btn_ClockOut.Text = "ClockOut";
             this.btn_ClockOut.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             // 
@@ -83,13 +86,14 @@
             this.label1.Location = new System.Drawing.Point(0, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(100, 23);
+            this.label1.TabIndex = 0;
             // 
             // lbl_Message
             // 
             this.lbl_Message.Location = new System.Drawing.Point(27, 0);
             this.lbl_Message.Name = "lbl_Message";
             this.lbl_Message.Size = new System.Drawing.Size(264, 74);
-            this.lbl_Message.Text = "";
+            this.lbl_Message.TabIndex = 0;
             // 
             // ClockSelectionForm
             // 
@@ -103,7 +107,7 @@
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form1";
+            this.Text = "Clock Selection Menu";
             this.ResumeLayout(false);
             this.PerformLayout();
 

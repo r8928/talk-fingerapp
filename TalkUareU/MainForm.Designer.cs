@@ -34,32 +34,38 @@
             this.flowPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.lbl_ModuleName = new System.Windows.Forms.Label();
             this.lbl_SapName = new System.Windows.Forms.Label();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.btn_Admin = new System.Windows.Forms.Button();
-            this.pic_logo = new System.Windows.Forms.PictureBox();
             this.btn_PunchIn = new System.Windows.Forms.Button();
             this.btn_refresh = new System.Windows.Forms.Button();
-            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.pic_logo = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pic_logo)).BeginInit();
             this.SuspendLayout();
             // 
             // btn_CheckinDetails
             // 
+            this.btn_CheckinDetails.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_CheckinDetails.AutoSize = true;
-            this.btn_CheckinDetails.Location = new System.Drawing.Point(142, 461);
+            this.btn_CheckinDetails.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.btn_CheckinDetails.Location = new System.Drawing.Point(391, 44);
             this.btn_CheckinDetails.Name = "btn_CheckinDetails";
-            this.btn_CheckinDetails.Size = new System.Drawing.Size(210, 42);
+            this.btn_CheckinDetails.Size = new System.Drawing.Size(188, 31);
             this.btn_CheckinDetails.TabIndex = 5;
             this.btn_CheckinDetails.Text = "GET CHECKING DETAILS";
+            this.btn_CheckinDetails.UseVisualStyleBackColor = true;
             this.btn_CheckinDetails.Click += new System.EventHandler(this.GetCheckinDetails);
             // 
             // btn_getToken
             // 
+            this.btn_getToken.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_getToken.AutoSize = true;
-            this.btn_getToken.Location = new System.Drawing.Point(12, 461);
+            this.btn_getToken.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.btn_getToken.Location = new System.Drawing.Point(495, 7);
             this.btn_getToken.Name = "btn_getToken";
-            this.btn_getToken.Size = new System.Drawing.Size(124, 42);
+            this.btn_getToken.Size = new System.Drawing.Size(84, 31);
             this.btn_getToken.TabIndex = 3;
             this.btn_getToken.Text = "getToken";
+            this.btn_getToken.UseVisualStyleBackColor = true;
             this.btn_getToken.Click += new System.EventHandler(this.btnGetToken_Click);
             // 
             // flowPanel
@@ -70,7 +76,7 @@
             this.flowPanel.AutoScroll = true;
             this.flowPanel.Location = new System.Drawing.Point(12, 150);
             this.flowPanel.Name = "flowPanel";
-            this.flowPanel.Size = new System.Drawing.Size(776, 305);
+            this.flowPanel.Size = new System.Drawing.Size(773, 300);
             this.flowPanel.TabIndex = 2;
             // 
             // lbl_ModuleName
@@ -99,24 +105,14 @@
             this.btn_Admin.BackgroundImage = global::TalkUareU.Properties.Resources.gear;
             this.btn_Admin.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btn_Admin.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btn_Admin.Location = new System.Drawing.Point(757, 82);
+            this.btn_Admin.Location = new System.Drawing.Point(754, 82);
             this.btn_Admin.Name = "btn_Admin";
             this.btn_Admin.Size = new System.Drawing.Size(31, 28);
             this.btn_Admin.TabIndex = 0;
+            this.btn_Admin.TabStop = false;
             this.toolTip1.SetToolTip(this.btn_Admin, "Administrative options");
-            this.btn_Admin.UseVisualStyleBackColor = false;
+            this.btn_Admin.UseVisualStyleBackColor = true;
             this.btn_Admin.Click += new System.EventHandler(this.btn_Admin_Click);
-            // 
-            // pic_logo
-            // 
-            this.pic_logo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pic_logo.Image = global::TalkUareU.Properties.Resources.talk_logo;
-            this.pic_logo.Location = new System.Drawing.Point(588, 9);
-            this.pic_logo.Name = "pic_logo";
-            this.pic_logo.Size = new System.Drawing.Size(200, 67);
-            this.pic_logo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pic_logo.TabIndex = 7;
-            this.pic_logo.TabStop = false;
             // 
             // btn_PunchIn
             // 
@@ -130,8 +126,8 @@
             this.btn_PunchIn.TabIndex = 8;
             this.btn_PunchIn.Text = "New Punch In";
             this.btn_PunchIn.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.toolTip1.SetToolTip(this.btn_PunchIn, "Add clock in of another rep");
-            this.btn_PunchIn.UseVisualStyleBackColor = false;
+            this.toolTip1.SetToolTip(this.btn_PunchIn, "Punch in another employee");
+            this.btn_PunchIn.UseVisualStyleBackColor = true;
             this.btn_PunchIn.Click += new System.EventHandler(this.btn_PunchIn_Click);
             // 
             // btn_refresh
@@ -141,20 +137,31 @@
             this.btn_refresh.BackgroundImage = global::TalkUareU.Properties.Resources.refresh;
             this.btn_refresh.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btn_refresh.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btn_refresh.Location = new System.Drawing.Point(757, 116);
+            this.btn_refresh.Location = new System.Drawing.Point(754, 116);
             this.btn_refresh.Name = "btn_refresh";
             this.btn_refresh.Size = new System.Drawing.Size(31, 28);
             this.btn_refresh.TabIndex = 9;
-            this.toolTip1.SetToolTip(this.btn_refresh, "Refresh reps lists");
-            this.btn_refresh.UseVisualStyleBackColor = false;
+            this.toolTip1.SetToolTip(this.btn_refresh, "Refresh punched employees list");
+            this.btn_refresh.UseVisualStyleBackColor = true;
             this.btn_refresh.Click += new System.EventHandler(this.btn_refresh_Click);
+            // 
+            // pic_logo
+            // 
+            this.pic_logo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pic_logo.Image = global::TalkUareU.Properties.Resources.talk_logo;
+            this.pic_logo.Location = new System.Drawing.Point(585, 9);
+            this.pic_logo.Name = "pic_logo";
+            this.pic_logo.Size = new System.Drawing.Size(200, 67);
+            this.pic_logo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pic_logo.TabIndex = 7;
+            this.pic_logo.TabStop = false;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(800, 509);
+            this.ClientSize = new System.Drawing.Size(797, 462);
             this.Controls.Add(this.btn_Admin);
             this.Controls.Add(this.lbl_SapName);
             this.Controls.Add(this.flowPanel);

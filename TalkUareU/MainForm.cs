@@ -21,8 +21,11 @@ namespace TalkUareU
             enableApp(false);
 
             validateApp();
-            refresh_listing();
 
+            if (!String.IsNullOrEmpty(appLocationId))
+            {
+                refresh_listing();
+            }
         }
 
         private void validateApp()
@@ -43,7 +46,14 @@ namespace TalkUareU
             else
             {
                 enableApp(false);
-                lbl_SapName.Text = "Error connecting to BOOM, please click refresh to try again.";
+                if (res.hasJson)
+                {
+                    lbl_SapName.Text = (string)res.json["message"];
+                }
+                else
+                {
+                    lbl_SapName.Text = "Error connecting to BOOM, please click refresh to try again.";
+                }
 
                 http.StdErr(res);
             }
@@ -53,6 +63,7 @@ namespace TalkUareU
         {
             flowPanel.Enabled = enable;
             btn_PunchIn.Enabled = enable;
+            btn_refresh.Enabled = enable;
         }
 
         private void getNewToken()
@@ -83,13 +94,18 @@ namespace TalkUareU
             if (String.IsNullOrEmpty(appLocationId))
             {
                 validateApp();
+
+                if (String.IsNullOrEmpty(appLocationId))
+                {
+                    return;
+                }
             }
 
 
 
 
             // VALIDATE SAP
-            if (String.IsNullOrEmpty(appLocationSap) && appLocationSap.Length < 4)
+            if (String.IsNullOrEmpty(appLocationSap) || appLocationSap.Length < 4)
             {
                 hlp.msg.error("Invalid SAP selected");
                 return;
@@ -152,7 +168,7 @@ namespace TalkUareU
                 {
                     err_lbl.Width = 700;
                     err_lbl.Height = 700;
-                    err_lbl.Padding = new System.Windows.Forms.Padding(10);
+                    err_lbl.Padding = new Padding(10);
                     flowPanel.Controls.Add(err_lbl);
                     err_lbl.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
 
@@ -165,19 +181,19 @@ namespace TalkUareU
             }
         }
 
-        private void EmployeeEntryClick(object sender, System.EventArgs e)
+        private void EmployeeEntryClick(object sender, EventArgs e)
         {
             curEmployee = (EmployeeEntry)sender;
             new ClockSelectionForm(curEmployee).ShowDialog();
             refresh_listing();
         }
 
-        private void btn_refresh_Click(object sender, System.EventArgs e)
+        private void btn_refresh_Click(object sender, EventArgs e)
         {
             refresh_listing();
         }
 
-        private void GetCheckinDetails(object sender, System.EventArgs e)
+        private void GetCheckinDetails(object sender, EventArgs e)
         {
             HttpResponse res = http.Get("timepunch/checkinoutstatus/11111/103"); //, http.jsonParse(json));
 
@@ -187,13 +203,13 @@ namespace TalkUareU
             }
         }
 
-        private void btnGetToken_Click(object sender, System.EventArgs e)
+        private void btnGetToken_Click(object sender, EventArgs e)
         {
             getNewToken();
             refresh_listing();
         }
 
-        private void btn_PunchIn_Click(object sender, System.EventArgs e)
+        private void btn_PunchIn_Click(object sender, EventArgs e)
         {
             if (String.IsNullOrEmpty(appLocationId))
             {

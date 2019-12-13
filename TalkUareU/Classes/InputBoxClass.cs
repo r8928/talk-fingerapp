@@ -115,6 +115,8 @@ namespace InputBoxApp
             frmInputDialog.Name = "InputBoxDialog";
             frmInputDialog.ResumeLayout(false);
             frmInputDialog.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            frmInputDialog.ShowIcon = false;
+            frmInputDialog.ShowInTaskbar = false;
         }
 
         #endregion

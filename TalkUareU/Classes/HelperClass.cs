@@ -42,8 +42,7 @@ namespace TalkUareU
 
             if (System.IO.File.Exists(filePath))
             {
-                //currentContent = System.IO.File.ReadAllLines(filePath).Take(100);
-                currentContent = String.Join(Environment.NewLine, System.IO.File.ReadAllLines(filePath).Take(100));
+                currentContent = String.Join(Environment.NewLine, System.IO.File.ReadAllLines(filePath).Take(232));
             }
             System.IO.File.WriteAllText(filePath, newContent + currentContent);
         }
@@ -58,7 +57,6 @@ namespace TalkUareU
             if (!SystemInformation.Network)
             {
                 msg.error("Could't connect to internet");
-                //this.Close();
             }
             try
             {
@@ -85,7 +83,7 @@ namespace TalkUareU
                     .Select(nic => nic.GetPhysicalAddress().ToString())
                     .FirstOrDefault();
 
-                appComputerName = System.Environment.MachineName;
+                appComputerName = Environment.MachineName;
             }
             catch (Exception) { }
 
@@ -101,8 +99,19 @@ namespace TalkUareU
 
             var formData = new { hardware_ids = new String[] { appMAC, appComputerName, appProcessorID, appMotherboardID }, sap = SapID };
 
-            return http.jsonStringify(formData);
+            string json_string = http.jsonStringify(formData);
+
+            http.hIdToken = Base64Encode(json_string);
+
+            return json_string;
         }
+
+
+        public string Base64Encode(string str)
+        {
+            return Convert.ToBase64String(System.Text.Encoding.ASCII.GetBytes(str));
+        }
+
 
         public class MessageClass
         {

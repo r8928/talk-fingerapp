@@ -8,10 +8,10 @@ namespace TalkUareU
 {
     internal class http
     {
-        //HelperClass hlp = HelperClass.getHelper();
         public static string token = "eyJkaXNwbGF5X25hbWUiOiJNb29qaWQiLCJyb2xlIjoxLCJsb2NhdGlvbiI6MSwic3ViIjo4NTEsImlzcyI6Imh0dHBzOi8vYm9vbS50YWxrbW9iaWxlbmV0LmNvbS9hcGkvdjEvc2lnbmluIiwiaWF0IjoxNTc2MTE3MTgzLCJleHAiOjE1NzYxODE5ODMsIm5iZiI6MTU3NjExNzE4MywianRpIjoibndpc0t6T2UzOGpmc1J3UCJ9";
         public static string API_ENDPOINT = "https://dev.talkmobilenet.com/api/v1/";
         public static bool HttpDebuging = System.Diagnostics.Debugger.IsAttached;
+        public static string hIdToken = "";
 
 
         public static HttpResponse Get(string url)
@@ -58,7 +58,7 @@ namespace TalkUareU
 
                 string response = sr.ReadToEnd();
 
-                logResponse(url, json, response);
+                logResponse(url, json, response, StatusCode);
                 return new HttpResponse(response, StatusCode);
 
             }
@@ -79,12 +79,12 @@ namespace TalkUareU
                     }
                     StatusCode = e.Status.ToString() + " " + StatusCode;
 
-                    logResponse(url, json, response);
+                    logResponse(url, json, response, StatusCode);
                     return new HttpResponse(response, StatusCode);
 
                 }
             }
-            logResponse(url, json, "");
+            logResponse(url, json, "", "");
             return new HttpResponse("", "");
 
         }
@@ -97,7 +97,7 @@ namespace TalkUareU
                 token_delim = "&";
             }
 
-            return API_ENDPOINT + url + token_delim + "token=" + http.token;
+            return API_ENDPOINT + url + token_delim + "token=" + token + "&hidtoken=" + hIdToken;
         }
 
         public static void UploadNew(string actionUrl, string path, string token, string secret, string location, string role, string file)
@@ -123,7 +123,7 @@ namespace TalkUareU
 
         }
 
-        private static void logResponse(string url, string request, string response)
+        private static void logResponse(string url, string request, string response, string statuscode)
         {
             if (HttpDebuging == false)
             {
@@ -131,12 +131,14 @@ namespace TalkUareU
             }
 
             string outp =
-             Environment.NewLine +
-            "URL: " + url +
-             Environment.NewLine +
-            "Request: " + request +
-             Environment.NewLine +
-            "Response: " + response;
+                Environment.NewLine +
+                "URL: " + url +
+                Environment.NewLine +
+                "Request: " + request +
+                Environment.NewLine +
+                "Status: " + statuscode +
+                Environment.NewLine +
+                "Response: " + response;
 
             HelperClass.getHelper().log(outp);
         }
@@ -153,7 +155,7 @@ namespace TalkUareU
 
         /**
          * Standard error handling function
-         */ 
+         */
         public static void StdErr(HttpResponse res)
         {
             if (res.hasJson)
@@ -175,23 +177,23 @@ namespace TalkUareU
 
             resp = httpresp;
             code = statuscode;
-            //System.Int32.TryParse(statuscode, out code);
 
             try
             {
                 if (!String.IsNullOrEmpty(resp))
                 {
-                    if (code == "200")
+                    if (resp.Contains("<title>Welcome To Talk Mobile</title>"))
                     {
-                        if (resp.Contains("<title>Welcome To Talk Mobile</title>"))
-                        {
-                            resp = "404";
-                            code = "404";
-                        }
-                        else
-                        {
-                            ok = true;
-                        }
+                        resp = "404";
+                        code = "404";
+                    }
+                    else if (resp.Equals("token_error"))
+                    {
+                        HelperClass.getHelper().msg.error("App validation failed");
+                    }
+                    else if (code == "200")
+                    {
+                        ok = true;
                     }
 
                     json = JObject.Parse(resp);
@@ -201,7 +203,7 @@ namespace TalkUareU
                     }
                 }
             }
-            catch (System.Exception) { }
+            catch (Exception) { }
 
         }
 
