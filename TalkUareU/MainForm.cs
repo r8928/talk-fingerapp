@@ -40,7 +40,6 @@ namespace TalkUareU
                 appLocationSap = (string)res.json["sap"];
 
                 lbl_SapName.Text = appLocationName;
-                txt_SAP.Text = appLocationSap;
                 enableApp(true);
             }
             else
@@ -86,7 +85,7 @@ namespace TalkUareU
                 richTextBox1.Text = response.resp;
                 if (response.hasJson)
                 {
-                    txt_token.Text = (string)response.json["token"];
+                    http.token = (string)response.json["token"];
                 }
             }
         }
@@ -255,7 +254,7 @@ namespace TalkUareU
         }
 
 
-        private void btn_Admin_Click_1(object sender, EventArgs e)
+        private void btn_Admin_Click(object sender, EventArgs e)
         {
             InputBoxResult AdminToken = InputBox.Show("Please enter your BOOM Admin token", "Token");
 

@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.listView1 = new System.Windows.Forms.ListView();
             this.list_id = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.list_name = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -42,18 +41,16 @@
             this.list_clockout = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.id = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.btn_PunchIn = new System.Windows.Forms.Button();
-            this.txt_SAP = new System.Windows.Forms.TextBox();
             this.btn_ChecinDetails = new System.Windows.Forms.Button();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
-            this.txt_token = new System.Windows.Forms.TextBox();
             this.btn_getToken = new System.Windows.Forms.Button();
             this.flowPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.lbl_ModuleName = new System.Windows.Forms.Label();
             this.lbl_SapName = new System.Windows.Forms.Label();
             this.btn_Admin = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pic_logo = new System.Windows.Forms.PictureBox();
             this.btn_refresh = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic_logo)).BeginInit();
             this.SuspendLayout();
             // 
             // listView1
@@ -149,16 +146,6 @@
             this.btn_PunchIn.UseVisualStyleBackColor = false;
             this.btn_PunchIn.Click += new System.EventHandler(this.btn_PunchIn_Click);
             // 
-            // txt_SAP
-            // 
-            this.txt_SAP.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.txt_SAP.Location = new System.Drawing.Point(12, 603);
-            this.txt_SAP.Name = "txt_SAP";
-            this.txt_SAP.Size = new System.Drawing.Size(100, 29);
-            this.txt_SAP.TabIndex = 11;
-            this.txt_SAP.Text = "2036";
-            this.txt_SAP.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_SAP_TextChanged);
-            // 
             // btn_ChecinDetails
             // 
             this.btn_ChecinDetails.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -169,7 +156,7 @@
             this.btn_ChecinDetails.TabIndex = 12;
             this.btn_ChecinDetails.Text = "GET CHECKING DETAILS";
             this.btn_ChecinDetails.UseVisualStyleBackColor = true;
-            this.btn_ChecinDetails.Click += new System.EventHandler(this.button1_Click);
+            this.btn_ChecinDetails.Click += new System.EventHandler(this.GetCheckinDetails);
             // 
             // richTextBox1
             // 
@@ -181,16 +168,6 @@
             this.richTextBox1.Size = new System.Drawing.Size(776, 83);
             this.richTextBox1.TabIndex = 13;
             this.richTextBox1.Text = "";
-            // 
-            // txt_token
-            // 
-            this.txt_token.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txt_token.Location = new System.Drawing.Point(13, 639);
-            this.txt_token.Name = "txt_token";
-            this.txt_token.Size = new System.Drawing.Size(775, 29);
-            this.txt_token.TabIndex = 14;
-            this.txt_token.TextChanged += new System.EventHandler(this.txt_token_TextChanged);
             // 
             // btn_getToken
             // 
@@ -241,24 +218,24 @@
             this.btn_Admin.Size = new System.Drawing.Size(31, 28);
             this.btn_Admin.TabIndex = 0;
             this.btn_Admin.UseVisualStyleBackColor = false;
-            this.btn_Admin.Click += new System.EventHandler(this.btn_Admin_Click_1);
+            this.btn_Admin.Click += new System.EventHandler(this.btn_Admin_Click);
             // 
-            // pictureBox1
+            // pic_logo
             // 
-            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(588, 9);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(200, 67);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBox1.TabIndex = 7;
-            this.pictureBox1.TabStop = false;
+            this.pic_logo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pic_logo.Image = global::TalkUareU.Properties.Resources.talk_logo;
+            this.pic_logo.Location = new System.Drawing.Point(588, 9);
+            this.pic_logo.Name = "pic_logo";
+            this.pic_logo.Size = new System.Drawing.Size(200, 67);
+            this.pic_logo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pic_logo.TabIndex = 7;
+            this.pic_logo.TabStop = false;
             // 
             // btn_refresh
             // 
             this.btn_refresh.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_refresh.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.btn_refresh.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_refresh.BackgroundImage")));
+            this.btn_refresh.BackgroundImage = global::TalkUareU.Properties.Resources.refresh;
             this.btn_refresh.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btn_refresh.Location = new System.Drawing.Point(720, 92);
             this.btn_refresh.Name = "btn_refresh";
@@ -277,12 +254,10 @@
             this.Controls.Add(this.lbl_SapName);
             this.Controls.Add(this.flowPanel);
             this.Controls.Add(this.btn_getToken);
-            this.Controls.Add(this.txt_token);
             this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.btn_ChecinDetails);
-            this.Controls.Add(this.txt_SAP);
             this.Controls.Add(this.lbl_ModuleName);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.pic_logo);
             this.Controls.Add(this.btn_PunchIn);
             this.Controls.Add(this.btn_refresh);
             this.Controls.Add(this.listView1);
@@ -292,7 +267,7 @@
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Attendance Module | Talk Mobile";
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic_logo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -314,12 +289,10 @@
         private System.Windows.Forms.ColumnHeader list_clockout;
         private System.Windows.Forms.Button btn_refresh;
         private System.Windows.Forms.Button btn_PunchIn;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pic_logo;
         private System.Windows.Forms.Label lbl_ModuleName;
-        private System.Windows.Forms.TextBox txt_SAP;
         private System.Windows.Forms.Button btn_ChecinDetails;
         private System.Windows.Forms.RichTextBox richTextBox1;
-        private System.Windows.Forms.TextBox txt_token;
         private System.Windows.Forms.Button btn_getToken;
         private System.Windows.Forms.FlowLayoutPanel flowPanel;
         private System.Windows.Forms.Label lbl_SapName;

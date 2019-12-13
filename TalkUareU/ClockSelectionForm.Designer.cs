@@ -60,7 +60,7 @@
             // 
             // btn_LunchIn
             // 
-            this.btn_LunchIn.Image = ((System.Drawing.Image)(resources.GetObject("btn_LunchIn.Image")));
+            this.btn_LunchIn.Image = global::TalkUareU.Properties.Resources.checkin32;
             this.btn_LunchIn.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btn_LunchIn.Location = new System.Drawing.Point(95, 10);
             this.btn_LunchIn.Margin = new System.Windows.Forms.Padding(10);
@@ -72,7 +72,7 @@
             // 
             // btn_ClockOut
             // 
-            this.btn_ClockOut.Image = ((System.Drawing.Image)(resources.GetObject("btn_ClockOut.Image")));
+            this.btn_ClockOut.Image = global::TalkUareU.Properties.Resources.checkout32;
             this.btn_ClockOut.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btn_ClockOut.Location = new System.Drawing.Point(180, 10);
             this.btn_ClockOut.Margin = new System.Windows.Forms.Padding(10);
