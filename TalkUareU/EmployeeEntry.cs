@@ -1,5 +1,4 @@
 ﻿using System;
-using System.ComponentModel;
 using System.Windows.Forms;
 
 namespace TalkUareU
@@ -9,7 +8,6 @@ namespace TalkUareU
     {
         private string _ClockTimeString;
         public JsonItem data;
-        
 
         public string ClockStatus
         {
@@ -42,8 +40,8 @@ namespace TalkUareU
                 lbl_Name.Text = value;
                 data.DName = value;
             }
-           get => data.DName;
-            
+            get => data.DName;
+
         }
         public string ClockTimeString
         {
@@ -53,9 +51,9 @@ namespace TalkUareU
                 _ClockTimeString = value;
             }
             get => _ClockTimeString;
-            
+
         }
-                
+
         public EmployeeEntry(JsonItem j)
         {
             InitializeComponent();
@@ -80,10 +78,10 @@ namespace TalkUareU
             OnClick(e);
         }
 
-       // [Category("Custom")]
-       // [Browsable(true)]
-       // [Description("Asdfds")]
-       // [Editor(typeof(System.Windows.Forms.Design.WindowsFormsComponentEditor), typeof(System.Drawing.Design.UITypeEditor))]
+        // [Category("Custom")]
+        // [Browsable(true)]
+        // [Description("Asdfds")]
+        // [Editor(typeof(System.Windows.Forms.Design.WindowsFormsComponentEditor), typeof(System.Drawing.Design.UITypeEditor))]
 
         protected override void OnPaint(PaintEventArgs pe)
         {

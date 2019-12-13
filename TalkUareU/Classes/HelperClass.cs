@@ -1,18 +1,25 @@
 ﻿using System;
 using System.Linq;
-
+using System.Management;
 using System.Windows.Forms;
 
 namespace TalkUareU
 {
-    internal class HelperClass
+    public class HelperClass
     {
-
-        HttpService http = new HttpService();
-
         public MessageClass msg = new MessageClass();
+        private static HelperClass helper;
 
-        public HelperClass() { }
+        private HelperClass() { }
+
+        public static HelperClass getHelper()
+        {
+            if (helper is null)
+            {
+                helper = new HelperClass();
+            }
+            return helper;
+        }
 
         public string curDateTime(string format = "yyyy-MM-dd h:mm")
         {
@@ -39,10 +46,65 @@ namespace TalkUareU
                 currentContent = String.Join(Environment.NewLine, System.IO.File.ReadAllLines(filePath).Take(100));
             }
             System.IO.File.WriteAllText(filePath, newContent + currentContent);
-
         }
 
-        internal class MessageClass
+        public string getHardwareIds(string SapID = null)
+        {
+            string appComputerName = "";
+            string appMAC = "";
+            string appProcessorID = "";
+            string appMotherboardID = "";
+
+            if (!SystemInformation.Network)
+            {
+                msg.error("Could't connect to internet");
+                //this.Close();
+            }
+            try
+            {
+                ManagementObjectCollection mbsList = null;
+                ManagementObjectSearcher mbs = new ManagementObjectSearcher("Select * From Win32_processor");
+                mbsList = mbs.Get();
+                foreach (ManagementObject mo in mbsList)
+                {
+                    appProcessorID = mo["ProcessorID"].ToString();
+                }
+
+
+                ManagementObjectSearcher mos = new ManagementObjectSearcher("SELECT * FROM Win32_BaseBoard");
+                ManagementObjectCollection moc = mos.Get();
+                foreach (ManagementObject mo in moc)
+                {
+                    appMotherboardID = (string)mo["SerialNumber"];
+                }
+
+
+                appMAC = System.Net.NetworkInformation.NetworkInterface
+                    .GetAllNetworkInterfaces()
+                    .Where(nic => nic.OperationalStatus == System.Net.NetworkInformation.OperationalStatus.Up && nic.NetworkInterfaceType != System.Net.NetworkInformation.NetworkInterfaceType.Loopback)
+                    .Select(nic => nic.GetPhysicalAddress().ToString())
+                    .FirstOrDefault();
+
+                appComputerName = System.Environment.MachineName;
+            }
+            catch (Exception) { }
+
+            if (String.IsNullOrEmpty(appComputerName))
+            {
+                msg.error("Unable to identify computer", "SECURITY FAILURE");
+            }
+
+            if (String.IsNullOrEmpty(appMAC))
+            {
+                msg.error("Unable to identify computer", "SECURITY FAILURE");
+            }
+
+            var formData = new { hardware_ids = new String[] { appMAC, appComputerName, appProcessorID, appMotherboardID }, sap = SapID };
+
+            return http.jsonStringify(formData);
+        }
+
+        public class MessageClass
         {
             public void show(string msg, string title = null)
             {
@@ -69,7 +131,6 @@ namespace TalkUareU
             {
                 return;
             }
-
 
             string url_subpart = "";
             switch (clockEvent)
@@ -103,28 +164,19 @@ namespace TalkUareU
                     return;
             }
 
-            //richTextBox1.Text = http.jsonStringify(emp) + "\n" + richTextBox1.Text;
-
-            HttpResponse response = http.post("timepunch/" + url_subpart, http.jsonStringify(emp.data)); //, http.jsonParse(json));
+            HttpResponse response = http.Post("finger/" + url_subpart, http.jsonStringify(emp.data));
 
             if (!response.ok)
             {
                 msg.error("Connection error: " + response.code, "INTERNET ERROR");
-                //richTextBox1.Text = response.resp + "\n" + richTextBox1.Text;
             }
             else
             {
-                //msg.success("GOOD");
-                //richTextBox1.Text = response.resp + "\n" + richTextBox1.Text;
-
                 if (response.resp.Contains("\"error\""))
                 {
                     msg.warn((string)response.json["message"]);
                 }
             }
-            //refresh_listing();
         }
-
-
     }
 }

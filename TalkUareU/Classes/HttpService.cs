@@ -6,12 +6,15 @@ using System.Net;
 
 namespace TalkUareU
 {
-    internal class HttpService
+    internal class http
     {
+        //HelperClass hlp = HelperClass.getHelper();
         public static string token = "eyJkaXNwbGF5X25hbWUiOiJNb29qaWQiLCJyb2xlIjoxLCJsb2NhdGlvbiI6MSwic3ViIjo4NTEsImlzcyI6Imh0dHBzOi8vYm9vbS50YWxrbW9iaWxlbmV0LmNvbS9hcGkvdjEvc2lnbmluIiwiaWF0IjoxNTc2MTE3MTgzLCJleHAiOjE1NzYxODE5ODMsIm5iZiI6MTU3NjExNzE4MywianRpIjoibndpc0t6T2UzOGpmc1J3UCJ9";
-        private string API_ENDPOINT = "https://dev.talkmobilenet.com/api/v1/";
+        public static string API_ENDPOINT = "https://dev.talkmobilenet.com/api/v1/";
+        public static bool HttpDebuging = (bool) System.Diagnostics.Debugger.IsAttached ;
+        
 
-        public HttpResponse get(string url)
+        public static HttpResponse Get(string url)
         {
 
             var request = (HttpWebRequest)WebRequest.Create(createURL(url));
@@ -21,7 +24,7 @@ namespace TalkUareU
 
         }
 
-        public HttpResponse post(string url, string json)
+        public static HttpResponse Post(string url, string json)
         {
 
             var request = (HttpWebRequest)WebRequest.Create(createURL(url));
@@ -43,7 +46,7 @@ namespace TalkUareU
             return GetResponse(request, url, json, request.Method);
         }
 
-        public HttpResponse GetResponse(HttpWebRequest request, string url, string json, string method)
+        public static HttpResponse GetResponse(HttpWebRequest request, string url, string json, string method)
         {
             try
             {
@@ -86,7 +89,7 @@ namespace TalkUareU
 
         }
 
-        private string createURL(string url)
+        private static string createURL(string url)
         {
             string token_delim = "?";
             if (url.Contains("?"))
@@ -94,10 +97,10 @@ namespace TalkUareU
                 token_delim = "&";
             }
 
-            return API_ENDPOINT + url + token_delim + "token=" + HttpService.token;
+            return API_ENDPOINT + url + token_delim + "token=" + http.token;
         }
 
-        public void UploadNew(string actionUrl, string path, string token, string secret, string location, string role, string file)
+        public static void UploadNew(string actionUrl, string path, string token, string secret, string location, string role, string file)
         {
 
             //var client = new HttpClient();
@@ -120,8 +123,13 @@ namespace TalkUareU
 
         }
 
-        private void logResponse(string url, string request, string response)
+        private static void logResponse(string url, string request, string response)
         {
+            if (HttpDebuging == false)
+            {
+                return;
+            }
+
             string outp =
              Environment.NewLine +
             "URL: " + url +
@@ -130,15 +138,15 @@ namespace TalkUareU
              Environment.NewLine +
             "Response: " + response;
 
-            new HelperClass().log(outp);
+            HelperClass.getHelper().log(outp);
         }
 
-        public JObject jsonParse(string str)
+        public static JObject jsonParse(string str)
         {
             return JObject.Parse(str);
         }
 
-        public string jsonStringify(object obj)
+        public static string jsonStringify(object obj)
         {
             return JsonConvert.SerializeObject(obj);
         }
@@ -156,9 +164,8 @@ namespace TalkUareU
 
             try
             {
-                if (resp.Length > 0)
+                if (!String.IsNullOrEmpty(resp))
                 {
-
                     if (code == "200")
                     {
                         if (resp.Contains("<title>Welcome To Talk Mobile</title>"))

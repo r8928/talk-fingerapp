@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace TalkUareU
@@ -13,7 +6,7 @@ namespace TalkUareU
     public partial class ClockSelectionForm : Form
     {
         EmployeeEntry Employee;
-        HelperClass hlp = new HelperClass();
+        HelperClass hlp = HelperClass.getHelper();
 
         public ClockSelectionForm(EmployeeEntry emp)
         {
@@ -44,10 +37,10 @@ namespace TalkUareU
 
             int FormWidth = this.Width;
             int FlowWidth = flowLayoutPanel1.Width;
-            flowLayoutPanel1.Left = (FormWidth / 2) - (FlowWidth / 2) -5;
+            flowLayoutPanel1.Left = (FormWidth / 2) - (FlowWidth / 2) - 5;
         }
 
-        private void lunchClick(Object o,System.EventArgs e)
+        private void lunchClick(Object o, System.EventArgs e)
         {
             hlp.clockRequest(Employee, "lunch_clockout");
             this.Close();

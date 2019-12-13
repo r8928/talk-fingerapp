@@ -49,9 +49,10 @@
             this.btn_getToken = new System.Windows.Forms.Button();
             this.flowPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.lbl_ModuleName = new System.Windows.Forms.Label();
+            this.lbl_SapName = new System.Windows.Forms.Label();
+            this.btn_Admin = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btn_refresh = new System.Windows.Forms.Button();
-            this.lbl_SapName = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -220,6 +221,28 @@
             this.lbl_ModuleName.TabIndex = 8;
             this.lbl_ModuleName.Text = "Attendance Module";
             // 
+            // lbl_SapName
+            // 
+            this.lbl_SapName.AutoSize = true;
+            this.lbl_SapName.Location = new System.Drawing.Point(8, 54);
+            this.lbl_SapName.Name = "lbl_SapName";
+            this.lbl_SapName.Size = new System.Drawing.Size(295, 21);
+            this.lbl_SapName.TabIndex = 18;
+            this.lbl_SapName.Text = "No location signed in, please click refresh";
+            // 
+            // btn_Admin
+            // 
+            this.btn_Admin.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_Admin.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.btn_Admin.BackgroundImage = global::TalkUareU.Properties.Resources.gear;
+            this.btn_Admin.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btn_Admin.Location = new System.Drawing.Point(757, 92);
+            this.btn_Admin.Name = "btn_Admin";
+            this.btn_Admin.Size = new System.Drawing.Size(31, 28);
+            this.btn_Admin.TabIndex = 0;
+            this.btn_Admin.UseVisualStyleBackColor = false;
+            this.btn_Admin.Click += new System.EventHandler(this.btn_Admin_Click_1);
+            // 
             // pictureBox1
             // 
             this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -237,21 +260,12 @@
             this.btn_refresh.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.btn_refresh.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_refresh.BackgroundImage")));
             this.btn_refresh.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btn_refresh.Location = new System.Drawing.Point(757, 92);
+            this.btn_refresh.Location = new System.Drawing.Point(720, 92);
             this.btn_refresh.Name = "btn_refresh";
             this.btn_refresh.Size = new System.Drawing.Size(31, 28);
-            this.btn_refresh.TabIndex = 4;
+            this.btn_refresh.TabIndex = 19;
             this.btn_refresh.UseVisualStyleBackColor = false;
             this.btn_refresh.Click += new System.EventHandler(this.btn_refresh_Click);
-            // 
-            // lbl_SapName
-            // 
-            this.lbl_SapName.AutoSize = true;
-            this.lbl_SapName.Location = new System.Drawing.Point(8, 54);
-            this.lbl_SapName.Name = "lbl_SapName";
-            this.lbl_SapName.Size = new System.Drawing.Size(247, 21);
-            this.lbl_SapName.TabIndex = 18;
-            this.lbl_SapName.Text = "No location signed in, click refresh";
             // 
             // MainForm
             // 
@@ -259,6 +273,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(800, 732);
+            this.Controls.Add(this.btn_Admin);
             this.Controls.Add(this.lbl_SapName);
             this.Controls.Add(this.flowPanel);
             this.Controls.Add(this.btn_getToken);
@@ -308,6 +323,6 @@
         private System.Windows.Forms.Button btn_getToken;
         private System.Windows.Forms.FlowLayoutPanel flowPanel;
         private System.Windows.Forms.Label lbl_SapName;
+        private System.Windows.Forms.Button btn_Admin;
     }
 }
-
