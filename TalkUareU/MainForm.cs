@@ -15,8 +15,6 @@ namespace TalkUareU
         private string appLocationSap;
         private Label err_lbl = new Label();
 
-        EmployeeEntry curEmployee;
-
         public MainForm(HelperClass hlp, HttpService http, MessageClass msg)
         {
             InitializeComponent();
@@ -186,8 +184,8 @@ namespace TalkUareU
 
         private void EmployeeEntryClick(object sender, EventArgs e)
         {
-            curEmployee = (EmployeeEntry)sender;
-            new ClockSelectionForm(curEmployee, hlp).ShowDialog();
+            JsonItem data = ((EmployeeEntry)sender).data;
+            new ClockSelectionForm(data, hlp).ShowDialog();
             refresh_listing();
         }
 
@@ -227,13 +225,13 @@ namespace TalkUareU
 
                 if (res.ok && res.hasJson)
                 {
-                    EmployeeEntry emp = new EmployeeEntry(
+                    JsonItem data = new JsonItem(
                         (string)res.json["user"],
                         appLocationId,
                         (string)res.json["role"]
                     );
 
-                    hlp.clockRequest(emp, "day_clockin");
+                    hlp.clockRequest(data, "day_clockin");
                     refresh_listing();
                 }
                 else
@@ -268,5 +266,6 @@ namespace TalkUareU
                 http.StdErr(res);
             }
         }
+
     }
 }

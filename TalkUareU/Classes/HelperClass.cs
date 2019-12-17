@@ -103,9 +103,9 @@ namespace TalkUareU
         }
 
 
-        public void clockRequest(EmployeeEntry emp, string clockEvent)
+        public void clockRequest(JsonItem data, string clockEvent)
         {
-            if (emp == null)
+            if (data == null)
             {
                 return;
             }
@@ -114,27 +114,27 @@ namespace TalkUareU
             switch (clockEvent)
             {
                 case "day_clockin":
-                    emp.data.check_in = curDateTime();
-                    emp.data.check_out = null;
-                    emp.data.btnevent = "yes";
+                    data.check_in = curDateTime();
+                    data.check_out = null;
+                    data.btnevent = "yes";
                     url_subpart = "checkin";
                     break;
                 case "lunch_clockout":
-                    emp.data.check_in = null;
-                    emp.data.check_out = curDateTime();
-                    emp.data.btnevent = clockEvent;
+                    data.check_in = null;
+                    data.check_out = curDateTime();
+                    data.btnevent = clockEvent;
                     url_subpart = "checkout";
                     break;
                 case "lunch_back":
-                    emp.data.check_in = null;
-                    emp.data.check_out = curDateTime();
-                    emp.data.btnevent = clockEvent;
+                    data.check_in = null;
+                    data.check_out = curDateTime();
+                    data.btnevent = clockEvent;
                     url_subpart = "checkin";
                     break;
                 case "day_clockout":
-                    emp.data.check_in = null;
-                    emp.data.check_out = curDateTime();
-                    emp.data.btnevent = "yes";
+                    data.check_in = null;
+                    data.check_out = curDateTime();
+                    data.btnevent = "yes";
                     url_subpart = "checkout";
                     break;
                 default:
@@ -142,7 +142,7 @@ namespace TalkUareU
                     return;
             }
 
-            HttpResponse res = http.Post("finger/" + url_subpart + "?punch_source=App", http.jsonStringify(emp.data));
+            HttpResponse res = http.Post("finger/" + url_subpart + "?punch_source=App", http.jsonStringify(data));
 
             if (!res.ok || res.resp.Contains("\"error\""))
             {

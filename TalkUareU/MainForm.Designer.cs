@@ -47,7 +47,7 @@
             this.btn_CheckinDetails.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_CheckinDetails.AutoSize = true;
             this.btn_CheckinDetails.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.btn_CheckinDetails.Location = new System.Drawing.Point(391, 44);
+            this.btn_CheckinDetails.Location = new System.Drawing.Point(411, 44);
             this.btn_CheckinDetails.Name = "btn_CheckinDetails";
             this.btn_CheckinDetails.Size = new System.Drawing.Size(188, 31);
             this.btn_CheckinDetails.TabIndex = 5;
@@ -60,7 +60,7 @@
             this.btn_getToken.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_getToken.AutoSize = true;
             this.btn_getToken.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.btn_getToken.Location = new System.Drawing.Point(495, 7);
+            this.btn_getToken.Location = new System.Drawing.Point(515, 7);
             this.btn_getToken.Name = "btn_getToken";
             this.btn_getToken.Size = new System.Drawing.Size(84, 31);
             this.btn_getToken.TabIndex = 3;
@@ -76,7 +76,7 @@
             this.flowPanel.AutoScroll = true;
             this.flowPanel.Location = new System.Drawing.Point(12, 150);
             this.flowPanel.Name = "flowPanel";
-            this.flowPanel.Size = new System.Drawing.Size(773, 300);
+            this.flowPanel.Size = new System.Drawing.Size(793, 300);
             this.flowPanel.TabIndex = 2;
             // 
             // lbl_ModuleName
@@ -105,7 +105,7 @@
             this.btn_Admin.BackgroundImage = global::TalkUareU.Properties.Resources.gear;
             this.btn_Admin.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btn_Admin.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btn_Admin.Location = new System.Drawing.Point(754, 82);
+            this.btn_Admin.Location = new System.Drawing.Point(774, 82);
             this.btn_Admin.Name = "btn_Admin";
             this.btn_Admin.Size = new System.Drawing.Size(31, 28);
             this.btn_Admin.TabIndex = 0;
@@ -137,7 +137,7 @@
             this.btn_refresh.BackgroundImage = global::TalkUareU.Properties.Resources.refresh;
             this.btn_refresh.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btn_refresh.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btn_refresh.Location = new System.Drawing.Point(754, 116);
+            this.btn_refresh.Location = new System.Drawing.Point(774, 116);
             this.btn_refresh.Name = "btn_refresh";
             this.btn_refresh.Size = new System.Drawing.Size(31, 28);
             this.btn_refresh.TabIndex = 9;
@@ -149,7 +149,7 @@
             // 
             this.pic_logo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pic_logo.Image = global::TalkUareU.Properties.Resources.talk_logo;
-            this.pic_logo.Location = new System.Drawing.Point(585, 9);
+            this.pic_logo.Location = new System.Drawing.Point(605, 9);
             this.pic_logo.Name = "pic_logo";
             this.pic_logo.Size = new System.Drawing.Size(200, 67);
             this.pic_logo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -161,7 +161,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(797, 462);
+            this.ClientSize = new System.Drawing.Size(817, 462);
             this.Controls.Add(this.btn_Admin);
             this.Controls.Add(this.lbl_SapName);
             this.Controls.Add(this.flowPanel);

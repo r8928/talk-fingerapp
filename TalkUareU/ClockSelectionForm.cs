@@ -5,22 +5,22 @@ namespace TalkUareU
 {
     public partial class ClockSelectionForm : Form
     {
-        EmployeeEntry Employee;
+        JsonItem data;
         HelperClass hlp;
 
-        public ClockSelectionForm(EmployeeEntry emp, HelperClass hlp)
+        public ClockSelectionForm(JsonItem data, HelperClass hlp)
         {
             InitializeComponent();
 
             this.hlp = hlp;
+            this.data = data;
 
-            Employee = emp;
 
             btn_LunchOut.Click += lunchClick;
             btn_ClockOut.Click += outClick;
             btn_LunchIn.Click += inClick;
 
-            switch (emp.ClockStatus)
+            switch (data.Status)
             {
                 case "checkin":
                     flowLayoutPanel1.Controls.Add(btn_LunchOut);
@@ -47,18 +47,18 @@ namespace TalkUareU
 
         private void lunchClick(Object o, System.EventArgs e)
         {
-            hlp.clockRequest(Employee, "lunch_clockout");
+            hlp.clockRequest(data, "lunch_clockout");
             this.Close();
         }
 
         private void inClick(Object o, System.EventArgs e)
         {
-            hlp.clockRequest(Employee, "lunch_back");
+            hlp.clockRequest(data, "lunch_back");
             this.Close();
         }
         private void outClick(Object o, System.EventArgs e)
         {
-            hlp.clockRequest(Employee, "day_clockout");
+            hlp.clockRequest(data, "day_clockout");
             this.Close();
         }
     }
