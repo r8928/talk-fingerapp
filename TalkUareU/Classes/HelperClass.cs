@@ -7,19 +7,9 @@ namespace TalkUareU
 {
     public class HelperClass
     {
-        public MessageClass msg = new MessageClass();
-        private static HelperClass helper;
+        public HttpService http;
+        public MessageClass msg;
 
-        private HelperClass() { }
-
-        public static HelperClass getHelper()
-        {
-            if (helper is null)
-            {
-                helper = new HelperClass();
-            }
-            return helper;
-        }
 
         public string curDateTime(string format = "yyyy-MM-dd h:mm")
         {
@@ -101,7 +91,7 @@ namespace TalkUareU
 
             string json_string = http.jsonStringify(formData);
 
-            http.hIdToken = Base64Encode(json_string);
+            HttpService.hIdToken = Base64Encode(json_string);
 
             return json_string;
         }
@@ -110,27 +100,6 @@ namespace TalkUareU
         public string Base64Encode(string str)
         {
             return Convert.ToBase64String(System.Text.Encoding.ASCII.GetBytes(str));
-        }
-
-
-        public class MessageClass
-        {
-            public void show(string msg, string title = null)
-            {
-                MessageBox.Show(msg, title);
-            }
-            public void error(string msg, string title = "ERROR")
-            {
-                MessageBox.Show(msg, title, MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            public void success(string msg, string title = null)
-            {
-                MessageBox.Show(msg, title, MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            public void warn(string msg, string title = null)
-            {
-                MessageBox.Show(msg, title, MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
         }
 
 

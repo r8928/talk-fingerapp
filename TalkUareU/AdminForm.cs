@@ -7,13 +7,18 @@ namespace TalkUareU
     public partial class AdminForm : Form
     {
         HelperClass hlp;
+        MessageClass msg;
+        HttpService http;
 
-        public AdminForm(HelperClass hlp)
+        public AdminForm(HelperClass hlp, HttpService http, MessageClass msg)
         {
             InitializeComponent();
 
             this.hlp = hlp;
-            chk_Debugging.Checked = http.HttpDebuging;
+            this.msg = msg;
+            this.http = http;
+
+            chk_Debugging.Checked = HttpService.HttpDebuging;
         }
 
         private void btn_RegisterApp_Click(object sender, EventArgs e)
@@ -30,7 +35,7 @@ namespace TalkUareU
 
             if (res.ok && res.hasJson)
             {
-                hlp.msg.success((string)res.json["message"]);
+                msg.success((string)res.json["message"]);
             }
             else
             {
@@ -40,7 +45,7 @@ namespace TalkUareU
 
         private void chk_Debugging_CheckedChanged(object sender, EventArgs e)
         {
-            http.HttpDebuging = chk_Debugging.Checked;
+            HttpService.HttpDebuging = chk_Debugging.Checked;
         }
     }
 }

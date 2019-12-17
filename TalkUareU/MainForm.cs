@@ -7,6 +7,8 @@ namespace TalkUareU
     public partial class MainForm : Form
     {
         HelperClass hlp;
+        MessageClass msg;
+        HttpService http;
 
         public static string appLocationId;
         private string appLocationName;
@@ -15,12 +17,14 @@ namespace TalkUareU
 
         EmployeeEntry curEmployee;
 
-        public MainForm(HelperClass hlp)
+        public MainForm(HelperClass hlp, HttpService http, MessageClass msg)
         {
             InitializeComponent();
             enableApp(false);
 
             this.hlp = hlp;
+            this.http = http;
+            this.msg = msg;
 
             validateApp();
 
@@ -81,7 +85,7 @@ namespace TalkUareU
 
             if (res.ok && res.hasJson)
             {
-                http.token = (string)res.json["token"];
+                HttpService.token = (string)res.json["token"];
             }
             else
             {
@@ -109,7 +113,7 @@ namespace TalkUareU
             // VALIDATE SAP
             if (String.IsNullOrEmpty(appLocationSap) || appLocationSap.Length < 4)
             {
-                hlp.msg.error("Invalid SAP selected");
+                msg.error("Invalid SAP selected");
                 return;
             }
 
@@ -212,7 +216,7 @@ namespace TalkUareU
         {
             if (String.IsNullOrEmpty(appLocationId))
             {
-                hlp.msg.error("App is not logged in, please try refreshing the listing and then try again");
+                msg.error("App is not logged in, please try refreshing the listing and then try again");
             }
 
             InputBoxResult userName = InputBox.Show("Please enter your BOOM username.", "Username");
@@ -254,7 +258,7 @@ namespace TalkUareU
             HttpResponse res = http.Post("finger/validateadmintoken", http.jsonStringify(formData));
             if (res.ok && res.hasJson)
             {
-                new AdminForm(hlp).ShowDialog();
+                new AdminForm(hlp, http, msg).ShowDialog();
 
                 validateApp();
                 refresh_listing();

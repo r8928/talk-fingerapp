@@ -13,10 +13,19 @@ namespace TalkUareU
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            
-            HelperClass hlp = HelperClass.getHelper();
 
-            Application.Run(new MainForm(hlp));
+            HttpService http = new HttpService();
+            MessageClass msg = new MessageClass();
+            HelperClass hlp = new HelperClass();
+
+            http.msg = msg;
+            http.hlp = hlp;
+            http.p = Properties.Settings.Default;
+
+            hlp.msg = msg;
+            hlp.http = http;
+
+            Application.Run(new MainForm(hlp, http, msg));
         }
     }
 }

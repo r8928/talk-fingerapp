@@ -6,15 +6,23 @@ using System.Net;
 
 namespace TalkUareU
 {
-    internal class http
+    public class HttpService
     {
+
         public static string token = "eyJkaXNwbGF5X25hbWUiOiJNb29qaWQiLCJyb2xlIjoxLCJsb2NhdGlvbiI6MSwic3ViIjo4NTEsImlzcyI6Imh0dHBzOi8vYm9vbS50YWxrbW9iaWxlbmV0LmNvbS9hcGkvdjEvc2lnbmluIiwiaWF0IjoxNTc2MTE3MTgzLCJleHAiOjE1NzYxODE5ODMsIm5iZiI6MTU3NjExNzE4MywianRpIjoibndpc0t6T2UzOGpmc1J3UCJ9";
-        public static string API_ENDPOINT = "https://dev.talkmobilenet.com/api/v1/";
-        public static bool HttpDebuging = System.Diagnostics.Debugger.IsAttached;
         public static string hIdToken = "";
 
+        public HelperClass hlp;
+        public MessageClass msg;
+        internal Properties.Settings p { get; set; }
 
-        public static HttpResponse Get(string url)
+#if DEBUG
+        public static bool HttpDebuging = false;
+#else
+        public static bool HttpDebuging = true;
+#endif
+
+        public HttpResponse Get(string url)
         {
 
             var request = (HttpWebRequest)WebRequest.Create(createURL(url));
@@ -24,7 +32,7 @@ namespace TalkUareU
 
         }
 
-        public static HttpResponse Post(string url, string json)
+        public HttpResponse Post(string url, string json)
         {
 
             var request = (HttpWebRequest)WebRequest.Create(createURL(url));
@@ -46,7 +54,7 @@ namespace TalkUareU
             return GetResponse(request, url, json, request.Method);
         }
 
-        public static HttpResponse GetResponse(HttpWebRequest request, string url, string json, string method)
+        public HttpResponse GetResponse(HttpWebRequest request, string url, string json, string method)
         {
             try
             {
@@ -89,7 +97,7 @@ namespace TalkUareU
 
         }
 
-        private static string createURL(string url)
+        private string createURL(string url)
         {
             string token_delim = "?";
             if (url.Contains("?"))
@@ -97,10 +105,10 @@ namespace TalkUareU
                 token_delim = "&";
             }
 
-            return API_ENDPOINT + url + token_delim + "token=" + token + "&hidtoken=" + hIdToken;
+            return p.API_ENDPOINT + url + token_delim + "token=" + token + "&hidtoken=" + hIdToken;
         }
 
-        public static void UploadNew(string actionUrl, string path, string token, string secret, string location, string role, string file)
+        public void UploadNew(string actionUrl, string path, string token, string secret, string location, string role, string file)
         {
 
             //var client = new HttpClient();
@@ -123,7 +131,7 @@ namespace TalkUareU
 
         }
 
-        private static void logResponse(string url, string request, string response, string statuscode)
+        private void logResponse(string url, string request, string response, string statuscode)
         {
             if (HttpDebuging == false)
             {
@@ -140,15 +148,15 @@ namespace TalkUareU
                 Environment.NewLine +
                 "Response: " + response;
 
-            HelperClass.getHelper().log(outp);
+            hlp.log(outp);
         }
 
-        public static JObject jsonParse(string str)
+        public JObject jsonParse(string str)
         {
             return JObject.Parse(str);
         }
 
-        public static string jsonStringify(object obj)
+        public string jsonStringify(object obj)
         {
             return JsonConvert.SerializeObject(obj);
         }
@@ -156,22 +164,23 @@ namespace TalkUareU
         /**
          * Standard error handling function
          */
-        public static void StdErr(HttpResponse res)
+        public void StdErr(HttpResponse res)
         {
             if (res.hasJson)
             {
-                HelperClass.getHelper().msg.warn((string)res.json["message"]);
+                msg.warn((string)res.json["message"]);
             }
             else
             {
-                HelperClass.getHelper().msg.error("Unknown error");
+                msg.error("Unknown error");
             }
         }
 
     }
 
-    internal class HttpResponse
+    public class HttpResponse
     {
+        MessageClass msg = new MessageClass();
         public HttpResponse(string httpresp, string statuscode)
         {
 
@@ -189,7 +198,7 @@ namespace TalkUareU
                     }
                     else if (resp.Equals("token_error"))
                     {
-                        HelperClass.getHelper().msg.error("App validation failed");
+                        msg.error("App validation failed");
                     }
                     else if (code == "200")
                     {
