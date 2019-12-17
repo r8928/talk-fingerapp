@@ -43,7 +43,7 @@ namespace TalkUareU
 
         }
 
-        public EmployeeEntry(string uid, string location_id, string role_id, string name = null, string display_name = null, string check_in = null, string check_out = null, string lunch_in = null, string lunch_out = null, string status = null)
+        public EmployeeEntry(string uid, string location_id, string role_id, string name = null, string display_name = null, string check_in = null, string check_out = null, string lunch_in = null, string lunch_out = null, string status = null, string btnevent = null, string punch_id = null)
         {
             InitializeComponent();
             data = new JsonItem(
@@ -56,7 +56,9 @@ namespace TalkUareU
                        check_out,
                        lunch_in,
                        lunch_out,
-                       status
+                       status,
+                       btnevent,
+                       punch_id
                    );
             EmpName = data.DName;
             ClockTimeString = data.getTimeString();

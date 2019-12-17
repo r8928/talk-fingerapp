@@ -17,9 +17,9 @@ namespace TalkUareU
         internal Properties.Settings p { get; set; }
 
 #if DEBUG
-        public static bool HttpDebuging = false;
-#else
         public static bool HttpDebuging = true;
+#else
+        public static bool HttpDebuging = false;
 #endif
 
         public HttpResponse Get(string url)

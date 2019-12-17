@@ -9,13 +9,11 @@ namespace TalkUareU
         HelperClass hlp;
         MessageClass msg;
         HttpService http;
+        AppData app;
 
-        public static string appLocationId;
-        private string appLocationName;
-        private string appLocationSap;
         private Label err_lbl = new Label();
 
-        public MainForm(HelperClass hlp, HttpService http, MessageClass msg)
+        public MainForm(AppData app, HelperClass hlp, HttpService http, MessageClass msg)
         {
             InitializeComponent();
             enableApp(false);
@@ -23,10 +21,11 @@ namespace TalkUareU
             this.hlp = hlp;
             this.http = http;
             this.msg = msg;
+            this.app = app;
 
             validateApp();
 
-            if (!String.IsNullOrEmpty(appLocationId))
+            if (!String.IsNullOrEmpty(app.LocationId))
             {
                 refresh_listing();
             }
@@ -40,11 +39,11 @@ namespace TalkUareU
             HttpResponse res = http.Post("finger/validateapp", hlp.getHardwareIds());
             if (res.ok && res.hasJson && res.resp.Contains("sap_id"))
             {
-                appLocationId = (string)res.json["sap_id"];
-                appLocationName = (string)res.json["sap_name"];
-                appLocationSap = (string)res.json["sap"];
+                app.LocationId = (string)res.json["sap_id"];
+                app.LocationName = (string)res.json["sap_name"];
+                app.LocationSap = (string)res.json["sap"];
 
-                lbl_SapName.Text = appLocationName;
+                lbl_SapName.Text = app.LocationName;
                 enableApp(true);
             }
             else
@@ -95,11 +94,11 @@ namespace TalkUareU
         {
 
             // VALIDATE APP
-            if (String.IsNullOrEmpty(appLocationId))
+            if (String.IsNullOrEmpty(app.LocationId))
             {
                 validateApp();
 
-                if (String.IsNullOrEmpty(appLocationId))
+                if (String.IsNullOrEmpty(app.LocationId))
                 {
                     return;
                 }
@@ -109,7 +108,7 @@ namespace TalkUareU
 
 
             // VALIDATE SAP
-            if (String.IsNullOrEmpty(appLocationSap) || appLocationSap.Length < 4)
+            if (String.IsNullOrEmpty(app.LocationSap) || app.LocationSap.Length < 4)
             {
                 msg.error("Invalid SAP selected");
                 return;
@@ -140,7 +139,7 @@ namespace TalkUareU
 
 
             // GET CHECKED IN REPS LISTING
-            HttpResponse response = http.Get("finger/checkedreps?sap=" + appLocationSap);
+            HttpResponse response = http.Get("finger/checkedreps?sap=" + app.LocationSap);
 
             if (response.ok && response.hasJson && response.resp.Contains("sap_id"))
             {
@@ -156,7 +155,9 @@ namespace TalkUareU
                         (string)item["check_out"],
                         (string)item["lunch_in"],
                         (string)item["lunch_out"],
-                        (string)item["status"]
+                        (string)item["status"],
+                        (string)item["btnevent"],
+                        (string)item["punch_id"]
                     );
                     em.Click += this.EmployeeEntryClick;
 
@@ -184,9 +185,36 @@ namespace TalkUareU
 
         private void EmployeeEntryClick(object sender, EventArgs e)
         {
+
             JsonItem data = ((EmployeeEntry)sender).data;
-            new ClockSelectionForm(data, hlp).ShowDialog();
-            refresh_listing();
+
+
+            // GET CHECKED IN REPS LISTING
+            HttpResponse res = http.Get("finger/checkedreps?sap=" + app.LocationSap + "&punch_id=" + data.punch_id);
+
+            if (res.ok && res.hasJson && res.resp.Contains("sap_id"))
+            {
+                var item = res.json["data"][0];
+
+                JsonItem updatedData = new JsonItem(
+                    (string)item["uid"],
+                    (string)item["location_id"],
+                    (string)item["role_id"],
+                    (string)item["name"],
+                    (string)item["display_name"],
+                    (string)item["check_in"],
+                    (string)item["check_out"],
+                    (string)item["lunch_in"],
+                    (string)item["lunch_out"],
+                    (string)item["status"],
+                    (string)item["btnevent"],
+                    (string)item["punch_id"]
+                    );
+
+                new ClockSelectionForm(updatedData, app, hlp, http, msg).ShowDialog();
+                refresh_listing();
+            }
+            else http.StdErr(res);
         }
 
         private void btn_refresh_Click(object sender, EventArgs e)
@@ -196,7 +224,7 @@ namespace TalkUareU
 
         private void GetCheckinDetails(object sender, EventArgs e)
         {
-            HttpResponse res = http.Get("timepunch/checkinoutstatus/11111/103"); //, http.jsonParse(json));
+            HttpResponse res = http.Get("timepunch/checkinoutstatus/11111/103");
 
             if (!res.ok)
             {
@@ -212,7 +240,7 @@ namespace TalkUareU
 
         private void btn_PunchIn_Click(object sender, EventArgs e)
         {
-            if (String.IsNullOrEmpty(appLocationId))
+            if (String.IsNullOrEmpty(app.LocationId))
             {
                 msg.error("App is not logged in, please try refreshing the listing and then try again");
             }
@@ -227,7 +255,7 @@ namespace TalkUareU
                 {
                     JsonItem data = new JsonItem(
                         (string)res.json["user"],
-                        appLocationId,
+                        app.LocationId,
                         (string)res.json["role"]
                     );
 

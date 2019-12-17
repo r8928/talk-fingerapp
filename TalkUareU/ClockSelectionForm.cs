@@ -7,12 +7,18 @@ namespace TalkUareU
     {
         JsonItem data;
         HelperClass hlp;
+        HttpService http;
+        MessageClass msg;
+        AppData app;
 
-        public ClockSelectionForm(JsonItem data, HelperClass hlp)
+        public ClockSelectionForm(JsonItem data, AppData app, HelperClass hlp, HttpService http, MessageClass msg)
         {
             InitializeComponent();
 
+            this.app = app;
             this.hlp = hlp;
+            this.http = http;
+            this.msg = msg;
             this.data = data;
 
 
@@ -45,19 +51,49 @@ namespace TalkUareU
             flowLayoutPanel1.Left = (FormWidth / 2) - (FlowWidth / 2) - 5;
         }
 
+        private bool verifyCurrentStatus()
+        {
+            // GET CHECKED IN REPS LISTING
+            HttpResponse res = http.Get("finger/checkedreps?sap=" + app.LocationSap + "&punch_id=" + data.punch_id);
+
+            if (res.ok && res.hasJson && res.resp.Contains("sap_id"))
+            {
+                var item = res.json["data"][0];
+
+                return ((string)item["status"] == data.Status);
+            }
+            else return false;
+        }
+
+
         private void lunchClick(Object o, System.EventArgs e)
         {
+            if (!verifyCurrentStatus())
+            {
+                msg.error("An unknown error occured, please press refresh and try again");
+                return;
+            }
             hlp.clockRequest(data, "lunch_clockout");
             this.Close();
         }
 
         private void inClick(Object o, System.EventArgs e)
         {
+            if (!verifyCurrentStatus())
+            {
+                msg.error("An unknown error occured, please press refresh and try again");
+                return;
+            }
             hlp.clockRequest(data, "lunch_back");
             this.Close();
         }
         private void outClick(Object o, System.EventArgs e)
         {
+            if (!verifyCurrentStatus())
+            {
+                msg.error("An unknown error occured, please press refresh and try again");
+                return;
+            }
             hlp.clockRequest(data, "day_clockout");
             this.Close();
         }

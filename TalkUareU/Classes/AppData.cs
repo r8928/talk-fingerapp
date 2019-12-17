@@ -16,10 +16,6 @@ namespace TalkUareU
 	public class AppData
 	{
 
-		AppData ()
-		{
-
-		}
 		internal Properties.Settings p
 		{
 			get => p;
@@ -30,7 +26,11 @@ namespace TalkUareU
 			}
 		}
 
-		//public const int MaxFingers = p.MaxFingers;
+
+		// LOCATION VARIABLES
+		public string LocationId;
+		public string LocationName;
+		public string LocationSap;
 
 
 		// shared data

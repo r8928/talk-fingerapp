@@ -19,11 +19,12 @@
         public string Status;
 
         public string btnevent;
+        public string punch_id;
 
         //public string ip_in;
         //public string ip_out;
 
-        public JsonItem(string USER_ID, string LOCATION, string ROLE_ID, string NAME = null, string DNAME = null, string CHECKIN = null, string CHECKOUT = null, string LUNCHIN = null, string LUNCHOUT = null, string STATUS = null, string BTNEVENT = null)
+        public JsonItem(string USER_ID, string LOCATION, string ROLE_ID, string NAME = null, string DNAME = null, string CHECKIN = null, string CHECKOUT = null, string LUNCHIN = null, string LUNCHOUT = null, string STATUS = null, string BTNEVENT = null, string PUNCH_ID = null)
         {
             user_id = USER_ID;
             location_id = LOCATION;
@@ -34,8 +35,9 @@
             check_out = CHECKOUT;
             Lunch_in = LUNCHIN;
             Lunch_out = LUNCHOUT;
-            btnevent = BTNEVENT;
             Status = STATUS;
+            btnevent = BTNEVENT;
+            punch_id = PUNCH_ID;
         }
 
         public string getTimeString()

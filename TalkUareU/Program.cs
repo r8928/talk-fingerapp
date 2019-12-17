@@ -14,6 +14,7 @@ namespace TalkUareU
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
+            AppData app = new AppData();
             HttpService http = new HttpService();
             MessageClass msg = new MessageClass();
             HelperClass hlp = new HelperClass();
@@ -25,7 +26,7 @@ namespace TalkUareU
             hlp.msg = msg;
             hlp.http = http;
 
-            Application.Run(new MainForm(hlp, http, msg));
+            Application.Run(new MainForm(app, hlp, http, msg));
         }
     }
 }
