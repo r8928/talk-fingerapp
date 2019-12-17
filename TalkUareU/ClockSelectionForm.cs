@@ -6,11 +6,13 @@ namespace TalkUareU
     public partial class ClockSelectionForm : Form
     {
         EmployeeEntry Employee;
-        HelperClass hlp = HelperClass.getHelper();
+        HelperClass hlp;
 
-        public ClockSelectionForm(EmployeeEntry emp)
+        public ClockSelectionForm(EmployeeEntry emp, HelperClass hlp)
         {
             InitializeComponent();
+
+            this.hlp = hlp;
 
             Employee = emp;
 

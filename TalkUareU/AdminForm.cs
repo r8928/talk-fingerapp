@@ -6,11 +6,13 @@ namespace TalkUareU
 {
     public partial class AdminForm : Form
     {
-        HelperClass hlp = HelperClass.getHelper();
+        HelperClass hlp;
 
-        public AdminForm()
+        public AdminForm(HelperClass hlp)
         {
             InitializeComponent();
+
+            this.hlp = hlp;
             chk_Debugging.Checked = http.HttpDebuging;
         }
 

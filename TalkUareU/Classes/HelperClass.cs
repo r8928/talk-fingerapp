@@ -175,7 +175,7 @@ namespace TalkUareU
 
             HttpResponse res = http.Post("finger/" + url_subpart + "?punch_source=App", http.jsonStringify(emp.data));
 
-            if (!res.ok || res.resp.Contains("\"error\"") )
+            if (!res.ok || res.resp.Contains("\"error\""))
             {
                 http.StdErr(res);
             }

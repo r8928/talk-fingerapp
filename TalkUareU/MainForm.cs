@@ -6,7 +6,7 @@ namespace TalkUareU
 {
     public partial class MainForm : Form
     {
-        HelperClass hlp = HelperClass.getHelper();
+        HelperClass hlp;
 
         public static string appLocationId;
         private string appLocationName;
@@ -15,10 +15,12 @@ namespace TalkUareU
 
         EmployeeEntry curEmployee;
 
-        public MainForm()
+        public MainForm(HelperClass hlp)
         {
             InitializeComponent();
             enableApp(false);
+
+            this.hlp = hlp;
 
             validateApp();
 
@@ -181,7 +183,7 @@ namespace TalkUareU
         private void EmployeeEntryClick(object sender, EventArgs e)
         {
             curEmployee = (EmployeeEntry)sender;
-            new ClockSelectionForm(curEmployee).ShowDialog();
+            new ClockSelectionForm(curEmployee, hlp).ShowDialog();
             refresh_listing();
         }
 
@@ -252,7 +254,7 @@ namespace TalkUareU
             HttpResponse res = http.Post("finger/validateadmintoken", http.jsonStringify(formData));
             if (res.ok && res.hasJson)
             {
-                new AdminForm().ShowDialog();
+                new AdminForm(hlp).ShowDialog();
 
                 validateApp();
                 refresh_listing();
