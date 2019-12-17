@@ -20,17 +20,17 @@ namespace TalkUareU
 
             switch (emp.ClockStatus)
             {
-                case "in":
+                case "checkin":
                     flowLayoutPanel1.Controls.Add(btn_LunchOut);
                     flowLayoutPanel1.Controls.Add(btn_ClockOut);
                     break;
-                case "lunch":
+                case "lunchout":
                     flowLayoutPanel1.Controls.Add(btn_LunchIn);
                     break;
-                case "lunch-back":
+                case "lunch_back":
                     flowLayoutPanel1.Controls.Add(btn_ClockOut);
                     break;
-                case "out":
+                case "checkout":
                     flowLayoutPanel1.Controls.Add(lbl_Message);
                     lbl_Message.Text = "You are already clocked out for the day.";
                     break;

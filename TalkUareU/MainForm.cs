@@ -142,7 +142,7 @@ namespace TalkUareU
             {
                 foreach (var item in response.json["data"])
                 {
-                    JsonItem data = new JsonItem(
+                    EmployeeEntry em = new EmployeeEntry(
                         (string)item["uid"],
                         (string)item["location_id"],
                         (string)item["role_id"],
@@ -154,9 +154,6 @@ namespace TalkUareU
                         (string)item["lunch_out"],
                         (string)item["status"]
                     );
-
-                    EmployeeEntry em = new EmployeeEntry(data);
-
                     em.Click += this.EmployeeEntryClick;
 
                     flowPanel.Controls.Add(em);
@@ -224,11 +221,11 @@ namespace TalkUareU
 
                 if (res.ok && res.hasJson)
                 {
-                    EmployeeEntry emp = new EmployeeEntry(new JsonItem(
+                    EmployeeEntry emp = new EmployeeEntry(
                         (string)res.json["user"],
                         appLocationId,
                         (string)res.json["role"]
-                    ));
+                    );
 
                     hlp.clockRequest(emp, "day_clockin");
                     refresh_listing();

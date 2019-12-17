@@ -113,6 +113,16 @@ namespace TalkUareU.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap lunch_back {
+            get {
+                object obj = ResourceManager.GetObject("lunch_back", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap lunchout {
             get {
                 object obj = ResourceManager.GetObject("lunchout", resourceCulture);

@@ -7,29 +7,15 @@ namespace TalkUareU
     public partial class EmployeeEntry : Panel
     {
         private string _ClockTimeString;
-        public JsonItem data;
+
+        public JsonItem data { get; }
 
         public string ClockStatus
         {
             set
             {
-                switch (value)
-                {
-                    case "in":
-                        pic_Icon.BackgroundImage = Properties.Resources.checkin;
-                        break;
-                    case "out":
-                        pic_Icon.BackgroundImage = Properties.Resources.checkout;
-                        break;
-                    case "lunch":
-                        pic_Icon.BackgroundImage = Properties.Resources.lunchout;
-                        break;
-                    case "lunch-back":
-                        pic_Icon.BackgroundImage = Properties.Resources.checkin;
-                        break;
-                    default:
-                        break;
-                }
+                if (value == null) return;
+                pic_Icon.BackgroundImage = (System.Drawing.Bitmap)Properties.Resources.ResourceManager.GetObject(value);
                 pic_Icon.Refresh();
                 data.Status = value;
             }
@@ -57,21 +43,32 @@ namespace TalkUareU
 
         }
 
-        public EmployeeEntry(JsonItem j)
+        public EmployeeEntry(string uid, string location_id, string role_id, string name = null, string display_name = null, string check_in = null, string check_out = null, string lunch_in = null, string lunch_out = null, string status = null)
         {
             InitializeComponent();
-            data = j;
+            data = new JsonItem(
+                       uid,
+                       location_id,
+                       role_id,
+                       name,
+                       display_name,
+                       check_in,
+                       check_out,
+                       lunch_in,
+                       lunch_out,
+                       status
+                   );
             EmpName = data.DName;
-            ClockTimeString = data.getTimeString(); // need to fix
+            ClockTimeString = data.getTimeString();
             ClockStatus = data.Status;
 
             Controls.Add(pic_Icon);
             Controls.Add(lbl_Name);
             Controls.Add(lbl_timeString);
 
-            lbl_Name.Click += new System.EventHandler(childControl_Click);
-            pic_Icon.Click += new System.EventHandler(childControl_Click);
-            lbl_timeString.Click += new System.EventHandler(childControl_Click);
+            lbl_Name.Click += childControl_Click;
+            pic_Icon.Click += childControl_Click; ;
+            lbl_timeString.Click += childControl_Click;
 
         }
 
@@ -80,11 +77,6 @@ namespace TalkUareU
             // just raise user control's click event using inherited method OnClick()
             OnClick(e);
         }
-
-        // [Category("Custom")]
-        // [Browsable(true)]
-        // [Description("Asdfds")]
-        // [Editor(typeof(System.Windows.Forms.Design.WindowsFormsComponentEditor), typeof(System.Drawing.Design.UITypeEditor))]
 
         protected override void OnPaint(PaintEventArgs pe)
         {
