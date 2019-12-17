@@ -18,10 +18,13 @@ namespace TalkUareU
             HttpService http = new HttpService();
             MessageClass msg = new MessageClass();
             HelperClass hlp = new HelperClass();
+            Properties.Settings p = Properties.Settings.Default;
+
+            app.p = p;
 
             http.msg = msg;
             http.hlp = hlp;
-            http.p = Properties.Settings.Default;
+            http.p = p;
 
             hlp.msg = msg;
             hlp.http = http;

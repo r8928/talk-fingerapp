@@ -29,8 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.btn_CheckinDetails = new System.Windows.Forms.Button();
-            this.btn_getToken = new System.Windows.Forms.Button();
             this.flowPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.lbl_ModuleName = new System.Windows.Forms.Label();
             this.lbl_SapName = new System.Windows.Forms.Label();
@@ -39,34 +37,9 @@
             this.btn_PunchIn = new System.Windows.Forms.Button();
             this.btn_refresh = new System.Windows.Forms.Button();
             this.pic_logo = new System.Windows.Forms.PictureBox();
+            this.btn_Register = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pic_logo)).BeginInit();
             this.SuspendLayout();
-            // 
-            // btn_CheckinDetails
-            // 
-            this.btn_CheckinDetails.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_CheckinDetails.AutoSize = true;
-            this.btn_CheckinDetails.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.btn_CheckinDetails.Location = new System.Drawing.Point(411, 44);
-            this.btn_CheckinDetails.Name = "btn_CheckinDetails";
-            this.btn_CheckinDetails.Size = new System.Drawing.Size(188, 31);
-            this.btn_CheckinDetails.TabIndex = 5;
-            this.btn_CheckinDetails.Text = "GET CHECKING DETAILS";
-            this.btn_CheckinDetails.UseVisualStyleBackColor = true;
-            this.btn_CheckinDetails.Click += new System.EventHandler(this.GetCheckinDetails);
-            // 
-            // btn_getToken
-            // 
-            this.btn_getToken.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_getToken.AutoSize = true;
-            this.btn_getToken.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.btn_getToken.Location = new System.Drawing.Point(515, 7);
-            this.btn_getToken.Name = "btn_getToken";
-            this.btn_getToken.Size = new System.Drawing.Size(84, 31);
-            this.btn_getToken.TabIndex = 3;
-            this.btn_getToken.Text = "getToken";
-            this.btn_getToken.UseVisualStyleBackColor = true;
-            this.btn_getToken.Click += new System.EventHandler(this.btnGetToken_Click);
             // 
             // flowPanel
             // 
@@ -156,17 +129,26 @@
             this.pic_logo.TabIndex = 7;
             this.pic_logo.TabStop = false;
             // 
+            // btn_Register
+            // 
+            this.btn_Register.Location = new System.Drawing.Point(313, 13);
+            this.btn_Register.Name = "btn_Register";
+            this.btn_Register.Size = new System.Drawing.Size(120, 29);
+            this.btn_Register.TabIndex = 10;
+            this.btn_Register.Text = "btn_Register";
+            this.btn_Register.UseVisualStyleBackColor = true;
+            this.btn_Register.Click += new System.EventHandler(this.btn_Register_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(817, 462);
+            this.Controls.Add(this.btn_Register);
             this.Controls.Add(this.btn_Admin);
             this.Controls.Add(this.lbl_SapName);
             this.Controls.Add(this.flowPanel);
-            this.Controls.Add(this.btn_getToken);
-            this.Controls.Add(this.btn_CheckinDetails);
             this.Controls.Add(this.lbl_ModuleName);
             this.Controls.Add(this.pic_logo);
             this.Controls.Add(this.btn_PunchIn);
@@ -188,12 +170,10 @@
         private System.Windows.Forms.Button btn_PunchIn;
         private System.Windows.Forms.PictureBox pic_logo;
         private System.Windows.Forms.Label lbl_ModuleName;
-        private System.Windows.Forms.Button btn_CheckinDetails;
-        private System.Windows.Forms.Button btn_getToken;
         private System.Windows.Forms.FlowLayoutPanel flowPanel;
         private System.Windows.Forms.Label lbl_SapName;
         private System.Windows.Forms.Button btn_Admin;
         private System.Windows.Forms.ToolTip toolTip1;
-
+        private System.Windows.Forms.Button btn_Register;
     }
 }

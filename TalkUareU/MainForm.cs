@@ -69,27 +69,6 @@ namespace TalkUareU
             btn_refresh.Enabled = enable;
         }
 
-        private void getNewToken()
-        {
-            string json = @"{
-              'name': 'Jenira.Griffith107',
-              'password': '12'
-            }";
-
-            HttpResponse logout = http.Get("logout/11111");
-
-            HttpResponse res = http.Post("signin", json);
-
-            if (res.ok && res.hasJson)
-            {
-                HttpService.token = (string)res.json["token"];
-            }
-            else
-            {
-                http.StdErr(res);
-            }
-        }
-
         private void refresh_listing()
         {
 
@@ -222,22 +201,6 @@ namespace TalkUareU
             refresh_listing();
         }
 
-        private void GetCheckinDetails(object sender, EventArgs e)
-        {
-            HttpResponse res = http.Get("timepunch/checkinoutstatus/11111/103");
-
-            if (!res.ok)
-            {
-                http.StdErr(res);
-            }
-        }
-
-        private void btnGetToken_Click(object sender, EventArgs e)
-        {
-            getNewToken();
-            refresh_listing();
-        }
-
         private void btn_PunchIn_Click(object sender, EventArgs e)
         {
             if (String.IsNullOrEmpty(app.LocationId))
@@ -295,5 +258,11 @@ namespace TalkUareU
             }
         }
 
+        private void btn_Register_Click(object sender, EventArgs e)
+        {
+            EnrollmentForm form = new EnrollmentForm(app);
+
+            form.ShowDialog();
+        }
     }
 }

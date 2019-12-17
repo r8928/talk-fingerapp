@@ -15,14 +15,15 @@ namespace TalkUareU
 	//
 	public class AppData
 	{
-
+		private Properties.Settings _p = null;
 		internal Properties.Settings p
 		{
-			get => p;
+			get => _p;
 			set
 			{
-				MaxEnrollFingerCount = p.MaxFingers;
-				Templates = new DPFP.Template[p.MaxFingers];
+				MaxEnrollFingerCount = value.MaxFingers;
+				Templates = new DPFP.Template[value.MaxFingers];
+				_p = value;
 			}
 		}
 
