@@ -5,8 +5,5 @@
     <Setting Name="API_ENDPOINT" Type="System.String" Scope="Application">
       <Value Profile="(Default)">https://dev.talkmobilenet.com/api/v1/</Value>
     </Setting>
-    <Setting Name="MaxFingers" Type="System.Int32" Scope="Application">
-      <Value Profile="(Default)">1</Value>
-    </Setting>
   </Settings>
 </SettingsFile>

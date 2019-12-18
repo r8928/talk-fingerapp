@@ -38,6 +38,7 @@
             this.btn_refresh = new System.Windows.Forms.Button();
             this.pic_logo = new System.Windows.Forms.PictureBox();
             this.btn_Register = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pic_logo)).BeginInit();
             this.SuspendLayout();
             // 
@@ -139,12 +140,23 @@
             this.btn_Register.UseVisualStyleBackColor = true;
             this.btn_Register.Click += new System.EventHandler(this.btn_Register_Click);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(310, 49);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 11;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(817, 462);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.btn_Register);
             this.Controls.Add(this.btn_Admin);
             this.Controls.Add(this.lbl_SapName);
@@ -175,5 +187,6 @@
         private System.Windows.Forms.Button btn_Admin;
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.Button btn_Register;
+        private System.Windows.Forms.Button button1;
     }
 }

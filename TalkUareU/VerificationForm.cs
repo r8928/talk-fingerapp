@@ -19,17 +19,15 @@ namespace TalkUareU
       DPFP.Verification.Verification.Result res = new DPFP.Verification.Verification.Result();
 
       // Compare feature set with all stored templates.
-      foreach (DPFP.Template template in Data.Templates) {
+
         // Get template from storage.
-        if (template != null) {
+        if (Data.Template.Size>0) {
           // Compare feature set with particular template.
-          ver.Verify(FeatureSet, template, ref res);
+          ver.Verify(FeatureSet, Data.Template, ref res);
           Data.IsFeatureSetMatched = res.Verified;
           Data.FalseAcceptRate = res.FARAchieved;
-          if (res.Verified)
-            break; // success
         }
-      }
+      
 
       if (!res.Verified)
         Status = DPFP.Gui.EventHandlerStatus.Failure;

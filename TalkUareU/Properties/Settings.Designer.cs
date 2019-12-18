@@ -31,14 +31,5 @@ namespace TalkUareU.Properties {
                 return ((string)(this["API_ENDPOINT"]));
             }
         }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("1")]
-        public int MaxFingers {
-            get {
-                return ((int)(this["MaxFingers"]));
-            }
-        }
     }
 }

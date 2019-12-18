@@ -264,5 +264,12 @@ namespace TalkUareU
 
             form.ShowDialog();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            VerificationForm form = new VerificationForm(app);
+
+            form.ShowDialog();
+        }
     }
 }

@@ -15,33 +15,23 @@ namespace TalkUareU
 	//
 	public class AppData
 	{
-		private Properties.Settings _p = null;
-		internal Properties.Settings p
-		{
-			get => _p;
-			set
-			{
-				MaxEnrollFingerCount = value.MaxFingers;
-				Templates = new DPFP.Template[value.MaxFingers];
-				_p = value;
-			}
-		}
+		internal Properties.Settings p { get; set; }
+
 
 
 		// LOCATION VARIABLES
-		public string LocationId;
-		public string LocationName;
-		public string LocationSap;
+		public string LocationId = "";
+		public string LocationSap = "";
+		public string LocationName = "";
 
 
 		// shared data
 		public int EnrolledFingersMask = 0;
-		public int MaxEnrollFingerCount;
+		public int MaxEnrollFingerCount = 1;
 		public bool IsEventHandlerSucceeds = true;
 		public bool IsFeatureSetMatched = false;
 		public int FalseAcceptRate = 0;
-		//public DPFP.Template[] Templates = new DPFP.Template[MaxFingers];
-		public DPFP.Template[] Templates;
+		public DPFP.Template Template = new DPFP.Template();
 
 		// data change notification
 		public void Update() { OnChange(); }        // just fires the OnChange() event
