@@ -50,7 +50,7 @@ namespace TalkUareU
             this.CloseButton.Name = "CloseButton";
             this.CloseButton.Size = new System.Drawing.Size(100, 30);
             this.CloseButton.TabIndex = 999;
-            this.CloseButton.Text = "Close";
+            this.CloseButton.Text = "&Close";
             this.CloseButton.UseVisualStyleBackColor = false;
             // 
             // enrollControl
@@ -78,7 +78,6 @@ namespace TalkUareU
             // 
             this.pnl_Validation.Controls.Add(this.btn_ValidateUser);
             this.pnl_Validation.Controls.Add(this.lbl_Token);
-            this.pnl_Validation.Controls.Add(this.CloseButton);
             this.pnl_Validation.Controls.Add(this.lbl_Username);
             this.pnl_Validation.Controls.Add(this.txt_Token);
             this.pnl_Validation.Controls.Add(this.txt_Username);
@@ -96,7 +95,7 @@ namespace TalkUareU
             this.btn_ValidateUser.Name = "btn_ValidateUser";
             this.btn_ValidateUser.Size = new System.Drawing.Size(100, 30);
             this.btn_ValidateUser.TabIndex = 5;
-            this.btn_ValidateUser.Text = "Next";
+            this.btn_ValidateUser.Text = "&Next";
             this.btn_ValidateUser.UseVisualStyleBackColor = false;
             this.btn_ValidateUser.Click += new System.EventHandler(this.btn_ValidateUser_Click);
             // 
@@ -105,7 +104,7 @@ namespace TalkUareU
             this.lbl_Token.AutoSize = true;
             this.lbl_Token.Location = new System.Drawing.Point(26, 172);
             this.lbl_Token.Name = "lbl_Token";
-            this.lbl_Token.Size = new System.Drawing.Size(140, 21);
+            this.lbl_Token.Size = new System.Drawing.Size(143, 20);
             this.lbl_Token.TabIndex = 2;
             this.lbl_Token.Text = "Registration Token";
             // 
@@ -114,22 +113,24 @@ namespace TalkUareU
             this.lbl_Username.AutoSize = true;
             this.lbl_Username.Location = new System.Drawing.Point(26, 137);
             this.lbl_Username.Name = "lbl_Username";
-            this.lbl_Username.Size = new System.Drawing.Size(81, 21);
+            this.lbl_Username.Size = new System.Drawing.Size(83, 20);
             this.lbl_Username.TabIndex = 0;
             this.lbl_Username.Text = "Username";
             // 
             // txt_Token
             // 
+            this.txt_Token.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_Token.Location = new System.Drawing.Point(172, 172);
             this.txt_Token.Name = "txt_Token";
-            this.txt_Token.Size = new System.Drawing.Size(311, 29);
+            this.txt_Token.Size = new System.Drawing.Size(284, 26);
             this.txt_Token.TabIndex = 3;
             // 
             // txt_Username
             // 
+            this.txt_Username.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_Username.Location = new System.Drawing.Point(172, 137);
             this.txt_Username.Name = "txt_Username";
-            this.txt_Username.Size = new System.Drawing.Size(311, 29);
+            this.txt_Username.Size = new System.Drawing.Size(284, 26);
             this.txt_Username.TabIndex = 1;
             // 
             // label1
@@ -139,17 +140,17 @@ namespace TalkUareU
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(490, 173);
             this.label1.TabIndex = 999;
-            this.label1.Text = "Please enter the username and registration token to register. If you don\'t have r" +
+            this.label1.Text = "Please enter the username and registration token to register.\nIf you don\'t have r" +
     "egistration token please contact HR department.";
             // 
             // ListEvents
             // 
             this.ListEvents.BackColor = System.Drawing.SystemColors.InactiveBorder;
             this.ListEvents.FormattingEnabled = true;
-            this.ListEvents.ItemHeight = 21;
+            this.ListEvents.ItemHeight = 20;
             this.ListEvents.Location = new System.Drawing.Point(3, 223);
             this.ListEvents.Name = "ListEvents";
-            this.ListEvents.Size = new System.Drawing.Size(440, 88);
+            this.ListEvents.Size = new System.Drawing.Size(440, 64);
             this.ListEvents.TabIndex = 1000;
             this.ListEvents.Visible = false;
             // 
@@ -158,13 +159,15 @@ namespace TalkUareU
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.CancelButton = this.CloseButton;
             this.ClientSize = new System.Drawing.Size(500, 318);
+            this.Controls.Add(this.CloseButton);
             this.Controls.Add(this.pnl_Validation);
             this.Controls.Add(this.enrollControl);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "EnrollmentForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Fingerprint Enrollment";
             this.Load += new System.EventHandler(this.EnrollmentForm_Load);
             this.pnl_Validation.ResumeLayout(false);
