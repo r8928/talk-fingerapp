@@ -1,15 +1,16 @@
 ﻿using System;
+using System.IO;
 using System.Windows.Forms;
 
 namespace TalkUareU
 {
     public partial class ClockSelectionForm : Form
     {
-        JsonItem data;
-        HelperClass hlp;
-        HttpService http;
-        MessageClass msg;
-        AppData app;
+        private JsonItem data;
+        private HelperClass hlp;
+        private HttpService http;
+        private MessageClass msg;
+        private AppData app;
 
         public ClockSelectionForm(JsonItem data, AppData app, HelperClass hlp, HttpService http, MessageClass msg)
         {
@@ -22,7 +23,7 @@ namespace TalkUareU
             this.data = data;
 
 
-            btn_LunchOut.Click += lunchClick;
+            btn_LunchOut.Click += lunchOutClick;
             btn_ClockOut.Click += outClick;
             btn_LunchIn.Click += inClick;
 
@@ -51,7 +52,25 @@ namespace TalkUareU
             flowLayoutPanel1.Left = (FormWidth / 2) - (FlowWidth / 2) - 5;
         }
 
-        private bool verifyCurrentStatus()
+        private bool preClockChecks()
+        { 
+            if (!getUpdatedRepStatus())
+            {
+                msg.error("An unknown error occured, please press refresh and try again");
+                return false;
+            }
+
+
+            if (!validateFinger())
+            {
+                msg.error("Fingerprint validation failed");
+                return false;
+            }
+
+            return true;
+        }
+
+        private bool getUpdatedRepStatus()
         {
             // GET CHECKED IN REPS LISTING
             HttpResponse res = http.Get("finger/checkedreps?sap=" + app.LocationSap + "&punch_id=" + data.punch_id);
@@ -64,38 +83,69 @@ namespace TalkUareU
             }
             else return false;
         }
-
-
-        private void lunchClick(Object o, System.EventArgs e)
+        
+        private void lunchOutClick(Object o, System.EventArgs e)
         {
-            if (!verifyCurrentStatus())
+            if (preClockChecks())
             {
-                msg.error("An unknown error occured, please press refresh and try again");
-                return;
+                hlp.clockRequest(data, "lunch_clockout");
+                this.Close();
+                this.Dispose();
             }
-            hlp.clockRequest(data, "lunch_clockout");
-            this.Close();
+            
         }
 
         private void inClick(Object o, System.EventArgs e)
         {
-            if (!verifyCurrentStatus())
+            if (preClockChecks())
             {
-                msg.error("An unknown error occured, please press refresh and try again");
-                return;
+                hlp.clockRequest(data, "lunch_back");
+                this.Close();
+                this.Dispose();
             }
-            hlp.clockRequest(data, "lunch_back");
-            this.Close();
         }
+        
         private void outClick(Object o, System.EventArgs e)
         {
-            if (!verifyCurrentStatus())
+            if (preClockChecks())
             {
-                msg.error("An unknown error occured, please press refresh and try again");
-                return;
+                hlp.clockRequest(data, "day_clockout");
+                this.Close();
+                this.Dispose();
             }
-            hlp.clockRequest(data, "day_clockout");
-            this.Close();
+        }
+
+        private void requestTemplate()
+        {
+            app.Template = new DPFP.Template();
+
+
+            var formData = new { user = data.user_id };
+            HttpResponse res = http.Post("finger/requesttemplate", http.jsonStringify(formData));
+            if (res.ok && res.hasJson)
+            {
+                string TemplateString = (string)res.json["template"];
+
+
+                MemoryStream msI = new MemoryStream(Convert.FromBase64String(TemplateString));
+                app.Template.DeSerialize(msI);
+            }
+            else
+            {
+                http.StdErr(res);
+            }
+        }
+        
+        private bool validateFinger()
+        {
+            requestTemplate();
+            if (app.Template.Size == 0)
+            {
+                return false;
+            }
+            new VerificationForm(app).ShowDialog();
+
+            return app.IsFeatureSetMatched;
         }
     }
 }

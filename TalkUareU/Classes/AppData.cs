@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace TalkUareU
+﻿namespace TalkUareU
 {
 	public delegate void OnChangeHandler();
 

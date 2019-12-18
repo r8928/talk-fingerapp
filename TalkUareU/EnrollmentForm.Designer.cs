@@ -29,52 +29,61 @@ namespace TalkUareU
         private void InitializeComponent()
         {
             this.CloseButton = new System.Windows.Forms.Button();
-            this.EnrollmentControl = new DPFP.Gui.Enrollment.EnrollmentControl();
+            this.enrollControl = new DPFP.Gui.Enrollment.EnrollmentControl();
             this.ListEvents = new System.Windows.Forms.ListBox();
             this.GroupEvents = new System.Windows.Forms.GroupBox();
+            this.pnl_Validation = new System.Windows.Forms.Panel();
+            this.btn_ValidateUser = new System.Windows.Forms.Button();
+            this.lbl_Token = new System.Windows.Forms.Label();
+            this.lbl_Username = new System.Windows.Forms.Label();
+            this.txt_Token = new System.Windows.Forms.TextBox();
+            this.txt_Username = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.GroupEvents.SuspendLayout();
+            this.pnl_Validation.SuspendLayout();
             this.SuspendLayout();
             // 
             // CloseButton
             // 
             this.CloseButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.CloseButton.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.CloseButton.Location = new System.Drawing.Point(410, 474);
+            //this.CloseButton.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.CloseButton.Location = new System.Drawing.Point(414, 474);
             this.CloseButton.Name = "CloseButton";
             this.CloseButton.Size = new System.Drawing.Size(75, 23);
-            this.CloseButton.TabIndex = 1;
+            this.CloseButton.TabIndex = 999;
             this.CloseButton.Text = "Close";
             this.CloseButton.UseVisualStyleBackColor = true;
             // 
-            // EnrollmentControl
+            // enrollControl
             // 
-            this.EnrollmentControl.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.EnrollmentControl.EnrolledFingerMask = 0;
-            this.EnrollmentControl.Location = new System.Drawing.Point(2, 1);
-            this.EnrollmentControl.MaxEnrollFingerCount = 1;
-            this.EnrollmentControl.Name = "EnrollmentControl";
-            this.EnrollmentControl.ReaderSerialNumber = "00000000-0000-0000-0000-000000000000";
-            this.EnrollmentControl.Size = new System.Drawing.Size(492, 314);
-            this.EnrollmentControl.TabIndex = 2;
-            this.EnrollmentControl.OnDelete += new DPFP.Gui.Enrollment.EnrollmentControl._OnDelete(this.EnrollmentControl_OnDelete);
-            this.EnrollmentControl.OnEnroll += new DPFP.Gui.Enrollment.EnrollmentControl._OnEnroll(this.EnrollmentControl_OnEnroll);
-            this.EnrollmentControl.OnFingerTouch += new DPFP.Gui.Enrollment.EnrollmentControl._OnFingerTouch(this.EnrollmentControl_OnFingerTouch);
-            this.EnrollmentControl.OnFingerRemove += new DPFP.Gui.Enrollment.EnrollmentControl._OnFingerRemove(this.EnrollmentControl_OnFingerRemove);
-            this.EnrollmentControl.OnComplete += new DPFP.Gui.Enrollment.EnrollmentControl._OnComplete(this.EnrollmentControl_OnComplete);
-            this.EnrollmentControl.OnReaderConnect += new DPFP.Gui.Enrollment.EnrollmentControl._OnReaderConnect(this.EnrollmentControl_OnReaderConnect);
-            this.EnrollmentControl.OnReaderDisconnect += new DPFP.Gui.Enrollment.EnrollmentControl._OnReaderDisconnect(this.EnrollmentControl_OnReaderDisconnect);
-            this.EnrollmentControl.OnSampleQuality += new DPFP.Gui.Enrollment.EnrollmentControl._OnSampleQuality(this.EnrollmentControl_OnSampleQuality);
-            this.EnrollmentControl.OnStartEnroll += new DPFP.Gui.Enrollment.EnrollmentControl._OnStartEnroll(this.EnrollmentControl_OnStartEnroll);
-            this.EnrollmentControl.OnCancelEnroll += new DPFP.Gui.Enrollment.EnrollmentControl._OnCancelEnroll(this.EnrollmentControl_OnCancelEnroll);
+            this.enrollControl.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.enrollControl.EnrolledFingerMask = 0;
+            this.enrollControl.Location = new System.Drawing.Point(2, 2);
+            this.enrollControl.MaxEnrollFingerCount = 1;
+            this.enrollControl.Name = "enrollControl";
+            this.enrollControl.ReaderSerialNumber = "00000000-0000-0000-0000-000000000000";
+            this.enrollControl.Size = new System.Drawing.Size(492, 314);
+            this.enrollControl.TabIndex = 999;
+            this.enrollControl.OnDelete += new DPFP.Gui.Enrollment.EnrollmentControl._OnDelete(this.EnrollmentControl_OnDelete);
+            this.enrollControl.OnEnroll += new DPFP.Gui.Enrollment.EnrollmentControl._OnEnroll(this.EnrollmentControl_OnEnroll);
+            this.enrollControl.OnFingerTouch += new DPFP.Gui.Enrollment.EnrollmentControl._OnFingerTouch(this.EnrollmentControl_OnFingerTouch);
+            this.enrollControl.OnFingerRemove += new DPFP.Gui.Enrollment.EnrollmentControl._OnFingerRemove(this.EnrollmentControl_OnFingerRemove);
+            this.enrollControl.OnComplete += new DPFP.Gui.Enrollment.EnrollmentControl._OnComplete(this.EnrollmentControl_OnComplete);
+            this.enrollControl.OnReaderConnect += new DPFP.Gui.Enrollment.EnrollmentControl._OnReaderConnect(this.EnrollmentControl_OnReaderConnect);
+            this.enrollControl.OnReaderDisconnect += new DPFP.Gui.Enrollment.EnrollmentControl._OnReaderDisconnect(this.EnrollmentControl_OnReaderDisconnect);
+            this.enrollControl.OnSampleQuality += new DPFP.Gui.Enrollment.EnrollmentControl._OnSampleQuality(this.EnrollmentControl_OnSampleQuality);
+            this.enrollControl.OnStartEnroll += new DPFP.Gui.Enrollment.EnrollmentControl._OnStartEnroll(this.EnrollmentControl_OnStartEnroll);
+            this.enrollControl.OnCancelEnroll += new DPFP.Gui.Enrollment.EnrollmentControl._OnCancelEnroll(this.EnrollmentControl_OnCancelEnroll);
             // 
             // ListEvents
             // 
             this.ListEvents.BackColor = System.Drawing.SystemColors.InactiveBorder;
             this.ListEvents.FormattingEnabled = true;
+            this.ListEvents.ItemHeight = 21;
             this.ListEvents.Location = new System.Drawing.Point(16, 19);
             this.ListEvents.Name = "ListEvents";
-            this.ListEvents.Size = new System.Drawing.Size(440, 108);
-            this.ListEvents.TabIndex = 0;
+            this.ListEvents.Size = new System.Drawing.Size(440, 88);
+            this.ListEvents.TabIndex = 999;
             // 
             // GroupEvents
             // 
@@ -82,38 +91,115 @@ namespace TalkUareU
             this.GroupEvents.Location = new System.Drawing.Point(12, 311);
             this.GroupEvents.Name = "GroupEvents";
             this.GroupEvents.Size = new System.Drawing.Size(473, 146);
-            this.GroupEvents.TabIndex = 3;
+            this.GroupEvents.TabIndex = 999;
             this.GroupEvents.TabStop = false;
             this.GroupEvents.Text = "Events";
             // 
+            // pnl_Validation
+            // 
+            this.pnl_Validation.Controls.Add(this.btn_ValidateUser);
+            this.pnl_Validation.Controls.Add(this.lbl_Token);
+            this.pnl_Validation.Controls.Add(this.lbl_Username);
+            this.pnl_Validation.Controls.Add(this.txt_Token);
+            this.pnl_Validation.Controls.Add(this.txt_Username);
+            this.pnl_Validation.Controls.Add(this.label1);
+            this.pnl_Validation.Location = new System.Drawing.Point(2, 2);
+            this.pnl_Validation.Name = "pnl_Validation";
+            this.pnl_Validation.Size = new System.Drawing.Size(495, 314);
+            this.pnl_Validation.TabIndex = 999;
+            // 
+            // btn_ValidateUser
+            // 
+            this.btn_ValidateUser.Location = new System.Drawing.Point(172, 241);
+            this.btn_ValidateUser.Name = "btn_ValidateUser";
+            this.btn_ValidateUser.Size = new System.Drawing.Size(111, 37);
+            this.btn_ValidateUser.TabIndex = 5;
+            this.btn_ValidateUser.Text = "Next";
+            this.btn_ValidateUser.UseVisualStyleBackColor = true;
+            this.btn_ValidateUser.Click += new System.EventHandler(this.btn_ValidateUser_Click);
+            // 
+            // lbl_Token
+            // 
+            this.lbl_Token.AutoSize = true;
+            this.lbl_Token.Location = new System.Drawing.Point(26, 172);
+            this.lbl_Token.Name = "lbl_Token";
+            this.lbl_Token.Size = new System.Drawing.Size(140, 21);
+            this.lbl_Token.TabIndex = 2;
+            this.lbl_Token.Text = "Registration Token";
+            // 
+            // lbl_Username
+            // 
+            this.lbl_Username.AutoSize = true;
+            this.lbl_Username.Location = new System.Drawing.Point(26, 137);
+            this.lbl_Username.Name = "lbl_Username";
+            this.lbl_Username.Size = new System.Drawing.Size(81, 21);
+            this.lbl_Username.TabIndex = 0;
+            this.lbl_Username.Text = "Username";
+            // 
+            // txt_Token
+            // 
+            this.txt_Token.Location = new System.Drawing.Point(172, 172);
+            this.txt_Token.Name = "txt_Token";
+            this.txt_Token.Size = new System.Drawing.Size(311, 29);
+            this.txt_Token.TabIndex = 3;
+            // 
+            // txt_Username
+            // 
+            this.txt_Username.Location = new System.Drawing.Point(172, 137);
+            this.txt_Username.Name = "txt_Username";
+            this.txt_Username.Size = new System.Drawing.Size(311, 29);
+            this.txt_Username.TabIndex = 1;
+            // 
+            // label1
+            // 
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Location = new System.Drawing.Point(3, 65);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(492, 173);
+            this.label1.TabIndex = 999;
+            this.label1.Text = "Please enter the username and registration token to register. If you don\'t have r" +
+    "egistration token please contact HR department.";
+            // 
             // EnrollmentForm
             // 
-            this.AcceptButton = this.CloseButton;
+            
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.AutoSize = true;
-            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            //this.AutoSize = true;
+            //this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.BackColor = System.Drawing.Color.White;
             this.CancelButton = this.CloseButton;
-            this.ClientSize = new System.Drawing.Size(497, 509);
+            this.ClientSize = new System.Drawing.Size(500, 500);
+            this.Controls.Add(this.pnl_Validation);
             this.Controls.Add(this.GroupEvents);
             this.Controls.Add(this.CloseButton);
-            this.Controls.Add(this.EnrollmentControl);
+            this.Controls.Add(this.enrollControl);
+            this.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "EnrollmentForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Fingerprint Enrollment";
             this.Load += new System.EventHandler(this.EnrollmentForm_Load);
             this.GroupEvents.ResumeLayout(false);
+            this.pnl_Validation.ResumeLayout(false);
+            this.pnl_Validation.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private DPFP.Gui.Enrollment.EnrollmentControl EnrollmentControl;
+        private DPFP.Gui.Enrollment.EnrollmentControl enrollControl;
         private System.Windows.Forms.Button CloseButton;
         private System.Windows.Forms.ListBox ListEvents;
         private System.Windows.Forms.GroupBox GroupEvents;
+        private System.Windows.Forms.Panel pnl_Validation;
+        private System.Windows.Forms.TextBox txt_Username;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox txt_Token;
+        private System.Windows.Forms.Button btn_ValidateUser;
+        private System.Windows.Forms.Label lbl_Token;
+        private System.Windows.Forms.Label lbl_Username;
     }
 }
