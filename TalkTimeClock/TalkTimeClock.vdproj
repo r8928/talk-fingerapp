@@ -15,74 +15,50 @@
     {
         "Entry"
         {
-        "MsmKey" = "8:_025288D5185845EE8DA203A58BF37F84"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_07509B0F685A4D57A0E1D83AB6258335"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_10ACA3C02F3F41F2AF8B321422CFDFA8"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_188CA789EB635D0DA2CECB4427A19083"
         "OwnerKey" = "8:_691FA08D2F334B2A91740ABD436ACC05"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_2771B57D8BC144438E4C8FC03F824CCA"
+        "MsmKey" = "8:_31603D93A39B4951A4891E19F4BE99AC"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_27971D1E5F974210A1F24CCA64187585"
+        "MsmKey" = "8:_348A2C35D6AD48F2871EAAD5C1A598D2"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_391342E92E6A45A09CE26381EF123741"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_3D4426AA5844480E850A01767F04B55B"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_4A983E71A93C4B6C8DF7C4C922177F2E"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_4B121FB8ED954B8C940EE29B88957A4F"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_540C92217DC14DFB9F648A5E5AC77893"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_5D82C943E2F066E70BF253641B59E36C"
+        "MsmKey" = "8:_4D73D7FB132F9CCE2268BB1F45DB4490"
         "OwnerKey" = "8:_691FA08D2F334B2A91740ABD436ACC05"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_55D8B8AC611E4D20A283B81B2514D15C"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_5BF2570B1D804BD38102CEE7B3BA1BE6"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_5F03498B9A1C4295A7AA1942870E4B4B"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_61D4430012EF473F99A34BF7B05E627E"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -93,19 +69,31 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_78D658BED92A48DF92D2CB01B0963D28"
+        "MsmKey" = "8:_6D5D5737F4E34243AAF5027189A0C242"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_7D857B80D71A4140861CC2AB43DCDE43"
+        "MsmKey" = "8:_842A7E63011748F8A374C77B9455ECFC"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_7D8EE8C59887498E8D7851906839D054"
+        "MsmKey" = "8:_928FA6D91E2D4B1B9EE987FC6646ACE0"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_9603D16BAB684CEBA1F050E15C7CC09A"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_9D673686D29D483C8272AF34C5145213"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -117,7 +105,7 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_9FC54018588A4189AE9E29838617836B"
+        "MsmKey" = "8:_9F98F355DC5E4775936378BD037655C6"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -125,18 +113,6 @@
         {
         "MsmKey" = "8:_A5B4F10032194F8A3D971B51398501C7"
         "OwnerKey" = "8:_691FA08D2F334B2A91740ABD436ACC05"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_A652263D7B63487996C1C13FF37972DF"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_A93ACA8C8783414C9CB6A390F5A0DF3C"
-        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -159,7 +135,7 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_B3DD7BD5056F40C0BAB0B09B8F814239"
+        "MsmKey" = "8:_B3AEB21288F94D1DAABA866BB40DAF0B"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -171,7 +147,19 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_D1A5581965E34C1D9B8C88276DD7563A"
+        "MsmKey" = "8:_CD3B1DE780494625AC37D305035E0D1F"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_DB07AAC3EB35418C872189C5CAB350AB"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_DC6BBBF4F6704418A48AF1968D9E0F5D"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -219,6 +207,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_E9ED3A0901DA4152B8DBAEBA367153BC"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_F1D5E8BA11D12FB4CF1B4937E20D4FCA"
         "OwnerKey" = "8:_691FA08D2F334B2A91740ABD436ACC05"
         "MsmSig" = "8:_UNDEFINED"
@@ -237,8 +231,26 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_FDBB445C7C964358971A7D636E1890BC"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_F1D5E8BA11D12FB4CF1B4937E20D4FCA"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_31603D93A39B4951A4891E19F4BE99AC"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_5F03498B9A1C4295A7AA1942870E4B4B"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -286,25 +298,13 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_7D857B80D71A4140861CC2AB43DCDE43"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_10ACA3C02F3F41F2AF8B321422CFDFA8"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_691FA08D2F334B2A91740ABD436ACC05"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_5D82C943E2F066E70BF253641B59E36C"
+        "OwnerKey" = "8:_4D73D7FB132F9CCE2268BB1F45DB4490"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -370,14 +370,6 @@
             "PrerequisitesLocation" = "2:1"
             "Url" = "8:"
             "ComponentsUrl" = "8:"
-                "Items"
-                {
-                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.6.1"
-                    {
-                    "Name" = "8:Microsoft .NET Framework 4.6.1 (x86 and x64)"
-                    "ProductCode" = "8:.NETFramework,Version=v4.6.1"
-                    }
-                }
             }
         }
     }
@@ -439,34 +431,14 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_2771B57D8BC144438E4C8FC03F824CCA"
-            {
-            "SourcePath" = "8:..\\..\\..\\..\\Downloads\\clock.ico"
-            "TargetName" = "8:clock.ico"
-            "Tag" = "8:"
-            "Folder" = "8:_D45876635C0641B480B11E279C7483A4"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_5D82C943E2F066E70BF253641B59E36C"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_4D73D7FB132F9CCE2268BB1F45DB4490"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
             "AssemblyAsmDisplayName" = "8:Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_5D82C943E2F066E70BF253641B59E36C"
+                    "_4D73D7FB132F9CCE2268BB1F45DB4490"
                     {
                     "Name" = "8:Newtonsoft.Json.dll"
                     "Attributes" = "3:512"
@@ -612,6 +584,26 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_B3AEB21288F94D1DAABA866BB40DAF0B"
+            {
+            "SourcePath" = "8:..\\..\\..\\..\\Downloads\\clock.ico"
+            "TargetName" = "8:clock.ico"
+            "Tag" = "8:"
+            "Folder" = "8:_FF5B8CBC3A3E4264A233773659ADB0DF"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_CB2484FECB6AEF0EE7DF41231EDE80F9"
@@ -795,7 +787,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:TimeClock"
         "ProductCode" = "8:{49584D84-52C9-4690-9442-D3D6DFC00FB0}"
-        "PackageCode" = "8:{11303929-804F-463F-8A82-AEE3B40A929C}"
+        "PackageCode" = "8:{01D5EFD5-4CAD-4296-9808-538582730E8B}"
         "UpgradeCode" = "8:{F903B904-4C60-4AEF-89A7-60341377846E}"
         "AspNetVersion" = "8:2.0.50727.0"
         "RestartWWWService" = "11:FALSE"
@@ -812,7 +804,7 @@
         "Keywords" = "8:"
         "ARPCOMMENTS" = "8:"
         "ARPURLINFOABOUT" = "8:"
-        "ARPPRODUCTICON" = "8:_2771B57D8BC144438E4C8FC03F824CCA"
+        "ARPPRODUCTICON" = "8:"
         "ARPIconIndex" = "3:0"
         "SearchPath" = "8:"
         "UseSystemSearchPath" = "11:TRUE"
@@ -915,20 +907,6 @@
         }
         "Shortcut"
         {
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_EB56CBC3198F49DA9A9C9C9F22CD5804"
-            {
-            "Name" = "8:TimeClock"
-            "Arguments" = "8:"
-            "Description" = "8:"
-            "ShowCmd" = "3:1"
-            "IconIndex" = "3:0"
-            "Transitive" = "11:FALSE"
-            "Target" = "8:_691FA08D2F334B2A91740ABD436ACC05"
-            "Folder" = "8:_FF5B8CBC3A3E4264A233773659ADB0DF"
-            "WorkingFolder" = "8:_D45876635C0641B480B11E279C7483A4"
-            "Icon" = "8:_2771B57D8BC144438E4C8FC03F824CCA"
-            "Feature" = "8:"
-            }
         }
         "UserInterface"
         {
@@ -1325,11 +1303,11 @@
         }
         "MergeModule"
         {
-            "{CEE29DC0-9FBA-4B99-8D47-5BC643D9B626}:_025288D5185845EE8DA203A58BF37F84"
+            "{CEE29DC0-9FBA-4B99-8D47-5BC643D9B626}:_31603D93A39B4951A4891E19F4BE99AC"
             {
             "UseDynamicProperties" = "11:TRUE"
             "IsDependency" = "11:FALSE"
-            "SourcePath" = "8:..\\..\\..\\..\\Desktop\\Redist\\DpOTJava.msm"
+            "SourcePath" = "8:..\\..\\..\\..\\Desktop\\New folder\\DpOTShrDotNET.msm"
                 "Properties"
                 {
                 }
@@ -1339,11 +1317,11 @@
             "Feature" = "8:"
             "IsolateTo" = "8:"
             }
-            "{CEE29DC0-9FBA-4B99-8D47-5BC643D9B626}:_07509B0F685A4D57A0E1D83AB6258335"
+            "{CEE29DC0-9FBA-4B99-8D47-5BC643D9B626}:_348A2C35D6AD48F2871EAAD5C1A598D2"
             {
             "UseDynamicProperties" = "11:TRUE"
             "IsDependency" = "11:FALSE"
-            "SourcePath" = "8:..\\..\\..\\..\\Desktop\\Redist\\DpOTJni_x64.msm"
+            "SourcePath" = "8:..\\..\\..\\..\\Desktop\\New folder\\DpFpRec.msm"
                 "Properties"
                 {
                 }
@@ -1353,11 +1331,11 @@
             "Feature" = "8:"
             "IsolateTo" = "8:"
             }
-            "{CEE29DC0-9FBA-4B99-8D47-5BC643D9B626}:_10ACA3C02F3F41F2AF8B321422CFDFA8"
+            "{CEE29DC0-9FBA-4B99-8D47-5BC643D9B626}:_55D8B8AC611E4D20A283B81B2514D15C"
             {
             "UseDynamicProperties" = "11:TRUE"
             "IsDependency" = "11:FALSE"
-            "SourcePath" = "8:..\\..\\..\\..\\Desktop\\Redist\\DpOTShrDotNET.msm"
+            "SourcePath" = "8:..\\..\\..\\..\\Desktop\\New folder\\DpPolicies_OTW.msm"
                 "Properties"
                 {
                 }
@@ -1367,11 +1345,11 @@
             "Feature" = "8:"
             "IsolateTo" = "8:"
             }
-            "{CEE29DC0-9FBA-4B99-8D47-5BC643D9B626}:_27971D1E5F974210A1F24CCA64187585"
+            "{CEE29DC0-9FBA-4B99-8D47-5BC643D9B626}:_5BF2570B1D804BD38102CEE7B3BA1BE6"
             {
             "UseDynamicProperties" = "11:TRUE"
             "IsDependency" = "11:FALSE"
-            "SourcePath" = "8:..\\..\\..\\..\\Desktop\\Redist\\DpDrivers.msm"
+            "SourcePath" = "8:..\\..\\..\\..\\Desktop\\New folder\\DpProCore_x64.msm"
                 "Properties"
                 {
                 }
@@ -1381,11 +1359,11 @@
             "Feature" = "8:"
             "IsolateTo" = "8:"
             }
-            "{CEE29DC0-9FBA-4B99-8D47-5BC643D9B626}:_391342E92E6A45A09CE26381EF123741"
+            "{CEE29DC0-9FBA-4B99-8D47-5BC643D9B626}:_5F03498B9A1C4295A7AA1942870E4B4B"
             {
             "UseDynamicProperties" = "11:TRUE"
             "IsDependency" = "11:FALSE"
-            "SourcePath" = "8:..\\..\\..\\..\\Desktop\\Redist\\DpOTCOMActX_x64.msm"
+            "SourcePath" = "8:..\\..\\..\\..\\Desktop\\New folder\\DpOTDotNET.msm"
                 "Properties"
                 {
                 }
@@ -1395,11 +1373,11 @@
             "Feature" = "8:"
             "IsolateTo" = "8:"
             }
-            "{CEE29DC0-9FBA-4B99-8D47-5BC643D9B626}:_3D4426AA5844480E850A01767F04B55B"
+            "{CEE29DC0-9FBA-4B99-8D47-5BC643D9B626}:_61D4430012EF473F99A34BF7B05E627E"
             {
             "UseDynamicProperties" = "11:TRUE"
             "IsDependency" = "11:FALSE"
-            "SourcePath" = "8:..\\..\\..\\..\\Desktop\\Redist\\DpPolicies_OTW.msm"
+            "SourcePath" = "8:..\\..\\..\\..\\Desktop\\New folder\\DpFpRec_x64.msm"
                 "Properties"
                 {
                 }
@@ -1409,11 +1387,11 @@
             "Feature" = "8:"
             "IsolateTo" = "8:"
             }
-            "{CEE29DC0-9FBA-4B99-8D47-5BC643D9B626}:_4A983E71A93C4B6C8DF7C4C922177F2E"
+            "{CEE29DC0-9FBA-4B99-8D47-5BC643D9B626}:_6D5D5737F4E34243AAF5027189A0C242"
             {
             "UseDynamicProperties" = "11:TRUE"
             "IsDependency" = "11:FALSE"
-            "SourcePath" = "8:..\\..\\..\\..\\Desktop\\Redist\\DpOTJni.msm"
+            "SourcePath" = "8:..\\..\\..\\..\\Desktop\\New folder\\DpOTCOMActX_x64.msm"
                 "Properties"
                 {
                 }
@@ -1423,11 +1401,11 @@
             "Feature" = "8:"
             "IsolateTo" = "8:"
             }
-            "{CEE29DC0-9FBA-4B99-8D47-5BC643D9B626}:_4B121FB8ED954B8C940EE29B88957A4F"
+            "{CEE29DC0-9FBA-4B99-8D47-5BC643D9B626}:_842A7E63011748F8A374C77B9455ECFC"
             {
             "UseDynamicProperties" = "11:TRUE"
             "IsDependency" = "11:FALSE"
-            "SourcePath" = "8:..\\..\\..\\..\\Desktop\\Redist\\DpFpRec.msm"
+            "SourcePath" = "8:..\\..\\..\\..\\Desktop\\New folder\\DpOTJni.msm"
                 "Properties"
                 {
                 }
@@ -1437,11 +1415,11 @@
             "Feature" = "8:"
             "IsolateTo" = "8:"
             }
-            "{CEE29DC0-9FBA-4B99-8D47-5BC643D9B626}:_540C92217DC14DFB9F648A5E5AC77893"
+            "{CEE29DC0-9FBA-4B99-8D47-5BC643D9B626}:_928FA6D91E2D4B1B9EE987FC6646ACE0"
             {
             "UseDynamicProperties" = "11:TRUE"
             "IsDependency" = "11:FALSE"
-            "SourcePath" = "8:..\\..\\..\\..\\Desktop\\Redist\\DPFpUI_x64.msm"
+            "SourcePath" = "8:..\\..\\..\\..\\Desktop\\New folder\\DpOTJava.msm"
                 "Properties"
                 {
                 }
@@ -1451,11 +1429,11 @@
             "Feature" = "8:"
             "IsolateTo" = "8:"
             }
-            "{CEE29DC0-9FBA-4B99-8D47-5BC643D9B626}:_78D658BED92A48DF92D2CB01B0963D28"
+            "{CEE29DC0-9FBA-4B99-8D47-5BC643D9B626}:_9603D16BAB684CEBA1F050E15C7CC09A"
             {
             "UseDynamicProperties" = "11:TRUE"
             "IsDependency" = "11:FALSE"
-            "SourcePath" = "8:..\\..\\..\\..\\Desktop\\Redist\\DpCore_x64.msm"
+            "SourcePath" = "8:..\\..\\..\\..\\Desktop\\New folder\\DpProCore.msm"
                 "Properties"
                 {
                 }
@@ -1465,11 +1443,11 @@
             "Feature" = "8:"
             "IsolateTo" = "8:"
             }
-            "{CEE29DC0-9FBA-4B99-8D47-5BC643D9B626}:_7D857B80D71A4140861CC2AB43DCDE43"
+            "{CEE29DC0-9FBA-4B99-8D47-5BC643D9B626}:_9D673686D29D483C8272AF34C5145213"
             {
             "UseDynamicProperties" = "11:TRUE"
             "IsDependency" = "11:FALSE"
-            "SourcePath" = "8:..\\..\\..\\..\\Desktop\\Redist\\DpOTDotNET.msm"
+            "SourcePath" = "8:..\\..\\..\\..\\Desktop\\New folder\\DPFpUI.msm"
                 "Properties"
                 {
                 }
@@ -1479,11 +1457,11 @@
             "Feature" = "8:"
             "IsolateTo" = "8:"
             }
-            "{CEE29DC0-9FBA-4B99-8D47-5BC643D9B626}:_7D8EE8C59887498E8D7851906839D054"
+            "{CEE29DC0-9FBA-4B99-8D47-5BC643D9B626}:_9F98F355DC5E4775936378BD037655C6"
             {
             "UseDynamicProperties" = "11:TRUE"
             "IsDependency" = "11:FALSE"
-            "SourcePath" = "8:..\\..\\..\\..\\Desktop\\Redist\\DpProCore.msm"
+            "SourcePath" = "8:..\\..\\..\\..\\Desktop\\New folder\\DPFpUI_x64.msm"
                 "Properties"
                 {
                 }
@@ -1493,11 +1471,11 @@
             "Feature" = "8:"
             "IsolateTo" = "8:"
             }
-            "{CEE29DC0-9FBA-4B99-8D47-5BC643D9B626}:_9FC54018588A4189AE9E29838617836B"
+            "{CEE29DC0-9FBA-4B99-8D47-5BC643D9B626}:_CD3B1DE780494625AC37D305035E0D1F"
             {
             "UseDynamicProperties" = "11:TRUE"
             "IsDependency" = "11:FALSE"
-            "SourcePath" = "8:..\\..\\..\\..\\Desktop\\Redist\\DpFpRec_x64.msm"
+            "SourcePath" = "8:..\\..\\..\\..\\Desktop\\New folder\\DpCore.msm"
                 "Properties"
                 {
                 }
@@ -1507,11 +1485,11 @@
             "Feature" = "8:"
             "IsolateTo" = "8:"
             }
-            "{CEE29DC0-9FBA-4B99-8D47-5BC643D9B626}:_A652263D7B63487996C1C13FF37972DF"
+            "{CEE29DC0-9FBA-4B99-8D47-5BC643D9B626}:_DB07AAC3EB35418C872189C5CAB350AB"
             {
             "UseDynamicProperties" = "11:TRUE"
             "IsDependency" = "11:FALSE"
-            "SourcePath" = "8:..\\..\\..\\..\\Desktop\\Redist\\DpCore.msm"
+            "SourcePath" = "8:..\\..\\..\\..\\Desktop\\New folder\\DpOTCOMActX.msm"
                 "Properties"
                 {
                 }
@@ -1521,11 +1499,11 @@
             "Feature" = "8:"
             "IsolateTo" = "8:"
             }
-            "{CEE29DC0-9FBA-4B99-8D47-5BC643D9B626}:_A93ACA8C8783414C9CB6A390F5A0DF3C"
+            "{CEE29DC0-9FBA-4B99-8D47-5BC643D9B626}:_DC6BBBF4F6704418A48AF1968D9E0F5D"
             {
             "UseDynamicProperties" = "11:TRUE"
             "IsDependency" = "11:FALSE"
-            "SourcePath" = "8:..\\..\\..\\..\\Desktop\\Redist\\DPFpUI.msm"
+            "SourcePath" = "8:..\\..\\..\\..\\Desktop\\New folder\\DpDrivers.msm"
                 "Properties"
                 {
                 }
@@ -1535,11 +1513,11 @@
             "Feature" = "8:"
             "IsolateTo" = "8:"
             }
-            "{CEE29DC0-9FBA-4B99-8D47-5BC643D9B626}:_B3DD7BD5056F40C0BAB0B09B8F814239"
+            "{CEE29DC0-9FBA-4B99-8D47-5BC643D9B626}:_E9ED3A0901DA4152B8DBAEBA367153BC"
             {
             "UseDynamicProperties" = "11:TRUE"
             "IsDependency" = "11:FALSE"
-            "SourcePath" = "8:..\\..\\..\\..\\Desktop\\Redist\\DpOTCOMActX.msm"
+            "SourcePath" = "8:..\\..\\..\\..\\Desktop\\New folder\\DpOTJni_x64.msm"
                 "Properties"
                 {
                 }
@@ -1549,11 +1527,11 @@
             "Feature" = "8:"
             "IsolateTo" = "8:"
             }
-            "{CEE29DC0-9FBA-4B99-8D47-5BC643D9B626}:_D1A5581965E34C1D9B8C88276DD7563A"
+            "{CEE29DC0-9FBA-4B99-8D47-5BC643D9B626}:_FDBB445C7C964358971A7D636E1890BC"
             {
             "UseDynamicProperties" = "11:TRUE"
             "IsDependency" = "11:FALSE"
-            "SourcePath" = "8:..\\..\\..\\..\\Desktop\\Redist\\DpProCore_x64.msm"
+            "SourcePath" = "8:..\\..\\..\\..\\Desktop\\New folder\\DpCore_x64.msm"
                 "Properties"
                 {
                 }
@@ -1568,7 +1546,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_691FA08D2F334B2A91740ABD436ACC05"
             {
-            "SourcePath" = "8:..\\TalkUareU\\obj\\Release\\TalkUareU.exe"
+            "SourcePath" = "8:..\\TalkUareU\\obj\\Debug\\TalkUareU.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_D45876635C0641B480B11E279C7483A4"
