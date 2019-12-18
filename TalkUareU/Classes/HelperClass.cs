@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Linq;
 using System.Management;
 using System.Windows.Forms;
@@ -148,6 +149,44 @@ namespace TalkUareU
             {
                 http.StdErr(res);
             }
+        }
+
+        private void requestTemplate(AppData app, JsonItem data)
+        {
+            app.Template = new DPFP.Template();
+
+
+            var formData = new { user = data.user_id };
+            HttpResponse res = http.Post("finger/requesttemplate", http.jsonStringify(formData));
+            if (res.ok && res.hasJson)
+            {
+                string TemplateString = (string)res.json["template"];
+
+
+                MemoryStream msI = new MemoryStream(Convert.FromBase64String(TemplateString));
+                app.Template.DeSerialize(msI);
+            }
+            else
+            {
+                http.StdErr(res);
+            }
+        }
+
+        public bool validateFinger(AppData app, JsonItem data)
+        {
+            requestTemplate(app, data);
+            if (app.Template.Size == 0)
+            {
+                return false;
+            }
+            new VerificationForm(app).ShowDialog();
+
+            if (!app.IsFeatureSetMatched)
+            {
+                msg.error("Fingerprint validation failed");
+            }
+
+            return app.IsFeatureSetMatched;
         }
     }
 }

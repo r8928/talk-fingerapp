@@ -36,9 +36,8 @@
             this.btn_Admin = new System.Windows.Forms.Button();
             this.btn_PunchIn = new System.Windows.Forms.Button();
             this.btn_refresh = new System.Windows.Forms.Button();
-            this.pic_logo = new System.Windows.Forms.PictureBox();
             this.btn_Register = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.pic_logo = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pic_logo)).BeginInit();
             this.SuspendLayout();
             // 
@@ -119,6 +118,21 @@
             this.btn_refresh.UseVisualStyleBackColor = true;
             this.btn_refresh.Click += new System.EventHandler(this.btn_refresh_Click);
             // 
+            // btn_Register
+            // 
+            this.btn_Register.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_Register.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.btn_Register.BackgroundImage = global::TalkUareU.Properties.Resources.fingerprint;
+            this.btn_Register.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btn_Register.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_Register.Location = new System.Drawing.Point(737, 84);
+            this.btn_Register.Name = "btn_Register";
+            this.btn_Register.Size = new System.Drawing.Size(31, 28);
+            this.btn_Register.TabIndex = 9;
+            this.toolTip1.SetToolTip(this.btn_Register, "Register a new fingerprint");
+            this.btn_Register.UseVisualStyleBackColor = true;
+            this.btn_Register.Click += new System.EventHandler(this.btn_Register_Click);
+            // 
             // pic_logo
             // 
             this.pic_logo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -130,33 +144,12 @@
             this.pic_logo.TabIndex = 7;
             this.pic_logo.TabStop = false;
             // 
-            // btn_Register
-            // 
-            this.btn_Register.Location = new System.Drawing.Point(313, 13);
-            this.btn_Register.Name = "btn_Register";
-            this.btn_Register.Size = new System.Drawing.Size(120, 29);
-            this.btn_Register.TabIndex = 10;
-            this.btn_Register.Text = "btn_Register";
-            this.btn_Register.UseVisualStyleBackColor = true;
-            this.btn_Register.Click += new System.EventHandler(this.btn_Register_Click);
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(310, 49);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 11;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(817, 462);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.btn_Register);
             this.Controls.Add(this.btn_Admin);
             this.Controls.Add(this.lbl_SapName);
@@ -166,6 +159,7 @@
             this.Controls.Add(this.btn_PunchIn);
             this.Controls.Add(this.btn_refresh);
             this.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Icon = global::TalkUareU.Properties.Resources.clock;
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.MinimumSize = new System.Drawing.Size(500, 500);
             this.Name = "MainForm";
@@ -187,6 +181,5 @@
         private System.Windows.Forms.Button btn_Admin;
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.Button btn_Register;
-        private System.Windows.Forms.Button button1;
     }
 }

@@ -30,8 +30,6 @@ namespace TalkUareU
         {
             this.CloseButton = new System.Windows.Forms.Button();
             this.enrollControl = new DPFP.Gui.Enrollment.EnrollmentControl();
-            this.ListEvents = new System.Windows.Forms.ListBox();
-            this.GroupEvents = new System.Windows.Forms.GroupBox();
             this.pnl_Validation = new System.Windows.Forms.Panel();
             this.btn_ValidateUser = new System.Windows.Forms.Button();
             this.lbl_Token = new System.Windows.Forms.Label();
@@ -39,20 +37,21 @@ namespace TalkUareU
             this.txt_Token = new System.Windows.Forms.TextBox();
             this.txt_Username = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.GroupEvents.SuspendLayout();
+            this.ListEvents = new System.Windows.Forms.ListBox();
             this.pnl_Validation.SuspendLayout();
             this.SuspendLayout();
             // 
             // CloseButton
             // 
             this.CloseButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            //this.CloseButton.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.CloseButton.Location = new System.Drawing.Point(414, 474);
+            this.CloseButton.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.CloseButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.CloseButton.Location = new System.Drawing.Point(10, 274);
             this.CloseButton.Name = "CloseButton";
-            this.CloseButton.Size = new System.Drawing.Size(75, 23);
+            this.CloseButton.Size = new System.Drawing.Size(100, 30);
             this.CloseButton.TabIndex = 999;
             this.CloseButton.Text = "Close";
-            this.CloseButton.UseVisualStyleBackColor = true;
+            this.CloseButton.UseVisualStyleBackColor = false;
             // 
             // enrollControl
             // 
@@ -75,34 +74,16 @@ namespace TalkUareU
             this.enrollControl.OnStartEnroll += new DPFP.Gui.Enrollment.EnrollmentControl._OnStartEnroll(this.EnrollmentControl_OnStartEnroll);
             this.enrollControl.OnCancelEnroll += new DPFP.Gui.Enrollment.EnrollmentControl._OnCancelEnroll(this.EnrollmentControl_OnCancelEnroll);
             // 
-            // ListEvents
-            // 
-            this.ListEvents.BackColor = System.Drawing.SystemColors.InactiveBorder;
-            this.ListEvents.FormattingEnabled = true;
-            this.ListEvents.ItemHeight = 21;
-            this.ListEvents.Location = new System.Drawing.Point(16, 19);
-            this.ListEvents.Name = "ListEvents";
-            this.ListEvents.Size = new System.Drawing.Size(440, 88);
-            this.ListEvents.TabIndex = 999;
-            // 
-            // GroupEvents
-            // 
-            this.GroupEvents.Controls.Add(this.ListEvents);
-            this.GroupEvents.Location = new System.Drawing.Point(12, 311);
-            this.GroupEvents.Name = "GroupEvents";
-            this.GroupEvents.Size = new System.Drawing.Size(473, 146);
-            this.GroupEvents.TabIndex = 999;
-            this.GroupEvents.TabStop = false;
-            this.GroupEvents.Text = "Events";
-            // 
             // pnl_Validation
             // 
             this.pnl_Validation.Controls.Add(this.btn_ValidateUser);
             this.pnl_Validation.Controls.Add(this.lbl_Token);
+            this.pnl_Validation.Controls.Add(this.CloseButton);
             this.pnl_Validation.Controls.Add(this.lbl_Username);
             this.pnl_Validation.Controls.Add(this.txt_Token);
             this.pnl_Validation.Controls.Add(this.txt_Username);
             this.pnl_Validation.Controls.Add(this.label1);
+            this.pnl_Validation.Controls.Add(this.ListEvents);
             this.pnl_Validation.Location = new System.Drawing.Point(2, 2);
             this.pnl_Validation.Name = "pnl_Validation";
             this.pnl_Validation.Size = new System.Drawing.Size(495, 314);
@@ -110,12 +91,13 @@ namespace TalkUareU
             // 
             // btn_ValidateUser
             // 
-            this.btn_ValidateUser.Location = new System.Drawing.Point(172, 241);
+            this.btn_ValidateUser.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.btn_ValidateUser.Location = new System.Drawing.Point(386, 274);
             this.btn_ValidateUser.Name = "btn_ValidateUser";
-            this.btn_ValidateUser.Size = new System.Drawing.Size(111, 37);
+            this.btn_ValidateUser.Size = new System.Drawing.Size(100, 30);
             this.btn_ValidateUser.TabIndex = 5;
             this.btn_ValidateUser.Text = "Next";
-            this.btn_ValidateUser.UseVisualStyleBackColor = true;
+            this.btn_ValidateUser.UseVisualStyleBackColor = false;
             this.btn_ValidateUser.Click += new System.EventHandler(this.btn_ValidateUser_Click);
             // 
             // lbl_Token
@@ -155,33 +137,36 @@ namespace TalkUareU
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Location = new System.Drawing.Point(3, 65);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(492, 173);
+            this.label1.Size = new System.Drawing.Size(490, 173);
             this.label1.TabIndex = 999;
             this.label1.Text = "Please enter the username and registration token to register. If you don\'t have r" +
     "egistration token please contact HR department.";
             // 
+            // ListEvents
+            // 
+            this.ListEvents.BackColor = System.Drawing.SystemColors.InactiveBorder;
+            this.ListEvents.FormattingEnabled = true;
+            this.ListEvents.ItemHeight = 21;
+            this.ListEvents.Location = new System.Drawing.Point(3, 223);
+            this.ListEvents.Name = "ListEvents";
+            this.ListEvents.Size = new System.Drawing.Size(440, 88);
+            this.ListEvents.TabIndex = 1000;
+            this.ListEvents.Visible = false;
+            // 
             // EnrollmentForm
             // 
-            
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            //this.AutoSize = true;
-            //this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.BackColor = System.Drawing.Color.White;
             this.CancelButton = this.CloseButton;
-            this.ClientSize = new System.Drawing.Size(500, 500);
+            this.ClientSize = new System.Drawing.Size(500, 318);
             this.Controls.Add(this.pnl_Validation);
-            this.Controls.Add(this.GroupEvents);
-            this.Controls.Add(this.CloseButton);
             this.Controls.Add(this.enrollControl);
-            this.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "EnrollmentForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Fingerprint Enrollment";
             this.Load += new System.EventHandler(this.EnrollmentForm_Load);
-            this.GroupEvents.ResumeLayout(false);
             this.pnl_Validation.ResumeLayout(false);
             this.pnl_Validation.PerformLayout();
             this.ResumeLayout(false);
@@ -192,8 +177,6 @@ namespace TalkUareU
 
         private DPFP.Gui.Enrollment.EnrollmentControl enrollControl;
         private System.Windows.Forms.Button CloseButton;
-        private System.Windows.Forms.ListBox ListEvents;
-        private System.Windows.Forms.GroupBox GroupEvents;
         private System.Windows.Forms.Panel pnl_Validation;
         private System.Windows.Forms.TextBox txt_Username;
         private System.Windows.Forms.Label label1;
@@ -201,5 +184,6 @@ namespace TalkUareU
         private System.Windows.Forms.Button btn_ValidateUser;
         private System.Windows.Forms.Label lbl_Token;
         private System.Windows.Forms.Label lbl_Username;
+        private System.Windows.Forms.ListBox ListEvents;
     }
 }

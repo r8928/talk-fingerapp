@@ -85,7 +85,7 @@ namespace TalkUareU
         {
             if (Data.IsEventHandlerSucceeds)
             {
-                Data.Template = null;              // clear the finger template
+                Data.Template = new DPFP.Template();
                 ExchangeData(true);                             // update other data
 
                 ListEvents.Items.Insert(0, String.Format("OnDelete: finger {0}", Finger));

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.IO;
 using System.Windows.Forms;
 
 namespace TalkUareU
@@ -53,17 +52,15 @@ namespace TalkUareU
         }
 
         private bool preClockChecks()
-        { 
+        {
             if (!getUpdatedRepStatus())
             {
-                msg.error("An unknown error occured, please press refresh and try again");
                 return false;
             }
 
 
-            if (!validateFinger())
+            if (!hlp.validateFinger(app, data))
             {
-                msg.error("Fingerprint validation failed");
                 return false;
             }
 
@@ -79,11 +76,18 @@ namespace TalkUareU
             {
                 var item = res.json["data"][0];
 
-                return ((string)item["status"] == data.Status);
+                bool matched = ((string)item["status"] == data.Status);
+
+                if (!matched)
+                {
+                    msg.error("An unknown error occured, please press refresh and try again");
+                }
+
+                return matched;
             }
             else return false;
         }
-        
+
         private void lunchOutClick(Object o, System.EventArgs e)
         {
             if (preClockChecks())
@@ -92,7 +96,7 @@ namespace TalkUareU
                 this.Close();
                 this.Dispose();
             }
-            
+
         }
 
         private void inClick(Object o, System.EventArgs e)
@@ -104,7 +108,7 @@ namespace TalkUareU
                 this.Dispose();
             }
         }
-        
+
         private void outClick(Object o, System.EventArgs e)
         {
             if (preClockChecks())
@@ -115,37 +119,5 @@ namespace TalkUareU
             }
         }
 
-        private void requestTemplate()
-        {
-            app.Template = new DPFP.Template();
-
-
-            var formData = new { user = data.user_id };
-            HttpResponse res = http.Post("finger/requesttemplate", http.jsonStringify(formData));
-            if (res.ok && res.hasJson)
-            {
-                string TemplateString = (string)res.json["template"];
-
-
-                MemoryStream msI = new MemoryStream(Convert.FromBase64String(TemplateString));
-                app.Template.DeSerialize(msI);
-            }
-            else
-            {
-                http.StdErr(res);
-            }
-        }
-        
-        private bool validateFinger()
-        {
-            requestTemplate();
-            if (app.Template.Size == 0)
-            {
-                return false;
-            }
-            new VerificationForm(app).ShowDialog();
-
-            return app.IsFeatureSetMatched;
-        }
     }
 }

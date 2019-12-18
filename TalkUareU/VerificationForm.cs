@@ -5,11 +5,13 @@ namespace TalkUareU
     public partial class VerificationForm : Form
     {
 
-        private AppData App;
+        private AppData app;
         public VerificationForm(AppData app)
         {
             InitializeComponent();
-            App = app;
+
+            this.app = app;
+            this.app.IsFeatureSetMatched = false;
         }
 
         public void OnComplete(object Control, DPFP.FeatureSet FeatureSet, ref DPFP.Gui.EventHandlerStatus Status)
@@ -17,21 +19,26 @@ namespace TalkUareU
             DPFP.Verification.Verification ver = new DPFP.Verification.Verification();
             DPFP.Verification.Verification.Result result = new DPFP.Verification.Verification.Result();
 
-            App.IsFeatureSetMatched = false;
 
             // Get template from storage.
-            if (App.Template.Size > 0)
+            if (app.Template.Size > 0)
             {
                 // Compare feature set with particular template.
-                ver.Verify(FeatureSet, App.Template, ref result);
+                ver.Verify(FeatureSet, app.Template, ref result);
 
-                App.IsFeatureSetMatched = result.Verified;
-                App.FalseAcceptRate = result.FARAchieved;
+                app.IsFeatureSetMatched = result.Verified;
+                app.FalseAcceptRate = result.FARAchieved;
             }
 
 
             if (!result.Verified)
+            {
                 Status = DPFP.Gui.EventHandlerStatus.Failure;
+            }
+            else
+            {
+                this.Close();
+            }
 
             //Data.Update();
         }

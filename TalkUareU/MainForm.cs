@@ -67,6 +67,7 @@ namespace TalkUareU
             flowPanel.Enabled = enable;
             btn_PunchIn.Enabled = enable;
             btn_refresh.Enabled = enable;
+            btn_Register.Enabled = enable;
         }
 
         private void refresh_listing()
@@ -222,8 +223,11 @@ namespace TalkUareU
                         (string)res.json["role"]
                     );
 
-                    hlp.clockRequest(data, "day_clockin");
-                    refresh_listing();
+                    if (hlp.validateFinger(app, data))
+                    {
+                        hlp.clockRequest(data, "day_clockin");
+                        refresh_listing();
+                    }
                 }
                 else
                 {
@@ -263,13 +267,6 @@ namespace TalkUareU
             EnrollmentForm form = new EnrollmentForm(app, http, msg);
 
             form.ShowDialog();
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            //VerificationForm form = new VerificationForm(app);
-
-            //form.ShowDialog();
         }
     }
 }
