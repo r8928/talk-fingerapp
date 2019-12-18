@@ -1,20 +1,21 @@
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO;
-using System.Text;
 using System.Windows.Forms;
 
 namespace TalkUareU
 {
     public partial class EnrollmentForm : Form
     {
+        private HttpService http;
+        private MessageClass msg;
+
         // Constructor
-        public EnrollmentForm(AppData data)
+        public EnrollmentForm(AppData data, HttpService http, MessageClass msg)
         {
             InitializeComponent();
+
+            this.http = http;
+            this.msg = msg;
             Data = data;                                        // Keep reference to the data
             Data.OnChange += delegate { ExchangeData(false); };   // Track data changes to keep the form synchronized
             ExchangeData(true);                                 // Init data with default control values;
@@ -25,14 +26,14 @@ namespace TalkUareU
         {
             if (read)
             {   // read values from the form's controls to the data object
-                Data.EnrolledFingersMask = EnrollmentControl.EnrolledFingerMask;
-                Data.MaxEnrollFingerCount = EnrollmentControl.MaxEnrollFingerCount;
+                Data.EnrolledFingersMask = enrollControl.EnrolledFingerMask;
+                Data.MaxEnrollFingerCount = enrollControl.MaxEnrollFingerCount;
                 Data.Update();
             }
             else
             {   // read values from the data object to the form's controls
-                EnrollmentControl.EnrolledFingerMask = Data.EnrolledFingersMask;
-                EnrollmentControl.MaxEnrollFingerCount = Data.MaxEnrollFingerCount;
+                enrollControl.EnrolledFingerMask = Data.EnrolledFingersMask;
+                enrollControl.MaxEnrollFingerCount = Data.MaxEnrollFingerCount;
             }
         }
 
@@ -51,14 +52,26 @@ namespace TalkUareU
                 ms.Position = 0;
                 BinaryReader br = new BinaryReader(ms);
                 Byte[] bytes_ = br.ReadBytes((Int32)ms.Length);
-                string template = Convert.ToBase64String(bytes_);
+                string templateString = Convert.ToBase64String(bytes_);
 
 
+                var formData = new { user = txt_Username.Text, token = txt_Token.Text, template = templateString, finger = Finger };
+                HttpResponse res = http.Post("finger/registertemplate", http.jsonStringify(formData));
+                if (res.ok && res.hasJson)
+                {
+                    msg.success((string)res.json["message"]);
+                    this.Close();
+                }
+                else
+                {
+                    http.StdErr(res);
+                }
 
-                MemoryStream msI = new MemoryStream(Convert.FromBase64String(template));
-                DPFP.Template t2 = new DPFP.Template();
-                t2.DeSerialize(msI);
-                Data.Template = t2;
+
+                //MemoryStream msI = new MemoryStream(Convert.FromBase64String(templateString));
+                //DPFP.Template t2 = new DPFP.Template();
+                //t2.DeSerialize(msI);
+                //Data.Template = t2;
 
 
 
@@ -126,6 +139,34 @@ namespace TalkUareU
         private void EnrollmentForm_Load(object sender, EventArgs e)
         {
             this.ListEvents.Items.Clear();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            pnl_Validation.Visible = false;
+        }
+
+        private void btn_ValidateUser_Click(object sender, EventArgs e)
+        {
+            if (txt_Token.Text.Length > 0 && txt_Username.Text.Length > 0)
+            {
+                var formData = new { user = txt_Username.Text, token = txt_Token.Text };
+                HttpResponse res = http.Post("finger/validatetemplatetoken", http.jsonStringify(formData));
+
+                if (res.ok && res.hasJson)
+                {
+                    this.pnl_Validation.Visible = false;
+                    this.enrollControl.Visible = true;
+                }
+                else
+                {
+                    http.StdErr(res);
+                }
+            }
+            else
+            {
+                msg.error("Please enter username and token");
+            }
         }
     }
 }

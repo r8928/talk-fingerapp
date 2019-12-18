@@ -6,10 +6,10 @@ namespace TalkUareU
 {
     public partial class MainForm : Form
     {
-        HelperClass hlp;
-        MessageClass msg;
-        HttpService http;
-        AppData app;
+        private HelperClass hlp;
+        private MessageClass msg;
+        private HttpService http;
+        private AppData app;
 
         private Label err_lbl = new Label();
 
@@ -260,16 +260,16 @@ namespace TalkUareU
 
         private void btn_Register_Click(object sender, EventArgs e)
         {
-            EnrollmentForm form = new EnrollmentForm(app);
+            EnrollmentForm form = new EnrollmentForm(app, http, msg);
 
             form.ShowDialog();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            VerificationForm form = new VerificationForm(app);
+            //VerificationForm form = new VerificationForm(app);
 
-            form.ShowDialog();
+            //form.ShowDialog();
         }
     }
 }

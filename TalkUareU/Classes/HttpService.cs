@@ -180,7 +180,7 @@ namespace TalkUareU
 
     public class HttpResponse
     {
-        MessageClass msg = new MessageClass();
+        private MessageClass msg = new MessageClass();
         public HttpResponse(string httpresp, string statuscode)
         {
 

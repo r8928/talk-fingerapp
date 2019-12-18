@@ -114,6 +114,9 @@
     <Compile Include="VerificationForm.Designer.cs">
       <DependentUpon>VerificationForm.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="ClockSelectionForm.resx">
+      <DependentUpon>ClockSelectionForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="EnrollmentForm.resx">
       <DependentUpon>EnrollmentForm.cs</DependentUpon>
     </EmbeddedResource>

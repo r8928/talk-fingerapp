@@ -6,9 +6,9 @@ namespace TalkUareU
 {
     public partial class AdminForm : Form
     {
-        HelperClass hlp;
-        MessageClass msg;
-        HttpService http;
+        private HelperClass hlp;
+        private MessageClass msg;
+        private HttpService http;
 
         public AdminForm(HelperClass hlp, HttpService http, MessageClass msg)
         {
