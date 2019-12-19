@@ -43,13 +43,13 @@ namespace TalkUareU
             // 
             // CloseButton
             // 
-            this.CloseButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.CloseButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.CloseButton.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.CloseButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.CloseButton.Location = new System.Drawing.Point(10, 274);
             this.CloseButton.Name = "CloseButton";
             this.CloseButton.Size = new System.Drawing.Size(100, 30);
-            this.CloseButton.TabIndex = 999;
+            this.CloseButton.TabIndex = 6;
             this.CloseButton.Text = "&Close";
             this.CloseButton.UseVisualStyleBackColor = false;
             // 
@@ -90,6 +90,7 @@ namespace TalkUareU
             // 
             // btn_ValidateUser
             // 
+            this.btn_ValidateUser.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_ValidateUser.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.btn_ValidateUser.Location = new System.Drawing.Point(386, 274);
             this.btn_ValidateUser.Name = "btn_ValidateUser";
@@ -104,8 +105,8 @@ namespace TalkUareU
             this.lbl_Token.AutoSize = true;
             this.lbl_Token.Location = new System.Drawing.Point(26, 172);
             this.lbl_Token.Name = "lbl_Token";
-            this.lbl_Token.Size = new System.Drawing.Size(143, 20);
-            this.lbl_Token.TabIndex = 2;
+            this.lbl_Token.Size = new System.Drawing.Size(140, 21);
+            this.lbl_Token.TabIndex = 3;
             this.lbl_Token.Text = "Registration Token";
             // 
             // lbl_Username
@@ -113,8 +114,8 @@ namespace TalkUareU
             this.lbl_Username.AutoSize = true;
             this.lbl_Username.Location = new System.Drawing.Point(26, 137);
             this.lbl_Username.Name = "lbl_Username";
-            this.lbl_Username.Size = new System.Drawing.Size(83, 20);
-            this.lbl_Username.TabIndex = 0;
+            this.lbl_Username.Size = new System.Drawing.Size(81, 21);
+            this.lbl_Username.TabIndex = 1;
             this.lbl_Username.Text = "Username";
             // 
             // txt_Token
@@ -123,7 +124,7 @@ namespace TalkUareU
             this.txt_Token.Location = new System.Drawing.Point(172, 172);
             this.txt_Token.Name = "txt_Token";
             this.txt_Token.Size = new System.Drawing.Size(284, 26);
-            this.txt_Token.TabIndex = 3;
+            this.txt_Token.TabIndex = 4;
             // 
             // txt_Username
             // 
@@ -131,7 +132,7 @@ namespace TalkUareU
             this.txt_Username.Location = new System.Drawing.Point(172, 137);
             this.txt_Username.Name = "txt_Username";
             this.txt_Username.Size = new System.Drawing.Size(284, 26);
-            this.txt_Username.TabIndex = 1;
+            this.txt_Username.TabIndex = 2;
             // 
             // label1
             // 
@@ -147,22 +148,23 @@ namespace TalkUareU
             // 
             this.ListEvents.BackColor = System.Drawing.SystemColors.InactiveBorder;
             this.ListEvents.FormattingEnabled = true;
-            this.ListEvents.ItemHeight = 20;
+            this.ListEvents.ItemHeight = 21;
             this.ListEvents.Location = new System.Drawing.Point(3, 223);
             this.ListEvents.Name = "ListEvents";
-            this.ListEvents.Size = new System.Drawing.Size(440, 64);
-            this.ListEvents.TabIndex = 1000;
+            this.ListEvents.Size = new System.Drawing.Size(440, 46);
+            this.ListEvents.TabIndex = 999;
             this.ListEvents.Visible = false;
             // 
             // EnrollmentForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.CancelButton = this.CloseButton;
+            this.AcceptButton = this.btn_ValidateUser;
             this.ClientSize = new System.Drawing.Size(500, 318);
             this.Controls.Add(this.CloseButton);
             this.Controls.Add(this.pnl_Validation);
             this.Controls.Add(this.enrollControl);
-            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;

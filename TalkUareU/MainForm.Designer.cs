@@ -37,11 +37,11 @@
             this.btn_PunchIn = new System.Windows.Forms.Button();
             this.btn_refresh = new System.Windows.Forms.Button();
             this.btn_Register = new System.Windows.Forms.Button();
+            this.pic_NetStatus = new System.Windows.Forms.PictureBox();
             this.pic_logo = new System.Windows.Forms.PictureBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.pic_NetStatus = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.pic_logo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_NetStatus)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic_logo)).BeginInit();
             this.SuspendLayout();
             // 
             // flowPanel
@@ -73,6 +73,7 @@
             this.lbl_SapName.Size = new System.Drawing.Size(295, 21);
             this.lbl_SapName.TabIndex = 1;
             this.lbl_SapName.Text = "No location signed in, please click refresh";
+            this.lbl_SapName.UseMnemonic = false;
             // 
             // btn_Admin
             // 
@@ -136,6 +137,18 @@
             this.btn_Register.UseVisualStyleBackColor = true;
             this.btn_Register.Click += new System.EventHandler(this.btn_Register_Click);
             // 
+            // pic_NetStatus
+            // 
+            this.pic_NetStatus.BackColor = System.Drawing.Color.Transparent;
+            this.pic_NetStatus.BackgroundImage = global::TalkUareU.Properties.Resources.cross;
+            this.pic_NetStatus.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pic_NetStatus.Location = new System.Drawing.Point(774, 118);
+            this.pic_NetStatus.Name = "pic_NetStatus";
+            this.pic_NetStatus.Size = new System.Drawing.Size(31, 28);
+            this.pic_NetStatus.TabIndex = 10;
+            this.pic_NetStatus.TabStop = false;
+            this.toolTip1.SetToolTip(this.pic_NetStatus, "Network connection status");
+            // 
             // pic_logo
             // 
             this.pic_logo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -152,18 +165,6 @@
             this.timer1.Enabled = true;
             this.timer1.Interval = 300000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
-            // pic_NetStatus
-            // 
-            this.pic_NetStatus.BackColor = System.Drawing.Color.Transparent;
-            this.pic_NetStatus.BackgroundImage = Properties.Resources.cross;
-            this.pic_NetStatus.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pic_NetStatus.Location = new System.Drawing.Point(774, 118);
-            this.pic_NetStatus.Size = new System.Drawing.Size(31, 28);
-            this.pic_NetStatus.Name = "pic_NetStatus";
-            this.toolTip1.SetToolTip(this.pic_NetStatus, "Network connection status");
-            this.pic_NetStatus.TabIndex = 10;
-            this.pic_NetStatus.TabStop = false;
             // 
             // MainForm
             // 
@@ -187,8 +188,8 @@
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Attendance Module | Talk Mobile";
-            ((System.ComponentModel.ISupportInitialize)(this.pic_logo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_NetStatus)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic_logo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

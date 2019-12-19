@@ -27,14 +27,16 @@ namespace TalkUareU
 
             var request = (HttpWebRequest)WebRequest.Create(createURL(url));
             request.Method = "GET";
-
-            try
+            using (new WaitCursor())
             {
-                return GetResponse(request, url, "", request.Method);
-            }
-            catch (Exception)
-            {
-                return new HttpResponse("", "Connection Error");
+                try
+                {
+                    return GetResponse(request, url, "", request.Method);
+                }
+                catch (Exception)
+                {
+                    return new HttpResponse("", "Connection Error");
+                }
             }
 
         }
@@ -46,27 +48,29 @@ namespace TalkUareU
             request.ContentType = "application/json";
             request.Method = "POST";
 
-            try
+            using (new WaitCursor())
             {
-                using (var streamWriter = new StreamWriter(request.GetRequestStream()))
+                try
                 {
-                    //streamWriter.Write(jsonStringify(json));
+                    using (var streamWriter = new StreamWriter(request.GetRequestStream()))
+                    {
+                        //streamWriter.Write(jsonStringify(json));
 
-                    json = json.Replace("'", "\"");
+                        json = json.Replace("'", "\"");
 
-                    //json = jsonStringify(jsonParse(json));
-                    //System.Windows.Forms.MessageBox.Show(json);
+                        //json = jsonStringify(jsonParse(json));
+                        //System.Windows.Forms.MessageBox.Show(json);
 
-                    streamWriter.Write(json);
+                        streamWriter.Write(json);
+                    }
+
+                    return GetResponse(request, url, json, request.Method);
                 }
-
-                return GetResponse(request, url, json, request.Method);
+                catch (Exception)
+                {
+                    return new HttpResponse("", "Connection Error");
+                }
             }
-            catch (Exception)
-            {
-                return new HttpResponse("", "Connection Error");
-            }
-
         }
 
         public HttpResponse GetResponse(HttpWebRequest request, string url, string json, string method)

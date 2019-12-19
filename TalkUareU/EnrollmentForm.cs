@@ -19,6 +19,7 @@ namespace TalkUareU
             Data = data;                                        // Keep reference to the data
             Data.OnChange += delegate { ExchangeData(false); };   // Track data changes to keep the form synchronized
             ExchangeData(true);                                 // Init data with default control values;
+            txt_Username.Select();
         }
 
         // Simple dialog data exchange (DDX) implementation.
