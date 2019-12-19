@@ -3,6 +3,8 @@ using Newtonsoft.Json.Linq;
 using System;
 using System.IO;
 using System.Net;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace TalkUareU
 {
@@ -40,6 +42,57 @@ namespace TalkUareU
             }
 
         }
+
+
+        //public async HttpResponse Req(string url)
+        //{
+        //    HttpWebRequest myRequest = (HttpWebRequest)WebRequest.Create(URL);
+        //    using (WebResponse myResponse = await myRequest.GetResponseAsync())
+        //    {
+        //        using (StreamReader sr = new StreamReader(myResponse.GetResponseStream(), System.Text.Encoding.UTF8))
+        //        {
+        //            result = sr.ReadToEnd();
+        //        }
+        //    }
+        //}
+
+
+
+        public async Task<string> GetResponseAsStringAsync(HttpWebRequest webRequest, string post = null)
+        {
+            if (post != null)
+            {
+                webRequest.Method = "POST";
+                using (Stream postStream = await webRequest.GetRequestStreamAsync())
+                {
+                    byte[] postBytes = Encoding.ASCII.GetBytes(post);
+                    await postStream.WriteAsync(postBytes, 0, postBytes.Length);
+                    await postStream.FlushAsync();
+                }
+            }
+
+            try
+            {
+                Task<string> Response;
+                using (var response = (HttpWebResponse)await webRequest.GetResponseAsync())
+                using (Stream streamResponse = response.GetResponseStream())
+                using (StreamReader streamReader = new StreamReader(streamResponse))
+                {
+                    Response = streamReader.ReadToEndAsync();
+                }
+
+                //string status = response.status;
+                string Url = webRequest.RequestUri.ToString();
+
+                return await Response;
+            }
+
+            catch (Exception ee)
+            {
+                return null;
+            }
+        }
+
 
         public HttpResponse Post(string url, string json)
         {

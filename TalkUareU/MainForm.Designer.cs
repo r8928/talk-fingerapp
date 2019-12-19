@@ -139,6 +139,7 @@
             // 
             // pic_NetStatus
             // 
+            this.pic_NetStatus.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pic_NetStatus.BackColor = System.Drawing.Color.Transparent;
             this.pic_NetStatus.BackgroundImage = global::TalkUareU.Properties.Resources.cross;
             this.pic_NetStatus.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
@@ -181,6 +182,7 @@
             this.Controls.Add(this.pic_logo);
             this.Controls.Add(this.btn_PunchIn);
             this.Controls.Add(this.btn_refresh);
+            this.DoubleBuffered = true;
             this.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = global::TalkUareU.Properties.Resources.clock;
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);

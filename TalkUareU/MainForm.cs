@@ -18,6 +18,8 @@ namespace TalkUareU
         public MainForm(AppData app, HelperClass hlp, HttpService http, MessageClass msg)
         {
             InitializeComponent();
+            SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
+            DoubleBuffered = true;
 
             app.IsNetConncted = System.Net.NetworkInformation.NetworkInterface.GetIsNetworkAvailable();
             NetworkChange.NetworkAvailabilityChanged += new NetworkAvailabilityChangedEventHandler(NetChanged);
@@ -190,8 +192,7 @@ namespace TalkUareU
             {
                 if (response.hasJson)
                 {
-                    err_lbl.Width = 700;
-                    err_lbl.Height = 700;
+                    err_lbl.AutoSize = true;
                     err_lbl.Padding = new Padding(10);
                     flowPanel.Controls.Add(err_lbl);
                     err_lbl.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
@@ -320,7 +321,7 @@ namespace TalkUareU
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            if (!String.IsNullOrEmpty(app.LocationId))
+            if (!String.IsNullOrEmpty(app.LocationId) && app.IsNetConncted)
             {
                 refresh_listing();
             }
