@@ -2,7 +2,6 @@
 using System.IO;
 using System.Linq;
 using System.Management;
-using System.Windows.Forms;
 
 namespace TalkUareU
 {
@@ -169,19 +168,27 @@ namespace TalkUareU
 
         public bool validateFinger(AppData app, JsonItem data)
         {
-            requestTemplate(app, data);
-            if (app.Template.Size == 0)
-            {
-                return false;
-            }
-            new VerificationForm(app).ShowDialog();
 
-            if (!app.IsFeatureSetMatched)
+            if (app.FingerValidationEnabled)
             {
-                msg.error("Fingerprint validation failed");
-            }
+                requestTemplate(app, data);
+                if (app.Template.Size == 0)
+                {
+                    return false;
+                }
+                new VerificationForm(app).ShowDialog();
 
-            return app.IsFeatureSetMatched;
+                if (!app.IsFeatureSetMatched)
+                {
+                    msg.error("Fingerprint validation failed");
+                }
+
+                return app.IsFeatureSetMatched;
+            }
+            else
+            {
+                return true;
+            }
         }
     }
 }

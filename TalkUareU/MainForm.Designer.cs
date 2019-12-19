@@ -39,7 +39,9 @@
             this.btn_Register = new System.Windows.Forms.Button();
             this.pic_logo = new System.Windows.Forms.PictureBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.pic_NetStatus = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pic_logo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic_NetStatus)).BeginInit();
             this.SuspendLayout();
             // 
             // flowPanel
@@ -111,7 +113,7 @@
             this.btn_refresh.BackgroundImage = global::TalkUareU.Properties.Resources.refresh;
             this.btn_refresh.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btn_refresh.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btn_refresh.Location = new System.Drawing.Point(774, 116);
+            this.btn_refresh.Location = new System.Drawing.Point(737, 118);
             this.btn_refresh.Name = "btn_refresh";
             this.btn_refresh.Size = new System.Drawing.Size(31, 28);
             this.btn_refresh.TabIndex = 9;
@@ -151,12 +153,25 @@
             this.timer1.Interval = 300000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // pic_NetStatus
+            // 
+            this.pic_NetStatus.BackColor = System.Drawing.Color.Transparent;
+            this.pic_NetStatus.BackgroundImage = Properties.Resources.cross;
+            this.pic_NetStatus.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pic_NetStatus.Location = new System.Drawing.Point(774, 118);
+            this.pic_NetStatus.Size = new System.Drawing.Size(31, 28);
+            this.pic_NetStatus.Name = "pic_NetStatus";
+            this.toolTip1.SetToolTip(this.pic_NetStatus, "Network connection status");
+            this.pic_NetStatus.TabIndex = 10;
+            this.pic_NetStatus.TabStop = false;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(817, 462);
+            this.Controls.Add(this.pic_NetStatus);
             this.Controls.Add(this.btn_Register);
             this.Controls.Add(this.btn_Admin);
             this.Controls.Add(this.lbl_SapName);
@@ -173,6 +188,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Attendance Module | Talk Mobile";
             ((System.ComponentModel.ISupportInitialize)(this.pic_logo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic_NetStatus)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -189,5 +205,6 @@
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.Button btn_Register;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.PictureBox pic_NetStatus;
     }
 }

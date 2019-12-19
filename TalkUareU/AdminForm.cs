@@ -9,16 +9,19 @@ namespace TalkUareU
         private HelperClass hlp;
         private MessageClass msg;
         private HttpService http;
+        private AppData app;
 
-        public AdminForm(HelperClass hlp, HttpService http, MessageClass msg)
+        public AdminForm(AppData app, HelperClass hlp, HttpService http, MessageClass msg)
         {
             InitializeComponent();
 
+            this.app = app;
             this.hlp = hlp;
             this.msg = msg;
             this.http = http;
 
             chk_Debugging.Checked = HttpService.HttpDebuging;
+            chk_RequireFinger.Checked = app.FingerValidationEnabled;
         }
 
         private void btn_RegisterApp_Click(object sender, EventArgs e)
@@ -46,6 +49,11 @@ namespace TalkUareU
         private void chk_Debugging_CheckedChanged(object sender, EventArgs e)
         {
             HttpService.HttpDebuging = chk_Debugging.Checked;
+        }
+
+        private void chk_RequireFinger_CheckedChanged(object sender, EventArgs e)
+        {
+            app.FingerValidationEnabled = chk_RequireFinger.Checked;
         }
     }
 }

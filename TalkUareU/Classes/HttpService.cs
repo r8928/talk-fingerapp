@@ -28,7 +28,14 @@ namespace TalkUareU
             var request = (HttpWebRequest)WebRequest.Create(createURL(url));
             request.Method = "GET";
 
-            return GetResponse(request, url, "", request.Method);
+            try
+            {
+                return GetResponse(request, url, "", request.Method);
+            }
+            catch (Exception)
+            {
+                return new HttpResponse("", "Connection Error");
+            }
 
         }
 
@@ -39,19 +46,27 @@ namespace TalkUareU
             request.ContentType = "application/json";
             request.Method = "POST";
 
-            using (var streamWriter = new StreamWriter(request.GetRequestStream()))
+            try
             {
-                //streamWriter.Write(jsonStringify(json));
+                using (var streamWriter = new StreamWriter(request.GetRequestStream()))
+                {
+                    //streamWriter.Write(jsonStringify(json));
 
-                json = json.Replace("'", "\"");
+                    json = json.Replace("'", "\"");
 
-                //json = jsonStringify(jsonParse(json));
-                //System.Windows.Forms.MessageBox.Show(json);
+                    //json = jsonStringify(jsonParse(json));
+                    //System.Windows.Forms.MessageBox.Show(json);
 
-                streamWriter.Write(json);
+                    streamWriter.Write(json);
+                }
+
+                return GetResponse(request, url, json, request.Method);
+            }
+            catch (Exception)
+            {
+                return new HttpResponse("", "Connection Error");
             }
 
-            return GetResponse(request, url, json, request.Method);
         }
 
         public HttpResponse GetResponse(HttpWebRequest request, string url, string json, string method)
@@ -94,7 +109,6 @@ namespace TalkUareU
             }
             logResponse(url, json, "", "");
             return new HttpResponse("", "");
-
         }
 
         private string createURL(string url)
@@ -129,6 +143,21 @@ namespace TalkUareU
             //client.Dispose();
             //Console.WriteLine(response.Content.ReadAsStringAsync().Result);
 
+        }
+
+        public bool WebCallCheck()
+        {
+            string StatusCode = "";
+            try
+            {
+                HttpWebRequest request = (HttpWebRequest)WebRequest.Create("http://google.com");
+                request.Method = "GET";
+                HttpWebResponse htResp = (HttpWebResponse)request.GetResponse();
+                StatusCode = JsonConvert.SerializeObject(htResp.StatusCode);
+            }
+            catch (Exception) { }
+
+            return StatusCode == "200";
         }
 
         private void logResponse(string url, string request, string response, string statuscode)

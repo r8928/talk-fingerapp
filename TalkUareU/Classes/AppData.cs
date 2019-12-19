@@ -21,7 +21,19 @@
         public string LocationName = "";
 
 
-        // shared data
+
+        // ADMIN OPTIONS
+        public bool FingerValidationEnabled = true;
+
+
+
+        // GENERAL VARIABLES
+        public bool IsNetConncted;
+
+
+
+
+        // FINGER DATA
         public int EnrolledFingersMask = 0;
         public int MaxEnrollFingerCount = 1;
         public bool IsEventHandlerSucceeds = true;
