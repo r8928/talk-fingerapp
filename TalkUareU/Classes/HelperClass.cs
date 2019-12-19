@@ -44,11 +44,6 @@ namespace TalkUareU
             string appMAC = "";
             string appProcessorID = "";
             string appMotherboardID = "";
-
-            if (!SystemInformation.Network)
-            {
-                msg.error("Could't connect to internet");
-            }
             try
             {
                 ManagementObjectCollection mbsList = null;
