@@ -1,6 +1,7 @@
 ﻿using InputBoxApp;
 using System;
 using System.Net.NetworkInformation;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace TalkUareU
@@ -46,9 +47,16 @@ namespace TalkUareU
 
         private void NetChanged(object sender, NetworkAvailabilityEventArgs e)
         {
-            enableApp(e.IsAvailable);
-            msg.show(http.jsonStringify(SystemInformation.Network));
+            this.Invoke(new WaitCallback(networkOnNet), e.IsAvailable);
+            
         }
+
+        private void networkOnNet(object o)
+        {
+            enableApp(((bool)o));
+            //msg.show(http.jsonStringify(SystemInformation.Network));
+        }
+
 
         private void validateApp()
             {
