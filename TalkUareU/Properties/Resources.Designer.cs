@@ -63,16 +63,6 @@ namespace TalkUareU.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap check {
-            get {
-                object obj = ResourceManager.GetObject("check", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap checkin {
             get {
                 object obj = ResourceManager.GetObject("checkin", resourceCulture);
@@ -117,16 +107,6 @@ namespace TalkUareU.Properties {
             get {
                 object obj = ResourceManager.GetObject("clock", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap cross {
-            get {
-                object obj = ResourceManager.GetObject("cross", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
@@ -186,6 +166,16 @@ namespace TalkUareU.Properties {
         internal static System.Drawing.Bitmap lunchout32 {
             get {
                 object obj = ResourceManager.GetObject("lunchout32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap net {
+            get {
+                object obj = ResourceManager.GetObject("net", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

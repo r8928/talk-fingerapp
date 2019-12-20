@@ -141,7 +141,7 @@
             // 
             this.pic_NetStatus.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pic_NetStatus.BackColor = System.Drawing.Color.Transparent;
-            this.pic_NetStatus.BackgroundImage = global::TalkUareU.Properties.Resources.cross;
+            this.pic_NetStatus.BackgroundImage = global::TalkUareU.Properties.Resources.net;
             this.pic_NetStatus.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pic_NetStatus.Location = new System.Drawing.Point(774, 118);
             this.pic_NetStatus.Name = "pic_NetStatus";

@@ -60,11 +60,11 @@ namespace TalkUareU
         {
             if (enable)
             {
-                pic_NetStatus.BackgroundImage = Properties.Resources.check;
+                pic_NetStatus.BackgroundImage = Properties.Resources.net;
             }
             else
             {
-                pic_NetStatus.BackgroundImage = Properties.Resources.cross;
+                pic_NetStatus.BackgroundImage = Properties.Resources.limited_net;
             }
         }
 
@@ -127,6 +127,9 @@ namespace TalkUareU
                 return;
             }
 
+            // GET CHECKED IN REPS LISTING
+            HttpResponse response = null;
+            await Task.Run(() => { response = http.Get("finger/checkedreps?sap=" + app.LocationSap); });
 
 
 
@@ -148,12 +151,6 @@ namespace TalkUareU
 
             }
 
-
-
-
-            // GET CHECKED IN REPS LISTING
-            HttpResponse response = null;
-            await Task.Run(() => { response = http.Get("finger/checkedreps?sap=" + app.LocationSap); });
             
             if (response.ok && response.hasJson && response.resp.Contains("sap_id"))
             {
