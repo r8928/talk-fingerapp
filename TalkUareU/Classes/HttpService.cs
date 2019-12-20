@@ -11,7 +11,6 @@ namespace TalkUareU
     public class HttpService
     {
 
-        public static string token = "eyJkaXNwbGF5X25hbWUiOiJNb29qaWQiLCJyb2xlIjoxLCJsb2NhdGlvbiI6MSwic3ViIjo4NTEsImlzcyI6Imh0dHBzOi8vYm9vbS50YWxrbW9iaWxlbmV0LmNvbS9hcGkvdjEvc2lnbmluIiwiaWF0IjoxNTc2MTE3MTgzLCJleHAiOjE1NzYxODE5ODMsIm5iZiI6MTU3NjExNzE4MywianRpIjoibndpc0t6T2UzOGpmc1J3UCJ9";
         public static string hIdToken = "";
 
         public HelperClass hlp;
@@ -29,71 +28,18 @@ namespace TalkUareU
 
             var request = (HttpWebRequest)WebRequest.Create(createURL(url));
             request.Method = "GET";
-            using (new WaitCursor())
-            {
-                try
-                {
-                    return GetResponse(request, url, "", request.Method);
-                }
-                catch (Exception)
-                {
-                    return new HttpResponse("", "Connection Error");
-                }
-            }
-
-        }
-
-
-        //public async HttpResponse Req(string url)
-        //{
-        //    HttpWebRequest myRequest = (HttpWebRequest)WebRequest.Create(URL);
-        //    using (WebResponse myResponse = await myRequest.GetResponseAsync())
-        //    {
-        //        using (StreamReader sr = new StreamReader(myResponse.GetResponseStream(), System.Text.Encoding.UTF8))
-        //        {
-        //            result = sr.ReadToEnd();
-        //        }
-        //    }
-        //}
-
-
-
-        public async Task<string> GetResponseAsStringAsync(HttpWebRequest webRequest, string post = null)
-        {
-            if (post != null)
-            {
-                webRequest.Method = "POST";
-                using (Stream postStream = await webRequest.GetRequestStreamAsync())
-                {
-                    byte[] postBytes = Encoding.ASCII.GetBytes(post);
-                    await postStream.WriteAsync(postBytes, 0, postBytes.Length);
-                    await postStream.FlushAsync();
-                }
-            }
-
+            
             try
             {
-                Task<string> Response;
-                using (var response = (HttpWebResponse)await webRequest.GetResponseAsync())
-                using (Stream streamResponse = response.GetResponseStream())
-                using (StreamReader streamReader = new StreamReader(streamResponse))
-                {
-                    Response = streamReader.ReadToEndAsync();
-                }
-
-                //string status = response.status;
-                string Url = webRequest.RequestUri.ToString();
-
-                return await Response;
+                return GetResponse(request, url, "", request.Method);
             }
-
-            catch (Exception ee)
+            catch (Exception)
             {
-                return null;
+                return new HttpResponse("", "Connection Error");
             }
+            
         }
-
-
+                     
         public HttpResponse Post(string url, string json)
         {
 
@@ -101,29 +47,25 @@ namespace TalkUareU
             request.ContentType = "application/json";
             request.Method = "POST";
 
-            using (new WaitCursor())
+            
+            try
             {
-                try
+                using (var streamWriter = new StreamWriter(request.GetRequestStream()))
                 {
-                    using (var streamWriter = new StreamWriter(request.GetRequestStream()))
-                    {
-                        //streamWriter.Write(jsonStringify(json));
+                    //streamWriter.Write(jsonStringify(json));
 
-                        json = json.Replace("'", "\"");
-
-                        //json = jsonStringify(jsonParse(json));
-                        //System.Windows.Forms.MessageBox.Show(json);
-
-                        streamWriter.Write(json);
-                    }
-
-                    return GetResponse(request, url, json, request.Method);
+                    json = json.Replace("'", "\"");
+                                   
+                    streamWriter.Write(json);
                 }
-                catch (Exception)
-                {
-                    return new HttpResponse("", "Connection Error");
-                }
+
+                return GetResponse(request, url, json, request.Method);
             }
+            catch (Exception)
+            {
+                return new HttpResponse("", "Connection Error");
+            }
+            
         }
 
         public HttpResponse GetResponse(HttpWebRequest request, string url, string json, string method)
@@ -176,47 +118,9 @@ namespace TalkUareU
                 token_delim = "&";
             }
 
-            return p.API_ENDPOINT + url + token_delim + "token=" + token + "&hidtoken=" + hIdToken;
+            return p.API_ENDPOINT + url + token_delim +  "&hidtoken=" + hIdToken;
         }
-
-        public void UploadNew(string actionUrl, string path, string token, string secret, string location, string role, string file)
-        {
-
-            //var client = new HttpClient();
-            //var formData = new MultipartFormDataContent();
-
-            //formData.Add(new StringContent(path), "path");
-            //formData.Add(new StringContent(token), "token");
-            //formData.Add(new StringContent(secret), "secret");
-            //formData.Add(new StringContent(path), "path");
-            //formData.Add(new StringContent(location), "location");
-            //formData.Add(new StringContent(role), "role");
-
-            //formData.Add(new ByteArrayContent(File.ReadAllBytes(file)), "file", Path.GetFileName(file));
-
-            //Console.Write(formData.ToString());
-            //var response = client.PostAsync(actionUrl, formData).Result;
-
-            //client.Dispose();
-            //Console.WriteLine(response.Content.ReadAsStringAsync().Result);
-
-        }
-
-        public bool WebCallCheck()
-        {
-            string StatusCode = "";
-            try
-            {
-                HttpWebRequest request = (HttpWebRequest)WebRequest.Create("http://google.com");
-                request.Method = "GET";
-                HttpWebResponse htResp = (HttpWebResponse)request.GetResponse();
-                StatusCode = JsonConvert.SerializeObject(htResp.StatusCode);
-            }
-            catch (Exception) { }
-
-            return StatusCode == "200";
-        }
-
+                
         private void logResponse(string url, string request, string response, string statuscode)
         {
             if (HttpDebuging == false)

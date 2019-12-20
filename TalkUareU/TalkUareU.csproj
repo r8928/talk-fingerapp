@@ -81,7 +81,6 @@
       <DependentUpon>AdminForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Classes\AppData.cs" />
-    <Compile Include="Classes\WaitCursor.cs" />
     <Compile Include="Classes\MessageClass.cs" />
     <Compile Include="EmployeeEntry.cs">
       <SubType>Component</SubType>

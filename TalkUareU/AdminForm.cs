@@ -1,5 +1,6 @@
 ﻿using InputBoxApp;
 using System;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace TalkUareU
@@ -24,7 +25,7 @@ namespace TalkUareU
             chk_RequireFinger.Checked = app.FingerValidationEnabled;
         }
 
-        private void btn_RegisterApp_Click(object sender, EventArgs e)
+        private async void btn_RegisterApp_Click(object sender, EventArgs e)
         {
 
             InputBoxResult SapID = InputBox.Show("Please enter the 4 digit SAP ID.", "SAP");
@@ -34,8 +35,9 @@ namespace TalkUareU
                 return;
             }
 
-            HttpResponse res = http.Post("finger/registerapp", hlp.getHardwareIds(SapID.Text));
-
+            HttpResponse res = null;
+            await Task.Run(() => { res = http.Post("finger/registerapp", hlp.getHardwareIds(SapID.Text)); });
+            
             if (res.ok && res.hasJson)
             {
                 msg.success((string)res.json["message"]);

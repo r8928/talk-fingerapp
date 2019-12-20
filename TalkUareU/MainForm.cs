@@ -2,6 +2,7 @@
 using System;
 using System.Net.NetworkInformation;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace TalkUareU
@@ -31,21 +32,6 @@ namespace TalkUareU
             this.http = http;
             this.msg = msg;
             this.app = app;
-
-
-            if (app.IsNetConncted)
-            {
-                validateApp();
-
-                if (!String.IsNullOrEmpty(app.LocationId))
-                {
-                    refresh_listing();
-                }
-            }
-            else
-            {
-                msg.error("Could't connect to internet");
-            }
         }
 
         private void NetChanged(object sender, NetworkAvailabilityEventArgs e)
@@ -83,12 +69,14 @@ namespace TalkUareU
         }
 
 
-        private void validateApp()
+        private async void validateApp(bool refreshListing)
         {
 
             lbl_SapName.Text = "Refreshing...";
+            HttpResponse res = null;
+            await Task.Run(() => { res = http.Post("finger/validateapp", hlp.getHardwareIds()); });
 
-            HttpResponse res = http.Post("finger/validateapp", hlp.getHardwareIds());
+            
             if (res.ok && res.hasJson && res.resp.Contains("sap_id"))
             {
                 app.LocationId = (string)res.json["sap_id"];
@@ -97,6 +85,7 @@ namespace TalkUareU
 
                 lbl_SapName.Text = app.LocationName;
                 enableApp(true);
+                if (refreshListing) refresh_listing();
             }
             else
             {
@@ -114,13 +103,13 @@ namespace TalkUareU
             }
         }
 
-        private void refresh_listing()
+        private async void refresh_listing()
         {
             timer1.Stop();
             // VALIDATE APP
             if (String.IsNullOrEmpty(app.LocationId))
             {
-                validateApp();
+                validateApp(false);
 
                 if (String.IsNullOrEmpty(app.LocationId))
                 {
@@ -163,8 +152,9 @@ namespace TalkUareU
 
 
             // GET CHECKED IN REPS LISTING
-            HttpResponse response = http.Get("finger/checkedreps?sap=" + app.LocationSap);
-
+            HttpResponse response = null;
+            await Task.Run(() => { response = http.Get("finger/checkedreps?sap=" + app.LocationSap); });
+            
             if (response.ok && response.hasJson && response.resp.Contains("sap_id"))
             {
                 foreach (var item in response.json["data"])
@@ -301,8 +291,7 @@ namespace TalkUareU
                 new AdminForm(app, hlp, http, msg).ShowDialog();
                 timer1.Enabled = true;
 
-                validateApp();
-                refresh_listing();
+                validateApp(true);
             }
             else
             {
@@ -324,6 +313,18 @@ namespace TalkUareU
             if (!String.IsNullOrEmpty(app.LocationId) && app.IsNetConncted)
             {
                 refresh_listing();
+            }
+        }
+        
+        private async void MainForm_Shown(object sender, EventArgs e)
+        {
+            if (app.IsNetConncted)
+            {
+                validateApp(true);
+            }
+            else
+            {
+                msg.error("Could't connect to internet");
             }
         }
     }
