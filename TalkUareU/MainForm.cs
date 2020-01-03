@@ -313,7 +313,7 @@ namespace TalkUareU
             }
         }
         
-        private async void MainForm_Shown(object sender, EventArgs e)
+        private void MainForm_Shown(object sender, EventArgs e)
         {
             if (app.IsNetConncted)
             {
