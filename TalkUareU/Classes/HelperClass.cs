@@ -19,7 +19,9 @@ namespace TalkUareU
         public void log(string newContent)
         {
             string currentContent = String.Empty;
-            string filePath = "./log.txt";
+            string folderPath = System.Environment.GetFolderPath(System.Environment.SpecialFolder.LocalApplicationData) + "\\TalkUareU\\";
+            System.IO.Directory.CreateDirectory(folderPath);
+            string filePath = folderPath + "log.txt";
 
             newContent =
             "Time: " +
