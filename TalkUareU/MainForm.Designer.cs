@@ -63,7 +63,7 @@
             this.lbl_ModuleName.Name = "lbl_ModuleName";
             this.lbl_ModuleName.Size = new System.Drawing.Size(302, 45);
             this.lbl_ModuleName.TabIndex = 6;
-            this.lbl_ModuleName.Text = "Attendance Module";
+            this.lbl_ModuleName.Text = "Talk Time Clock";
             // 
             // lbl_SapName
             // 
@@ -189,7 +189,7 @@
             this.MinimumSize = new System.Drawing.Size(500, 500);
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Attendance Module | Talk Mobile";
+            this.Text = "Talk Time Clock | Talk Mobile Inc.";
             this.Shown += new System.EventHandler(this.MainForm_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.pic_NetStatus)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_logo)).EndInit();
