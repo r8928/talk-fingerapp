@@ -1,16 +1,17 @@
-﻿using System.Reflection;
+﻿using System.Resources;
+using System.Reflection;
 using System.Runtime.InteropServices;
 
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("TalkUareU")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("Talk Time Clock")]
+[assembly: AssemblyDescription("Talk Mobile Attendance Taking System")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("TalkUareU")]
+[assembly: AssemblyCompany("Talk Mobile Inc.")]
+[assembly: AssemblyProduct("TalkTimeClock")]
 [assembly: AssemblyCopyright("Copyright ©  2019")]
-[assembly: AssemblyTrademark("")]
+[assembly: AssemblyTrademark("TalkTimeClock")]
 [assembly: AssemblyCulture("")]
 
 // Setting ComVisible to false makes the types in this assembly not visible
@@ -19,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("ed94cc4d-be38-4d42-938e-9255b9ebcbd0")]
+[assembly: Guid("56F85F8A-5554-4D1C-AF5B-9DD96D5ECC08")]
 
 // Version information for an assembly consists of the following four values:
 //
@@ -33,3 +34,4 @@ using System.Runtime.InteropServices;
 // [assembly: AssemblyVersion("1.0.*")]
 [assembly: AssemblyVersion("1.0.0.0")]
 [assembly: AssemblyFileVersion("1.0.0.0")]
+[assembly: NeutralResourcesLanguage("en")]
