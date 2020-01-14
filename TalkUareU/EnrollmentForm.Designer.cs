@@ -114,9 +114,9 @@ namespace TalkUareU
             this.lbl_Username.AutoSize = true;
             this.lbl_Username.Location = new System.Drawing.Point(26, 137);
             this.lbl_Username.Name = "lbl_Username";
-            this.lbl_Username.Size = new System.Drawing.Size(81, 21);
+            this.lbl_Username.Size = new System.Drawing.Size(132, 21);
             this.lbl_Username.TabIndex = 1;
-            this.lbl_Username.Text = "Username";
+            this.lbl_Username.Text = "BOOM Username";
             // 
             // txt_Token
             // 
@@ -141,8 +141,8 @@ namespace TalkUareU
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(490, 173);
             this.label1.TabIndex = 999;
-            this.label1.Text = "Please enter the username and registration token to register.\nIf you don\'t have r" +
-    "egistration token please contact HR department.";
+            this.label1.Text = "Please enter the BOOM username and registration token to register.\nIf you don\'t h" +
+    "ave registration token please contact HR department.";
             // 
             // ListEvents
             // 
@@ -157,9 +157,9 @@ namespace TalkUareU
             // 
             // EnrollmentForm
             // 
+            this.AcceptButton = this.btn_ValidateUser;
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.CancelButton = this.CloseButton;
-            this.AcceptButton = this.btn_ValidateUser;
             this.ClientSize = new System.Drawing.Size(500, 318);
             this.Controls.Add(this.CloseButton);
             this.Controls.Add(this.pnl_Validation);

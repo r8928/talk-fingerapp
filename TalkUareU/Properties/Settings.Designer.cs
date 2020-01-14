@@ -25,7 +25,7 @@ namespace TalkUareU.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("https://dev.talkmobilenet.com/api/v1/")]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://boom.talkmobilenet.com/api/v1/")]
         public string API_ENDPOINT {
             get {
                 return ((string)(this["API_ENDPOINT"]));
